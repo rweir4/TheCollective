@@ -22,7 +22,8 @@ class Api::UsersController < ApplicationController
     @user = User.find(current_user.id)
 
     if @user.save
-      redirect_to api_user_url
+      login(@user)
+      render 'api/users'
     else
       render json: {errors: @user.errors.full_messages}
     end
