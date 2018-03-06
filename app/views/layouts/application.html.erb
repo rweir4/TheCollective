@@ -9,6 +9,11 @@
   </head>
 
   <body>
+    <script type="text/javascript">
+      <% if logged_in? %>
+        window.currentUser = <%= render 'api/users/user.json.jbuilder', user: current_user %>
+      <% end %>
+    </script>
     <%= yield %>
   </body>
 </html>
