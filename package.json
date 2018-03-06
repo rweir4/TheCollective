@@ -14,5 +14,12 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "webpack": "^3.11.0"
+  },
+  "scripts": {
+    "postinstall": "webpack"
+  },
+  "engines": {
+    "node": "6.7.0:",
+    "npm": "3.10.7"
   }
 }
