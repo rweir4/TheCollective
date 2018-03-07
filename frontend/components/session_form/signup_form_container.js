@@ -5,7 +5,8 @@ import SessionForm from './session_form';
 const mapStateToProps = state => {
   return {
     user: {email: '', password:''},
-    formType: 'signup'
+    formType: 'signup',
+    loginButton: true
   };
 };
 
