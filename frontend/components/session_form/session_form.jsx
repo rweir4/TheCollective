@@ -22,24 +22,25 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1 className="session-form-container">
-          {this.props.formType === 'signup' ? 'Sign Up!' : 'Log in!'}
-        </h1>
+      <div className="session-form-container">
+        <p className="session-form-header">
+          {this.props.formType === 'signup' ? 'Welcome to The Collective' : 'Log in to see more'}
+        </p>
+        {this.props.formType === 'signup' ? <p className="signup-subheader">Find new ideas to try</p> : null }
         <form className="session-form" onSubmit={this.handleSubmit}>
-          <label>Email
+          <div className="input-box">
             <input
+              placeholder="Email"
               type="text"
               value={this.state.email}
               onChange={this.handleChange('email')}/>
-          </label>
-          <label>Password
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange('password')}/>
-          </label>
-          <button className="session-btn">{this.props.formType}</button>
+          <input
+            type="password"
+            placeholder={this.props.formType === 'signup' ? 'Create a password' : 'Password'}
+            value={this.state.password}
+            onChange={this.handleChange('password')}/>
+          </div>
+          <button className="session-btn">{this.props.formType === 'signup' ? 'Continue' : 'Log in'}</button>
         </form>
       </div>
     );
