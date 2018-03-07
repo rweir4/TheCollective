@@ -24,6 +24,7 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="session-form-container">
+        <img src={window.logo} className="session-logo"/>
         <p className="session-form-header">
           {this.props.formType === 'signup' ? 'Welcome to The Collective' : 'Log in to see more'}
         </p>
