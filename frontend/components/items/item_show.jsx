@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class ItemShow extends React.Component {
   componentDidMount() {
@@ -11,6 +12,7 @@ class ItemShow extends React.Component {
         <div>
           <img className="item-img" src={this.props.item.img_url}></img>
           <p className="item-description">{this.props.item.description}</p>
+          <Link to={`/collections/${this.props.item.collection_id}`}>To Collection</Link>
         </div>
       );
     } else {

@@ -7,6 +7,8 @@ import UserShowContainer from './user/user_show_container';
 import ItemIndexContainer from './items/item_index_container';
 import NavBarContainer from './navBar/nav_bar_container';
 import ItemShowContainer from './items/item_show_container';
+import CollectionIndexContainer from './collections/collection_index_container';
+import CollectionShowContainer from './collections/collection_show_container';
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
         <AuthRoute exact path="/login" component={ LoginFormContainer }/>
         <ProtectedRoute exact path="/" component={ ItemIndexContainer } />
         <ProtectedRoute exact path="/items/:itemId" component={ ItemShowContainer } />
+        <ProtectedRoute exact path="/collections" component={ CollectionIndexContainer } />
+        <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
       </Switch>
     </div>
   );

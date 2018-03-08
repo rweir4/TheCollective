@@ -1,1 +1,1 @@
-json.extract! collection, :id, :title, :author_id
+json.extract! col, :id, :title, :author_id
