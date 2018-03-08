@@ -1,8 +1,12 @@
 import { combineReducers } from 'redux';
-import UserReducer from './user_reducer';
+import usersReducer from './user_reducer';
+import collectionsReducer from './collections_reducer';
+import itemsReducer from './items_reducer';
 
-const EntitiesReducer = combineReducers({
-  user: UserReducer
+const entitiesReducer = combineReducers({
+  users: usersReducer,
+  collections: collectionsReducer,
+  items: itemsReducer
 });
 
-export default EntitiesReducer;
+export default entitiesReducer;

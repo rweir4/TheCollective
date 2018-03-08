@@ -6,6 +6,14 @@ class User < ApplicationRecord
   has_many :follows
   has_many :followers
 
+  has_many :collections,
+    class_name: User,
+    foreign_key: :author_id
+
+  has_many :items,
+    through: :collections,
+    source: :items
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -20,16 +20,17 @@ class SessionForm extends React.Component {
     e.preventDefault();
     this.props.submitAction(this.state);
     this.state = {email: '', password: ''};
+    this.props.history.push('/');
   }
 
   render() {
     return (
       <div>
-        <div className="login-btn-container">
-          { this.props.formType === 'signup' ? <Link to='/login' className="login">Log in</Link> : null}
+        <div className="login-link-container">
+          { this.props.formType === 'signup' ? <Link to='/login' className="login-link">Log in</Link> : <p></p>}
         </div>
         <div className="session-form-container">
-          <img src={window.logo} className="session-logo"/>
+          <img src={window.logo} id="session-logo" className="logo"/>
           <p className="session-form-header">
             {this.props.formType === 'signup' ? 'Welcome to The Collective' : 'Log in to see more'}
           </p>
@@ -48,6 +49,9 @@ class SessionForm extends React.Component {
               onChange={this.handleChange('password')}/>
             </div>
             <button className="session-btn">{this.props.formType === 'signup' ? 'Continue' : 'Log in'}</button>
+            <div className="signup-link-container">
+              { this.props.formType === 'signup' ? null : <p>Not on The Collective yet?<Link to='/signup' className="signup-link">Sign Up</Link></p>}
+            </div>
           </form>
         </div>
       </div>
@@ -55,4 +59,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default SessionForm;
+export default withRouter(SessionForm);

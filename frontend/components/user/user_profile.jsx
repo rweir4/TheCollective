@@ -5,9 +5,13 @@ class UserProfile extends React.Component {
     super(props);
   }
 
+  componentDidMount() {
+    this.props.fetchUser(this.props.match.params.userId);
+  }
+
   render() {
     return (
-      <div>Welcome</div>
+      <div>Welcome {this.props.user.email}</div>
     );
   }
 }
