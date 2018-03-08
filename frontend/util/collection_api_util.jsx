@@ -15,7 +15,7 @@ export const fetchCollection = (id) => (
 export const createCollection = (collection) => (
   $.ajax({
     url: `api/collections`,
-    method: 'GET',
+    method: 'POST',
     data: { collection }
   })
 );
@@ -23,7 +23,7 @@ export const createCollection = (collection) => (
 export const updateCollection = (collection) => (
   $.ajax({
     url: `api/collections/${collection.id}/edit`,
-    method: 'GET',
+    method: 'PATCH',
     data: { collection }
   })
 );

@@ -15,7 +15,7 @@ export const fetchItem = (id) => (
 export const createItem = (item) => (
   $.ajax({
     url: `api/items`,
-    method: 'GET',
+    method: 'POST',
     data: { item }
   })
 );
@@ -23,7 +23,7 @@ export const createItem = (item) => (
 export const updateItem = (item) => (
   $.ajax({
     url: `api/items/${item.id}/edit`,
-    method: 'GET',
+    method: 'PATCH',
     data: { item }
   })
 );
