@@ -32,7 +32,7 @@ class ItemEditForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+  
   return {
     item: state.entities.items[ownProps.match.params.itemId] || {description: '', collection_id: ''},
     currentUser: state.session.currentUser,

@@ -22,7 +22,7 @@ export const createUser = (user) => (
 
 export const updateUser = (user) => (
   $.ajax({
-    url: `api/users/${user.id}/edit`,
+    url: `api/users/${user.id}`,
     method: 'GET',
     data: { user }
   })

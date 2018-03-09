@@ -19,7 +19,7 @@ class Api::ItemsController < ApplicationController
 
   def update
     @item = current_user.items.find(params[:id])
-
+    debugger
     if @item.update(item_params)
       render :show
     else
@@ -44,6 +44,6 @@ class Api::ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:description, :image)
+    params.require(:item).permit(:description, :image, :collection_id)
   end
 end

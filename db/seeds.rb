@@ -14,6 +14,8 @@ u2 = User.create!({ email: 'rweir12', password: 'starwars12'})
 u3 = User.create!({ email: 'rweir13', password: 'starwars13'})
 
 c1 = Collection.create!({ title: 'ron swanson', author_id: u1.id})
+c2 = Collection.create!({ title: 'leslie knoppe', author_id: u2.id})
+c3 = Collection.create!({ title: 'april', author_id: u2.id})
 
 Item.create!([
     { description: 'thethingis', collection_id: c1.id},
@@ -31,9 +33,29 @@ Item.create!([
     { description: '2thethingisthat', collection_id: c1.id},
     { description: '2thethingisthis', collection_id: c1.id},
     { description: '2BABY GROOT IS SO CUTE', collection_id: c1.id},
-    { description: '3thethingis', collection_id: c1.id},
-    { description: '3thethingisnot', collection_id: c1.id},
-    { description: '3thethingisthat', collection_id: c1.id},
-    { description: '3thethingisthis', collection_id: c1.id},
-    { description: '3BABY GROOT IS SO CUTE', collection_id: c1.id}
+    { description: '3thethingis', collection_id: c2.id},
+    { description: '3thethingisnot', collection_id: c2.id},
+    { description: '3thethingisthat', collection_id: c2.id},
+    { description: '3thethingisthis', collection_id: c2.id},
+    { description: '3BABY GROOT IS SO CUTE', collection_id: c2.id},
+    { description: '4thethingis', collection_id: c1.id},
+    { description: '4thethingisnot', collection_id: c1.id},
+    { description: '4thethingisthat', collection_id: c1.id},
+    { description: '4thethingisthis', collection_id: c1.id},
+    { description: '4BABY GROOT IS SO CUTE', collection_id: c1.id},
+    { description: '1thethingis', collection_id: c3.id},
+    { description: '1thethingisnot', collection_id: c3.id},
+    { description: '1thethingisthat', collection_id: c3.id},
+    { description: '1thethingisthis', collection_id: c3.id},
+    { description: '11BABY GROOT IS SO CUTE', collection_id: c3.id},
+    { description: '22thethingis', collection_id: c1.id},
+    { description: '22thethingisnot', collection_id: c1.id},
+    { description: '22thethingisthat', collection_id: c1.id},
+    { description: '22thethingisthis', collection_id: c1.id},
+    { description: '22BABY GROOT IS SO CUTE', collection_id: c1.id},
+    { description: '33thethingis', collection_id: c1.id},
+    { description: '33thethingisnot', collection_id: c1.id},
+    { description: '33thethingisthat', collection_id: c1.id},
+    { description: '33thethingisthis', collection_id: c1.id},
+    { description: '33BABY GROOT IS SO CUTE', collection_id: c1.id}
   ])

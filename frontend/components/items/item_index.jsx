@@ -1,5 +1,8 @@
 import React from 'react';
 import ItemDetails from './item_details';
+import NavBarContainer from '../navBar/nav_bar_container';
+import { ProtectedRoute } from '../../util/route_util';
+import { Route } from 'react-router-dom';
 
 class ItemIndex extends React.Component {
   componentDidMount() {
@@ -13,13 +16,19 @@ class ItemIndex extends React.Component {
       });
       return (
         <div className="item-index">
+          <ProtectedRoute path="/" component={ NavBarContainer } />
           <ul className="item-list">
             { items }
           </ul>
         </div>
       );
     } else {
-      <p>Loading</p>
+      return (
+          <div>
+          <ProtectedRoute path="/" component={ NavBarContainer } />
+          <p>Loading</p>
+        </div>
+      );
     }
   }
 };

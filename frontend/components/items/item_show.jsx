@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+//import repin form
 
 class ItemShow extends React.Component {
   componentDidMount() {
@@ -9,10 +10,23 @@ class ItemShow extends React.Component {
   render() {
     if (this.props.item) {
       return (
-        <div className="item-container">
-          <img className="item-img" src={this.props.item.image}></img>
-          <p className="item-description">{this.props.item.description}</p>
-          <Link to={`/collections/${this.props.item.collection_id}`}>To Collection</Link>
+        <div className="item-show">
+          <div className="item-container">
+            <div className="collect-bar">
+              <Link to={`/items/${this.props.item.id}/edit`}>
+                Collect
+              </Link>
+            </div>
+            <div className="item-show-details">
+              <div className="img-holder">
+                <img className="item-img" src={this.props.item.image}></img>
+              </div>
+              <div className="item-info">
+                <p className="item-description">{this.props.item.description}</p>
+                <Link to={`/collections/${this.props.item.collection_id}`}>To Collection</Link>
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {

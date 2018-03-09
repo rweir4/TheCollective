@@ -1,20 +1,67 @@
 // Place all the styles related to the Api::Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.collect-bar {
+  height: 44px;
+  width: 1026px;
+  padding: 14px 32px 14px 32px;
+}
+
+.collect-bar a {
+  float: right;
+  padding: 10px;
+  background: #ba1414;
+  color: white;
+  font-family: 'PT Sans', sans-serif;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.item-show {
+  background: #e8e8e8;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.item-container {
+  width: 1090px;
+  background: white;
+  margin: 100px auto;
+  border-radius: 10px;
+}
+
+.item-show-details {
+  display: flex;
+}
 
 .item-details {
   width: 240px;
   padding: 15px;
 }
 
-.item-container {
-  width: 500px;
+.img-holder {
+  max-width: 496px;
+  padding: 50px 0 50px 50px;
+}
+
+.item-img {
+  border-radius: 10px;
+  width: 100%;
+}
+
+.item-info {
+  padding: 5;
+  width: 40%;
 }
 
 .item-list {
   display: flex;
   flex-wrap: wrap;
-  padding-left: 3%;
+  justify-content: center;
 }
 
 .item-img-details {

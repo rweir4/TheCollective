@@ -5,7 +5,7 @@ import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import UserShowContainer from './user/user_show_container';
 import ItemIndexContainer from './items/item_index_container';
-import NavBarContainer from './navBar/nav_bar_container';
+// import NavBarContainer from './navBar/nav_bar_container';
 import ItemShowContainer from './items/item_show_container';
 import CollectionIndexContainer from './collections/collection_index_container';
 import CollectionShowContainer from './collections/collection_show_container';
@@ -15,7 +15,6 @@ import CreateItemContainer from './items/item_create_container';
 const App = () => {
   return (
     <div>
-      <ProtectedRoute path="/" component={ NavBarContainer } />
       <Switch>
         <AuthRoute exact path="/signup" component={ SignupFormContainer }/>
         <AuthRoute exact path="/login" component={ LoginFormContainer }/>
@@ -24,6 +23,7 @@ const App = () => {
         <ProtectedRoute exact path="/collections" component={ CollectionIndexContainer } />
         <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
         <ProtectedRoute exact path="/items/:itemId/edit" component={ EditItemContainer } />
+        <ProtectedRoute exact path="/items/new" component={ CreateItemContainer } />
       </Switch>
     </div>
   );

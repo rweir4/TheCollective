@@ -5,9 +5,9 @@ import ItemForm from './item_form';
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return {
-    item: {description: '', collection_id: ''},
+    item: {description: '', image: '', collection_id: ''},
     currentUser: state.session.currentUser,
     collections: state.entities.collections,
     formType: 'create'

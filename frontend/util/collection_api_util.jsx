@@ -22,7 +22,7 @@ export const createCollection = (collection) => (
 
 export const updateCollection = (collection) => (
   $.ajax({
-    url: `api/collections/${collection.id}/edit`,
+    url: `api/collections/${collection.id}`,
     method: 'PATCH',
     data: { collection }
   })
