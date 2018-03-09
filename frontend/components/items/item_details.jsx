@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const ItemDetails = (props) => (
-  <div>
+  <div className="item-details">
     <Link to={`/items/${props.item.id}`}>
-      <img className="item-img" src={props.item.img_url}></img>
+      <img className="item-img-details" src={props.item.image}></img>
       <p className="item-description">{props.item.description}</p>
     </Link>
   </div>

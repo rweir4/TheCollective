@@ -1,10 +1,13 @@
 import { RECEIVE_ITEMS, RECEIVE_ITEM, REMOVE_ITEM } from '../actions/item_actions';
+import { RECEIVE_COLLECTION } from '../actions/collection_actions';
 import { merge } from 'lodash';
 
 const itemsReducer = (state = {}, action) => {
+  // debugger
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_ITEMS:
+    case RECEIVE_COLLECTION:
       return merge({}, state, action.items);
     case RECEIVE_ITEM:
       return merge({}, state, {[action.item.id]: action.item});

@@ -7,25 +7,36 @@ import React from 'react';
 class ItemEditForm extends React.Component {
   componentDidMount() {
     this.props.fetchItem(this.props.match.params.itemId);
-    
   }
 
   render() {
-    const { submitAction, item, formType } = this.props;
+    const {
+      item,
+      currentUser,
+      collections,
+      formType,
+      submitAction,
+      fetchUser
+    } = this.props;
     return (
 
       <ItemForm
-        submitAction={submitAction}
         item={item}
-        formType={formType} />
-    )
+        currentUser={currentUser}
+        collections={collections}
+        formType={formType}
+        submitAction={submitAction}
+        fetchUser={fetchUser} />
+    );
   }
 }
 
 const mapStateToProps = (state, ownProps) => {
+  debugger
   return {
-    item: state.items[ownProps.match.params.itemId],
+    item: state.entities.items[ownProps.match.params.itemId] || {description: '', collection_id: ''},
     currentUser: state.session.currentUser,
+    collections: state.entities.collections,
     formType: 'edit'
   };
 };

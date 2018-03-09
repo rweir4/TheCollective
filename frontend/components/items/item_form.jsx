@@ -10,7 +10,11 @@ class ItemForm extends React.Component {
   }
 
   componentDidMount() {
-    currentUser = this.props.fetchUser(currentUser.id);
+    this.props.fetchUser(this.props.currentUser.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.setState(nextProps.item);
   }
 
   handleDescription() {
@@ -27,8 +31,10 @@ class ItemForm extends React.Component {
   }
 
   render() {
-    if (currentUser) {
-      const collections = Object.values(this.props.currentUserCollections.collections).map(collection => {
+    debugger
+    if (this.props.collections) {
+      const { collections } = this.props;
+      const collectionsList = Object.values(collections).map(collection => {
         return ( <button onClick={this.handleSubmit} key={collection.title}>{collection.title}</button> )
       });
 

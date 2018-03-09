@@ -9,7 +9,7 @@ class ItemIndex extends React.Component {
   render() {
     if (this.props.items) {
       const items = this.props.items.map(item => {
-        return ( <ItemDetails className="item-details" key={item.id} item={ item } /> );
+        return ( <ItemDetails key={item.id} item={ item } /> );
       });
       return (
         <div className="item-index">

@@ -5,21 +5,35 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+Collection.destroy_all
+Item.destroy_all
 
+u1 = User.create!({ email: 'rweir11', password: 'starwars11'})
+u2 = User.create!({ email: 'rweir12', password: 'starwars12'})
+u3 = User.create!({ email: 'rweir13', password: 'starwars13'})
 
-User.create!([
-    { email: 'rweir11', password: 'starwars11'},
-    { email: 'rweir12', password: 'starwars12'},
-    { email: 'rweir13', password: 'starwars13'}
-  ])
-
-Collection.create!([
-    { title: 'ron swanson', author_id: 1}
-  ])
+c1 = Collection.create!({ title: 'ron swanson', author_id: u1.id})
 
 Item.create!([
-    { description: 'thethingis', img_url: 'https://i.pinimg.com/originals/3e/28/76/3e28760d268cecc15bd0b5ada6b10198.jpg', collection_id: 1},
-    { description: 'thethingisnot', img_url: 'https://cdn.pastemagazine.com/www/system/images/photo_albums/ron-swanson-memes/large/memes-rs-5-course-dinner.jpg?1384968217', collection_id: 1},
-    { description: 'thethingisthat', img_url: 'https://cdn.pastemagazine.com/www/system/images/photo_albums/ron-swanson-memes/large/8eb3d7370566b862f0d6c4a8d5fab5d542c75a15b4c216064f060b8a20fa.jpg?1384968217', collection_id: 1},
-    { description: 'thethingisthis', img_url: 'https://i.pinimg.com/originals/f2/75/56/f275560300760d8ea4be3f2d1f80bcf4.jpg', collection_id: 1}
+    { description: 'thethingis', collection_id: c1.id},
+    { description: 'thethingisnot', collection_id: c1.id},
+    { description: 'thethingisthat', collection_id: c1.id},
+    { description: 'thethingisthis', collection_id: c1.id},
+    { description: 'BABY GROOT IS SO CUTE', collection_id: c1.id},
+    { description: '1thethingis', collection_id: c1.id},
+    { description: '1thethingisnot', collection_id: c1.id},
+    { description: '1thethingisthat', collection_id: c1.id},
+    { description: '1thethingisthis', collection_id: c1.id},
+    { description: '1BABY GROOT IS SO CUTE', collection_id: c1.id},
+    { description: '2thethingis', collection_id: c1.id},
+    { description: '2thethingisnot', collection_id: c1.id},
+    { description: '2thethingisthat', collection_id: c1.id},
+    { description: '2thethingisthis', collection_id: c1.id},
+    { description: '2BABY GROOT IS SO CUTE', collection_id: c1.id},
+    { description: '3thethingis', collection_id: c1.id},
+    { description: '3thethingisnot', collection_id: c1.id},
+    { description: '3thethingisthat', collection_id: c1.id},
+    { description: '3thethingisthis', collection_id: c1.id},
+    { description: '3BABY GROOT IS SO CUTE', collection_id: c1.id}
   ])

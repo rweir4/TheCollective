@@ -10,6 +10,7 @@ import ItemShowContainer from './items/item_show_container';
 import CollectionIndexContainer from './collections/collection_index_container';
 import CollectionShowContainer from './collections/collection_show_container';
 import EditItemContainer from './items/item_edit_container';
+import CreateItemContainer from './items/item_create_container';
 
 const App = () => {
   return (
@@ -22,7 +23,7 @@ const App = () => {
         <ProtectedRoute exact path="/items/:itemId" component={ ItemShowContainer } />
         <ProtectedRoute exact path="/collections" component={ CollectionIndexContainer } />
         <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
-        <ProtectedRoute exact path="/collections/:collectionId/edit" component={ EditItemContainer } />
+        <ProtectedRoute exact path="/items/:itemId/edit" component={ EditItemContainer } />
       </Switch>
     </div>
   );

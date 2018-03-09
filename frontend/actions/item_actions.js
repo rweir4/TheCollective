@@ -36,6 +36,6 @@ export const updateItem = item => dispatch => {
   return ItemAPIUtil.updateItem(item).then(item => dispatch(receiveItem(item)));
 };
 
-export const deleteItem = id => dispatch => {
-  return ItemAPIUtil.deleteItem(id).then(item => dispatch(removeItem(item)));
+export const deleteItem = itemId => dispatch => {
+  return ItemAPIUtil.deleteItem(itemId).then(item => dispatch(removeItem(itemId)));
 };

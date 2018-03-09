@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .item-details {
-  // width: 200px;
+  width: 240px;
+  padding: 15px;
 }
 
 .item-container {
@@ -12,4 +13,11 @@
 
 .item-list {
   display: flex;
+  flex-wrap: wrap;
+  padding-left: 3%;
+}
+
+.item-img-details {
+  width: 240px;
+  border-radius: 10px;
 }
