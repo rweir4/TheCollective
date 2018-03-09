@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :followers
 
   has_many :collections,
-    class_name: User,
+    class_name: :Collection,
     foreign_key: :author_id
 
   has_many :items,

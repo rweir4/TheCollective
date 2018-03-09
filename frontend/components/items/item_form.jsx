@@ -9,6 +9,10 @@ class ItemForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    currentUser = this.props.fetchUser(currentUser.id);
+  }
+
   handleDescription() {
     return (e) => {
       this.setState({description: e.target.value});
@@ -18,23 +22,26 @@ class ItemForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const collection = currentUser.collections[e.target.key];
-    this.setState({collection_id}: collection.id);
+    this.setState({collection_id: collection.id});
     this.props.submitAction(this.state);
   }
 
   render() {
-    const collections = this.props.currentUserCollections.map(collection => {
-      return <button onClick={this.handleSubmit} key={collection.title}>{collection.title}</button>
-    });
+    if (currentUser) {
+      const collections = Object.values(this.props.currentUserCollections.collections).map(collection => {
+        return ( <button onClick={this.handleSubmit} key={collection.title}>{collection.title}</button> )
+      });
 
-    return (
-      <form>
-        <textarea
-          value={this.state.description}
-          onChange={this.handleDescription}/>
-
-      </form>
-    );
+      return (
+        <form>
+          <textarea
+            value={this.state.description}
+            onChange={this.handleDescription}/>
+        </form>
+      );
+    } else {
+      <p>Loading</p>
+    }
   }
 }
 

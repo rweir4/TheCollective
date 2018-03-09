@@ -9,7 +9,7 @@ class ItemShow extends React.Component {
   render() {
     if (this.props.item) {
       return (
-        <div>
+        <div className="item-container">
           <img className="item-img" src={this.props.item.img_url}></img>
           <p className="item-description">{this.props.item.description}</p>
           <Link to={`/collections/${this.props.item.collection_id}`}>To Collection</Link>

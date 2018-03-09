@@ -1,17 +1,19 @@
 import { createItem } from '../../actions/item_action';
+import { fetchUser } from '../../actions/user_actions';
 import { connect } from 'react-redux';
 import ItemForm from './item_form';
+
 
 const mapStateToProps = state => {
   return {
     item: {descriptions: '', img_url: '', collection_id: ''},
-    currentUserCollections: Object.values(state.users[session.currentUser].collections),
     formType: 'create'
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUser: id => dispatch(fetchUser(id)),
     submitAction: item => dispatch(createItem(item))
   };
 };
