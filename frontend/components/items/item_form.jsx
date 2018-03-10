@@ -54,7 +54,7 @@ class ItemForm extends React.Component {
     formData.append("item[collection_id]", this.state.collection_id);
 
     this.props.submitAction(formData);
-    return ( <Redirect to="/" /> );
+    this.props.closeModal();
   }
 
   render() {

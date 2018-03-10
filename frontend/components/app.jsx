@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Redirect, Switch, Link } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import Modal from './modal/modal';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import UserShowContainer from './user/user_show_container';
@@ -15,6 +16,7 @@ import CreateItemContainer from './items/item_create_container';
 const App = () => {
   return (
     <div>
+      <Modal />
       <Switch>
         <AuthRoute exact path="/signup" component={ SignupFormContainer }/>
         <AuthRoute exact path="/login" component={ LoginFormContainer }/>

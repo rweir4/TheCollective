@@ -1,0 +1,45 @@
+.nav-bar-container {
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-bar-left {
+  display: flex;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.home-btn {
+  background: #11ffee00;
+}
+
+.home-btn {
+  padding: 0 10px 10px 10px;
+}
+
+.home-btn:focus {
+  // border: 1 px solid blue;
+  // box-shadow: 5px blue;
+}
+
+.logout-btn {
+
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+.search {
+}
+
+.search input {
+  font-size: 16px;
+
+}
