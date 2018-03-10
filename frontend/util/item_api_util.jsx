@@ -1,3 +1,5 @@
+import * as ItemActions from '../actions/item_actions';
+
 export const fetchItems = () => (
   $.ajax({
     url: `api/items`,
@@ -12,13 +14,16 @@ export const fetchItem = (id) => (
   })
 );
 
-export const createItem = (item) => (
+export const createItem = (formData) => (
   $.ajax({
     url: `api/items`,
     method: 'POST',
     contentType: false,
     processData: false,
-    data: { item }
+    data: formData,
+    success: function(item) {
+      ItemActions.receiveItem(item);
+    }
   })
 );
 
@@ -28,7 +33,10 @@ export const updateItem = (formData) => (
     method: 'PATCH',
     contentType: false,
     processData: false,
-    data: { formData }
+    data: formData,
+    success: function(item) {
+      ItemActions.receiveItem(item);
+    }
   })
 );
 

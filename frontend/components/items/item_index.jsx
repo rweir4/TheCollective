@@ -5,26 +5,42 @@ import { ProtectedRoute } from '../../util/route_util';
 import { Route } from 'react-router-dom';
 
 class ItemIndex extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.addItemModal = this.addItemModal.bind(this);
+  }
+
   componentDidMount() {
     this.props.fetchItems();
   }
 
+  addItemModal() {
+    //modal
+  }
+
   render() {
+    const addItem = ( <button  className="addItem" onClick={this.addItemModal}>Add Pin</button> );
+
     if (this.props.items) {
       const items = this.props.items.map(item => {
         return ( <ItemDetails key={item.id} item={ item } /> );
       });
+
       return (
-        <div className="item-index">
-          <ProtectedRoute path="/" component={ NavBarContainer } />
-          <ul className="item-list">
-            { items }
-          </ul>
+        <div>
+          <div className="item-index">
+            <ProtectedRoute path="/" component={ NavBarContainer } />
+            <ul className="item-list">
+              { items }
+            </ul>
+          </div>
+          { addItem }
         </div>
       );
     } else {
       return (
-          <div>
+        <div>
           <ProtectedRoute path="/" component={ NavBarContainer } />
           <p>Loading</p>
         </div>

@@ -1,6 +1,9 @@
 // Place all the styles related to the Api::Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.index-container {
+}
+
 .collect-bar {
   height: 44px;
   width: 1026px;
@@ -60,12 +63,19 @@
 
 .item-list {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-  justify-content: center;
+  max-height: 2000px;
+  margin-left: 1.5%;
 }
 
 .item-img-details {
   width: 240px;
+  border-radius: 10px;
+}
+
+.item-details:hover {
+  background: #e8e8e8;
   border-radius: 10px;
 }
 
@@ -80,6 +90,13 @@
 }
 
 .item-description{
-  margin-left: 50px;
-  background: white;
+}
+
+.addItem {
+  position: absolute;
+  z-index: 5;
+  float: right;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  cursor: pointer;
 }

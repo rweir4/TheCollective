@@ -10,7 +10,7 @@ const receiveItems = (items) => ({
   items
 });
 
-const receiveItem = (item) => ({
+export const receiveItem = (item) => ({
   type: RECEIVE_ITEM,
   item
 });
