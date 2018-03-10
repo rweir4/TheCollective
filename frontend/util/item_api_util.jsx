@@ -12,19 +12,19 @@ export const fetchItem = (id) => (
   })
 );
 
-export const createItem = (formData) => (
+export const createItem = (item) => (
   $.ajax({
     url: `api/items`,
     method: 'POST',
     contentType: false,
     processData: false,
-    data: { formData }
+    data: { item }
   })
 );
 
 export const updateItem = (formData) => (
   $.ajax({
-    url: `api/items/${item.id}`,
+    url: `api/items/${formData.item.id}`,
     method: 'PATCH',
     contentType: false,
     processData: false,

@@ -4,7 +4,7 @@ class Api::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    @item.collection_id = current_user.collections.find(params[:id])
+    # @item.collection_id = current_user.collections.find(params[:id])
 
     if @item.save
       render :show
@@ -19,7 +19,6 @@ class Api::ItemsController < ApplicationController
 
   def update
     @item = current_user.items.find(params[:id])
-    debugger
     if @item.update(item_params)
       render :show
     else

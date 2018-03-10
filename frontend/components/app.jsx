@@ -19,11 +19,11 @@ const App = () => {
         <AuthRoute exact path="/signup" component={ SignupFormContainer }/>
         <AuthRoute exact path="/login" component={ LoginFormContainer }/>
         <ProtectedRoute exact path="/" component={ ItemIndexContainer } />
+        <ProtectedRoute exact path="/items/new" component={ CreateItemContainer } />
         <ProtectedRoute exact path="/items/:itemId" component={ ItemShowContainer } />
         <ProtectedRoute exact path="/collections" component={ CollectionIndexContainer } />
         <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
         <ProtectedRoute exact path="/items/:itemId/edit" component={ EditItemContainer } />
-        <ProtectedRoute exact path="/items/new" component={ CreateItemContainer } />
       </Switch>
     </div>
   );

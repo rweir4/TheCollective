@@ -3,18 +3,16 @@ import React from 'react';
 class ItemForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.item;
-
-    this.handleDescription = this.handleDescription.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  getInitialState() {
-    return ({
-      body: "",
+    this.state = {
+      description: this.props.item.description,
+      collection_id: this.props.item.collection_id,
       imageFile: null,
       imageUrl: null
-    });
+    };
+
+    this.handleDescription = this.handleDescription.bind(this);
+    this.handleFile = this.handleFile.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -22,7 +20,7 @@ class ItemForm extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    this.setState(nextProps.item);
+    this.setState({item: nextProps.item});
   }
 
   handleDescription(e) {
@@ -41,19 +39,32 @@ class ItemForm extends React.Component {
   }
 
   handleSubmit(e) {
-    const formData = new FormData();
-    formData.append("item[description]", this.state.description);
-    formData.append("item[image], this.state.imageFile");
     e.preventDefault();
     this.setState({collection_id: e.target.key});
-    this.props.submitAction(this.state);
+
+    const formData = new FormData();
+    formData.append("item[description]", this.state.description);
+    formData.append("item[image]", this.state.imageFile);
+    formData.append("item[collection_id]", this.state.collection_id);
+
+    this.props.submitAction(formData);
   }
 
   render() {
     let image;
+    let header;
     if (this.props.formType === 'create') {
-      image = <div><input type="file" onChange={this.handleFile} /><img src={this.state.imageUrl} /></div>
+      image = (
+        <div>
+          <input type="file" onChange={this.handleFile} />
+          <div className="img-holder">
+            <img className="item-img" src={this.state.imageUrl} />
+          </div>
+        </div>
+      );
+      header = "Add a Pin"
     } else {
+      header = "Edit"
       image = <img className="item-img" src={this.props.item.image}></img>;
     }
 
@@ -64,16 +75,17 @@ class ItemForm extends React.Component {
       });
 
       return (
-        <div>
-          <h1>Add a Pin!</h1>
-          <div className="img-holder">
-            { image }
-          </div>
+        <div id="create-pin" className="item-container">
+          <h1>{ header }</h1>
           <form>
+            <div className="img-holder">
+              { image }
+            </div>
             <textarea
+              className = "item-description"
               value={this.state.description}
               onChange={this.handleDescription} />
-            <ul>
+            <ul className="collections-list">
               { collectionsList }
             </ul>
           </form>
