@@ -18,8 +18,8 @@ class ItemIndex extends React.Component {
       });
 
       return (
-        <div>
-          <div className="item-index">
+        <div className="parent-index">
+          <div>
             <ProtectedRoute path="/" component={ NavBarContainer } />
             <ul className="item-list">
               { items }
@@ -28,7 +28,7 @@ class ItemIndex extends React.Component {
           <button
             className="addItem"
             onClick={() => this.props.openModal('CreateItem')}>
-            Add Item
+            <img src={window.white_item_btn} />
           </button>
         </div>
       );

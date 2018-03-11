@@ -4,7 +4,6 @@ class Api::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # @item.collection_id = current_user.collections.find(params[:id])
 
     if @item.save
       render :show

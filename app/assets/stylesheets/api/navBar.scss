@@ -1,4 +1,5 @@
 .nav-bar-container {
+  background: #fcfcfc;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -6,6 +7,8 @@
   border-bottom: 1px solid #e8e8e8;
   padding: 0;
   margin: 0;
+  position: sticky;
+  width: 100%;
 }
 
 .nav-bar-left {
@@ -16,9 +19,6 @@
 
 .home-btn {
   background: #11ffee00;
-}
-
-.home-btn {
   padding: 0 10px 10px 10px;
 }
 
@@ -28,7 +28,12 @@
 }
 
 .logout-btn {
+  padding: 10px;
+}
 
+.logout-btn:hover {
+  background: #c6c6c6;
+  border-radius: 10px;
 }
 
 .logo {
@@ -37,9 +42,11 @@
 }
 
 .search {
+  align-self: center;
 }
 
 .search input {
+  align-self: center;
   font-size: 16px;
 
 }

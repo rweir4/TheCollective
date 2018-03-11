@@ -1,7 +1,33 @@
 // Place all the styles related to the Api::Items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.index-container {
+.form-header {
+  align-content: center;
+  font-family: 'PT Sans', sans-serif;
+  color: #686868;
+}
+
+.create-item-container {
+  background: #fcfcfc;
+  width: 804px;
+  // margin-left: 32.5%;
+  border-radius: 10px;
+  height: 459px;
+}
+
+.form-img-holder {
+  margin-left: 80px;
+  background: black;
+  background: #fcfcfc;
+  width: 232px;
+  height: 367px;
+  border: 2px dashed grey;
+  border-radius: 10px;
+}
+
+.file-btn {
+  // padding-top: 160px;
+  padding-left: 35px;
 }
 
 .collect-bar {
@@ -42,13 +68,15 @@
 }
 
 .item-details {
-  width: 240px;
-  padding: 15px;
+  width: 236px;
+  padding: 8px;
+  margin: 3px;
 }
 
 .img-holder {
   max-width: 496px;
   padding: 50px 0 50px 50px;
+  background: white;
 }
 
 .item-img {
@@ -65,13 +93,45 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 2000px;
-  margin-left: 1.5%;
+  max-height: 15000px;
+  // margin-left: 1.5%;
+  margin: 1.5%;
+  // width: 1000px;
+}
+//max pin size
+//236x500
+
+.item-description {
+  max-height: 38px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #686868;
+}
+
+.form-item-description {
+  max-height: 38px;
+  overflow: hidden;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #686868;
+  // background: blue;
+  margin-left: 80px;
+  width: 232px;
+}
+
+.item-index {
+  // width: inherit;
 }
 
 .item-img-details {
-  width: 240px;
+  display: inline-block;
+  // float: left;
+  // flex-basis: 30%;
+  width: 236px;
   border-radius: 10px;
+  max-height: 500px;
+  overflow: hidden;
 }
 
 .item-details:hover {
@@ -79,24 +139,61 @@
   border-radius: 10px;
 }
 
-#create-pin {
-  background: blue;
+.collection-list-header {
 }
 
-.collections-list {
+.collections-list-container {
   float: right;
+  position: absolute;
+  top: 150px;
+  left: 375px;
   margin-right: 50px;
-  background: green;
+  // background: green;
+  padding: 10px;
+  width: 314px;
 }
 
-.item-description{
+.collections-list button {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  border-top: 1px solid grey;
+  border-bottom: 1px solid grey;
+}
+
+.collections-list button:hover {
+  background: #c6c6c6;
+}
+
+.collect-btn {
+  // position: relative;
+  right: 0;
+  // display: none;
+  height: 20px;
+}
+
+.collect-btn:hover {
+  // display: block;
+  // position: relative;
+  // z-index: 10;
+}
+
+.collection-title {
+  text-align: center;
+
+}
+
+.parent-index {
+  position: relative;
 }
 
 .addItem {
-  position: absolute;
-  z-index: 5;
+  position: fixed;
+  z-index: 20;
   float: right;
-  margin-right: 30px;
-  margin-bottom: 30px;
+  bottom: 50px;
+  right: 50px;
   cursor: pointer;
+  width: 39px;
+  height: 39px;
 }

@@ -3,28 +3,43 @@ import React from 'react';
 import CreateItemContainer from '../items/item_create_container';
 import { closeModal } from '../../actions/modal_actions';
 
-const Modal = ({ modal, closeModal }) => {
-  if (!modal) {
-    return null;
+class Modal extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleModal = this.handleModal.bind(this);
   }
 
-  let component;
-  switch (modal) {
-    case 'CreateItem':
-      component = ( <CreateItemContainer /> );
-      break;
-    default:
+  handleModal(e) {
+    // if (e.currentTarget === this) {
+    // } else {
+    //   return null;
+    // }
+    this.props.closeModal();
+  }
+
+  render() {
+    if (!this.props.modal) {
       return null;
-  }
+    }
 
+    let component;
+    switch (this.props.modal) {
+      case 'CreateItem':
+        component = ( <CreateItemContainer /> );
+        break;
+      default:
+        return null;
+    }
 
-  return (
-    <div className="outer-modal" onClick={closeModal}>
-      <div className="inner-modal" onClick={e => e.stopPropegation()}>
-        { component }
+    return (
+      <div className="outer-modal" onClick={this.handleModal}>
+        <div className="inner-modal" onClick={e => e.stopPropagation()}>
+          { component }
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 const mapStateToProps = state => {

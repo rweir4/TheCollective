@@ -5,57 +5,44 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require 'faker'
+
 User.destroy_all
 Collection.destroy_all
 Item.destroy_all
 
-u1 = User.create!({ email: 'rweir11', password: 'starwars11'})
-u2 = User.create!({ email: 'rweir12', password: 'starwars12'})
-u3 = User.create!({ email: 'rweir13', password: 'starwars13'})
 
-c1 = Collection.create!({ title: 'ron swanson', author_id: u1.id})
-c2 = Collection.create!({ title: 'leslie knoppe', author_id: u2.id})
-c3 = Collection.create!({ title: 'april', author_id: u2.id})
+User.create!([
+  { email: 'rweir11', image: Faker::Avatar.image, password: 'starwars11'},
+  { email: 'rweir12', image: Faker::Avatar.image, password: 'starwars12'},
+  { email: 'rweir13', image: Faker::Avatar.image, password: 'starwars13'}])
 
-Item.create!([
-    { description: 'thethingis', collection_id: c1.id},
-    { description: 'thethingisnot', collection_id: c1.id},
-    { description: 'thethingisthat', collection_id: c1.id},
-    { description: 'thethingisthis', collection_id: c1.id},
-    { description: 'BABY GROOT IS SO CUTE', collection_id: c1.id},
-    { description: '1thethingis', collection_id: c1.id},
-    { description: '1thethingisnot', collection_id: c1.id},
-    { description: '1thethingisthat', collection_id: c1.id},
-    { description: '1thethingisthis', collection_id: c1.id},
-    { description: '1BABY GROOT IS SO CUTE', collection_id: c1.id},
-    { description: '2thethingis', collection_id: c1.id},
-    { description: '2thethingisnot', collection_id: c1.id},
-    { description: '2thethingisthat', collection_id: c1.id},
-    { description: '2thethingisthis', collection_id: c1.id},
-    { description: '2BABY GROOT IS SO CUTE', collection_id: c1.id},
-    { description: '3thethingis', collection_id: c2.id},
-    { description: '3thethingisnot', collection_id: c2.id},
-    { description: '3thethingisthat', collection_id: c2.id},
-    { description: '3thethingisthis', collection_id: c2.id},
-    { description: '3BABY GROOT IS SO CUTE', collection_id: c2.id},
-    { description: '4thethingis', collection_id: c1.id},
-    { description: '4thethingisnot', collection_id: c1.id},
-    { description: '4thethingisthat', collection_id: c1.id},
-    { description: '4thethingisthis', collection_id: c1.id},
-    { description: '4BABY GROOT IS SO CUTE', collection_id: c1.id},
-    { description: '1thethingis', collection_id: c3.id},
-    { description: '1thethingisnot', collection_id: c3.id},
-    { description: '1thethingisthat', collection_id: c3.id},
-    { description: '1thethingisthis', collection_id: c3.id},
-    { description: '11BABY GROOT IS SO CUTE', collection_id: c3.id},
-    { description: '22thethingis', collection_id: c1.id},
-    { description: '22thethingisnot', collection_id: c1.id},
-    { description: '22thethingisthat', collection_id: c1.id},
-    { description: '22thethingisthis', collection_id: c1.id},
-    { description: '22BABY GROOT IS SO CUTE', collection_id: c1.id},
-    { description: '33thethingis', collection_id: c1.id},
-    { description: '33thethingisnot', collection_id: c1.id},
-    { description: '33thethingisthat', collection_id: c1.id},
-    { description: '33thethingisthis', collection_id: c1.id},
-    { description: '33BABY GROOT IS SO CUTE', collection_id: c1.id}
-  ])
+User.all.each do |user|
+  5.times do
+    Collection.create!({ title: Faker::LordOfTheRings.unique.location, author_id: user.id})
+  end
+end
+
+Collection.all.each do |collection|
+  5.times do
+    Item.create!({ description: Faker::DrWho.quote, image_file_name: "baby-groot-fan-art-4k.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::HarryPotter.book, image_file_name: "harry-potter.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::VForVendetta.speech, image_file_name: "tall-art.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::HarryPotter.character, image_file_name: "hp-glasses.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::Lovecraft.tome, image_file_name: "john-green-quote.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::StarWars.call_sign, image_file_name: "keyboard-star-wars.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::HarryPotter.location, image_file_name: "GryffindorCommonRoomWallpaper.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::StarWars.character, image_file_name: "poster-star-wars.jpg", collection_id: collection.id})
+    Item.create!({ description: Faker::HarryPotter.quote, image_file_name: "deathly-hallows.jpg", collection_id: collection.id})
+  end
+end
+
+# RUN AFTER SEED IN RAILS CONSOLE
+# i = 0
+# Item.all.each do |item|
+#   break if i > 10
+#   item.image = File.open("app/assets/images/#{image.image_file_name}")
+#   item.save!
+#   i += 1
+# end
