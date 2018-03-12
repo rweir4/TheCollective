@@ -28,7 +28,7 @@ export const createItem = (formData) => {
 };
 
 export const updateItem = (formData) => {
-  debugger
+  
   return $.ajax({
     url: `api/items/${formData.get('item[itemId]')}`,
     method: 'PATCH',

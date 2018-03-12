@@ -1,3 +1,28 @@
 // Place all the styles related to the Api::Collections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.EditCollection {
+  // position: absolute;
+  // z-index: 5;
+  // float: left;
+  // top: 15px;
+  // left: 15px;
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+
+.edit-img {
+  background: white;
+  padding: 10px;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+.addCollection {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border: none;
+}

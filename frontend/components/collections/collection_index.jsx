@@ -1,5 +1,7 @@
 import React from 'react';
 import CollectionDetails from './collection_details';
+import { ProtectedRoute } from '../../util/route_util';
+import NavBarContainer from '../navBar/nav_bar_container';
 
 class CollectionIndex extends React.Component {
   componentDidMount() {
@@ -7,42 +9,39 @@ class CollectionIndex extends React.Component {
   }
 
   render() {
-    if (this.props.currentUser) {
 
-      const { collections } = this.props;
-
-      const collectionsList = collections.map(collection => {
-        return (
-          <button
-            onClick={this.handleCid}
-            key={collection.id}
-            value={collection.id}>
-            <p className="collection-title">{collection.title}</p>
-            <img className="collect-btn" src={window.collect}></img>
-          </button>
-        );
-      });
-    }
-    if (this.props.collections) {
-      const collections = this.props.collections.map(collection => {
-        return ( <CollectionDetails key={collection.id} collection={collection} /> )
+    if (this.props.collections[0]) {
+      const collections = Object.values(this.props.collections).map(collection => {
+        return ( <CollectionDetails
+          openModal={this.props.openModal}
+          key={collection.id}
+          collection={ collection } /> );
       });
 
       return (
-        <div>
-          <ul>
-            <div>
-              <button onClick={() => openModal('CreateCollection')}>ADD A COLLECTION</button>
-              <p>Create A Collection</p>
-            </div>
-            { collections }
-          </ul>
+        <div className="parent-index">
+          <div>
+            <ProtectedRoute path="/" component={ NavBarContainer } />
+            <button
+              className="addCollection"
+              onClick={() => this.props.openModal({modal:'createCollection', item: undefined})}>
+              <img src={window.red_item_btn} />
+            </button>
+            <ul className="collection-list">
+              { collections }
+            </ul>
+          </div>
         </div>
       );
     } else {
-      <p>Loading</p>
+      return (
+        <div>
+          <ProtectedRoute path="/" component={ NavBarContainer } />
+          <p>Loading</p>
+        </div>
+      );
     }
   }
-}
+};
 
 export default CollectionIndex;

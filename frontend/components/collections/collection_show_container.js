@@ -1,11 +1,16 @@
 import { fetchCollection } from '../../actions/collection_actions';
-import { fetchItem } from '../../actions/collection_actions';
+import { selectCollectionItems } from '../../reducers/selectors';
 import { connect } from 'react-redux';
 import CollectionShow from './collection_show';
+import { withRouter } from 'react-router-dom';
 
-const mapStateToProps = (state, ownProps) => ({
-  collection: state.entities.collections[ownProps.match.params.collectionId],
-});
+const mapStateToProps = (state, ownProps) => {
+  const collection = state.entities.collections[ownProps.match.params.collectionId];
+  return {
+    collection
+    // items: selectCollectionItems(state, collection)
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -13,4 +18,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CollectionShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CollectionShow));

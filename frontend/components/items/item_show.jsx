@@ -11,6 +11,7 @@ class ItemShow extends React.Component {
     if (this.props.item) {
       return (
         <div className="item-show">
+          <Link className="back-to-feed" to='/'>Back to feed</Link>
           <div className="item-container">
             <div className="collect-bar">
               <Link to={`/items/${this.props.item.id}/edit`}>
