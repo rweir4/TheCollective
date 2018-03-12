@@ -8,3 +8,10 @@ json.collections do
     end
   end
 end
+json.items do
+  @user.items.each do |item|
+    json.set! item.id do
+      json.extract! item, :id, :description, :image
+    end
+  end
+end

@@ -4,7 +4,7 @@ const ErrorsList = ({errors}) => {
   return (
     <ul>
       {errors.map(error => {
-        <li>error</li>
+        return <li>{error}</li>
       })}
     </ul>
   );

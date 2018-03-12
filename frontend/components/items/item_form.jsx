@@ -16,13 +16,14 @@ class ItemForm extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  //
-  // componentDidMount() {
-  //   this.props.fetchUser(this.props.currentUser.id);
-  // }
+
+  componentDidMount() {
+    this.props.fetchCollections();
+  }
 
   componentWillReceiveProps(nextProps) {
     this.setState({item: nextProps.item});
+    this.setState({collections: nextProps.collections});
   }
 
   handleDescription(e) {
@@ -86,11 +87,10 @@ class ItemForm extends React.Component {
     }
 
     if (this.props.collections) {
+
       debugger
-
       const { collections } = this.props;
-
-      const collectionsList = Object.values(collections).map(collection => {
+      const collectionsList = Object.values(this.props.collections).map(collection => {
         return (
           <button
             onClick={this.handleCid}

@@ -9,10 +9,10 @@ const receiveUsers = (users) => ({
   users
 });
 
-const receiveUser = ({ user, collections }) => ({
+const receiveUser = ({ user, collection_ids }) => ({
   type: RECEIVE_USER,
   user,
-  collections
+  collection_ids
 });
 
 export const fetchUsers = () => dispatch => {
