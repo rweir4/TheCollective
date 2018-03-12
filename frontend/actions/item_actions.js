@@ -3,6 +3,7 @@ import * as ItemAPIUtil from '../util/item_api_util';
 export const RECEIVE_ITEMS = 'RECEIVE_ITEMS';
 export const RECEIVE_ITEM = 'RECEIVE_ITEM';
 export const REMOVE_ITEM = 'REMOVE_ITEM';
+export const RECEIVE_ITEM_ERRORS = 'RECEIVE_ITEM_ERRORS';
 
 
 const receiveItems = (items) => ({
@@ -20,6 +21,13 @@ const removeItem = (itemId) => ({
   itemId
 });
 
+const receiveItemErrors = itemErrors => {
+  return {
+    type: RECEIVE_ITEM_ERRORS,
+    itemErrors
+  };
+};
+
 export const fetchItems = () => dispatch => {
   return ItemAPIUtil.fetchItems().then(items => dispatch(receiveItems(items)));
 };
@@ -29,11 +37,13 @@ export const fetchItem = id => dispatch => {
 };
 
 export const createItem = item => dispatch => {
-  return ItemAPIUtil.createItem(item).then(item => dispatch(receiveItem(item)));
+  return ItemAPIUtil.createItem(item).then(item => dispatch(receiveItem(item)),
+  err => dispatch(receiveItemErrors(err.responseJSON)));
 };
 
 export const updateItem = item => dispatch => {
-  return ItemAPIUtil.updateItem(item).then(item => dispatch(receiveItem(item)));
+  return ItemAPIUtil.updateItem(item).then(item => dispatch(receiveItem(item)),
+  err => dispatch(receiveItemErrors(err.responseJSON)));
 };
 
 export const deleteItem = itemId => dispatch => {

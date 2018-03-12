@@ -9,7 +9,7 @@ class Api::CollectionsController < ApplicationController
     if @collection.save
       render :show
     else
-      render json: { errors: @collection.errors.full_messages }
+      render json: @collection.errors.full_messages, status: 422
     end
   end
 

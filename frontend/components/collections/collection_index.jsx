@@ -4,7 +4,6 @@ import CollectionDetails from './collection_details';
 class CollectionIndex extends React.Component {
   componentDidMount() {
     this.props.fetchCollections();
-    this.props.fetchUser(this.props.currentUser.id);
   }
 
   render() {

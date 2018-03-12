@@ -2,23 +2,55 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //import repin form
 
-const ItemDetails = (props) => (
-  <div className="item-details">
-    <button
-      className="EditItem"
-      onClick={() => props.openModal({modal: 'EditItem', item: props.item})}>
-      <img src={window.edit} />
-    </button>
-    <button
-      className="CollectItem"
-      onClick={() => props.openModal({modal: 'EditItem', item: props.item} )}>
-      <img src={window.collect} />
-    </button>
-    <Link to={`/items/${props.item.id}`}>
-      <img className="item-img-details" src={props.item.image}></img>
-      <p className="item-description">{props.item.description}</p>
-    </Link>
-  </div>
-);
+class ItemDetails extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hover: false };
+
+    this.onMouseEnter = this.onMouseEnter.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
+  }
+
+  onMouseEnter() {
+    this.setState( {hover: true} );
+  }
+
+  onMouseLeave() {
+    this.setState( {hover: false} );
+  }
+
+  render() {
+    let buttons;
+    if (this.state.hover) {
+      buttons = (
+        <div>
+          <button
+            className="EditItem"
+            onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item})}>
+            <img className="edit-img" src={window.edit} />
+          </button>
+
+          <button
+            className="CollectItem"
+            onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item} )}>
+            <img src={window.collect} />
+          </button>
+        </div>
+      );
+    } else {
+      buttons = null;
+    }
+
+    return (
+      <div className="item-details" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+        { buttons }
+        <Link to={`/items/${this.props.item.id}`}>
+          <img className="item-img-details" src={this.props.item.image}></img>
+          <p className="item-description">{this.props.item.description}</p>
+        </Link>
+      </div>
+    );
+  }
+}
 
 export default ItemDetails;

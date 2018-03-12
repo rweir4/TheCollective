@@ -14,8 +14,8 @@ export const fetchItem = (id) => (
   })
 );
 
-export const createItem = (formData) => (
-  $.ajax({
+export const createItem = (formData) => {
+  return $.ajax({
     url: `api/items`,
     method: 'POST',
     contentType: false,
@@ -24,12 +24,13 @@ export const createItem = (formData) => (
     success: function(item) {
       ItemActions.receiveItem(item);
     }
-  })
-);
+  });
+};
 
-export const updateItem = (formData) => (
-  $.ajax({
-    url: `api/items/${formData.itemId}`,
+export const updateItem = (formData) => {
+  debugger
+  return $.ajax({
+    url: `api/items/${formData.get('item[itemId]')}`,
     method: 'PATCH',
     contentType: false,
     processData: false,
@@ -37,8 +38,8 @@ export const updateItem = (formData) => (
     success: function(item) {
       ItemActions.receiveItem(item);
     }
-  })
-);
+  });
+};
 
 export const deleteItem = (id) => (
   $.ajax({

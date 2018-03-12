@@ -7,7 +7,7 @@ class ItemForm extends React.Component {
     this.state = {
       description: this.props.item.description,
       collection_id: '',
-      imageFile: null,
+      imageFile: this.props.item.image,
       imageUrl: null
     };
 
@@ -30,7 +30,7 @@ class ItemForm extends React.Component {
     this.setState({description: e.target.value});
   }
   handleCid(e) {
-    this.setState({collection_id: e.target.value});
+    this.setState({collection_id: e.currentTarget.value});
   }
 
   handleFile(e) {
@@ -46,8 +46,6 @@ class ItemForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({collection_id: e.target.key});
-
     const formData = new FormData();
 
     formData.append("item[description]", this.state.description);
@@ -86,9 +84,9 @@ class ItemForm extends React.Component {
       header = <p className="form-header">Edit</p>
     }
 
-    if (this.props.collections) {
+    if (this.props.collections[0]) {
 
-      debugger
+
       const { collections } = this.props;
       const collectionsList = Object.values(this.props.collections).map(collection => {
         return (
@@ -124,6 +122,7 @@ class ItemForm extends React.Component {
       );
 
     } else {
+
       return (
         <p>Loading</p>
       );

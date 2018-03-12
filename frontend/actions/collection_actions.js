@@ -5,16 +5,20 @@ export const RECEIVE_COLLECTIONS = 'RECEIVE_COLLECTIONS';
 export const REMOVE_COLLECTION = 'REMOVE_COLLECTION';
 
 
-const receiveCollections = (collections) => ({
-  type: RECEIVE_COLLECTIONS,
-  collections
-});
+const receiveCollections = (collections) => {
+  return {
+    type: RECEIVE_COLLECTIONS,
+    collections
+  };
+};
 
-const receiveCollection = ({collection, items}) => ({
-  type: RECEIVE_COLLECTION,
-  collection,
-  items
-});
+const receiveCollection = ({collection, items}) => {
+  return {
+    type: RECEIVE_COLLECTION,
+    collection,
+    items
+  };
+};
 
 const removeCollection = (collectionId) => ({
   type: REMOVE_COLLECTION,

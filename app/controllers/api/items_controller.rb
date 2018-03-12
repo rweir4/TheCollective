@@ -4,11 +4,10 @@ class Api::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-
     if @item.save
       render :show
     else
-      render json: { errors: @item.errors.full_messages }
+      render json: @item.errors.full_messages, status: 422
     end
   end
 
@@ -19,7 +18,7 @@ class Api::ItemsController < ApplicationController
   def update
     @item = current_user.items.find(params[:id])
     if @item.update(item_params)
-      render :index
+      render :show
     else
       render json: { errors: @item.errors.full_messages }
     end

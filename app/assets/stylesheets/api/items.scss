@@ -68,6 +68,7 @@
 }
 
 .item-details {
+  position: relative;
   width: 236px;
   padding: 8px;
   margin: 3px;
@@ -95,9 +96,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   max-height: 5000px;
-  // margin-left: 1.5%;
   margin: 1.5%;
-  width: 1000px;
 }
 //max pin size
 //236x500
@@ -127,8 +126,6 @@
 
 .item-img-details {
   display: inline-block;
-  // float: left;
-  // flex-basis: 30%;
   width: 236px;
   border-radius: 10px;
   max-height: 500px;
@@ -167,16 +164,8 @@
 }
 
 .collect-btn {
-  // position: relative;
   right: 0;
-  // display: none;
   height: 20px;
-}
-
-.collect-btn:hover {
-  // display: block;
-  // position: relative;
-  // z-index: 10;
 }
 
 .collection-title {
@@ -189,25 +178,32 @@
 }
 
 .EditItem {
-  position: relative;
+  position: absolute;
   z-index: 5;
   float: left;
-  top: 0px;
-  left: 0px;
+  top: 15px;
+  left: 15px;
   cursor: pointer;
-  width: 40px;
-  height: 40px;
+  width: 25px;
+  height: 25px;
   border: none;
 }
 
+.edit-img {
+  background: white;
+  padding: 10px;
+  border-radius: 50%;
+  overflow: visible;
+}
+
 .CollectItem {
-  position: relative;
+  position: absolute;
   z-index: 5;
   float: right;
-  top: 0px;
-  right: 0px;
+  top: 15px;
+  right: 15px;
   cursor: pointer;
-  width: 70px;
+  width: 120px;
   height: 40px;
   border: none;
 }
