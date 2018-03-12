@@ -1,7 +1,9 @@
-import { connect } from 'react-redux';
 import React from 'react';
-import CreateItemContainer from '../items/item_create_container';
+import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
+import CreateItemContainer from '../items/item_create_container';
+import EditItemContainer from '../items/item_edit_container';
+import CreateCollectionContainer from '../collections/collection_create_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -11,10 +13,6 @@ class Modal extends React.Component {
   }
 
   handleModal(e) {
-    // if (e.currentTarget === this) {
-    // } else {
-    //   return null;
-    // }
     this.props.closeModal();
   }
 
@@ -24,10 +22,15 @@ class Modal extends React.Component {
     }
 
     let component;
-    switch (this.props.modal) {
+    switch (this.props.modal.modal) {
       case 'CreateItem':
         component = ( <CreateItemContainer /> );
         break;
+      case 'EditItem':
+        component = ( <EditItemContainer item={this.props.modal.item}/> );
+        break;
+      case 'CreateBoard':
+        component = ( <CreateCollectionContainer />)
       default:
         return null;
     }

@@ -19,7 +19,7 @@ class Api::ItemsController < ApplicationController
   def update
     @item = current_user.items.find(params[:id])
     if @item.update(item_params)
-      render :show
+      render :index
     else
       render json: { errors: @item.errors.full_messages }
     end

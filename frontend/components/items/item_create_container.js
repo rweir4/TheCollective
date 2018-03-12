@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     item: {description: '', image: '', collection_id: ''},
     currentUser: state.session.currentUser,
-    collections: state.entities.collections,
+    collections: state.session.currentUser.collections,
     formType: 'create'
   };
 };

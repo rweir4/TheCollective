@@ -1,13 +1,16 @@
 import { fetchCollections } from '../../actions/collection_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import CollectionIndex from './collection_index';
 
 const mapStateToProps = state => ({
-  collections: Object.values(state.entities.collections)
+  collections: Object.values(state.entities.collections),
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchCollections: () => dispatch(fetchCollections())
+  fetchCollections: () => dispatch(fetchCollections()),
+  openModal: (modal) => dispatch(openModal(modal)),
+  closeModal: () => dispatch(closeModal())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionIndex);

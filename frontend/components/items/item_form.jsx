@@ -16,10 +16,10 @@ class ItemForm extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  componentDidMount() {
-    this.props.fetchUser(this.props.currentUser.id);
-  }
+  //
+  // componentDidMount() {
+  //   this.props.fetchUser(this.props.currentUser.id);
+  // }
 
   componentWillReceiveProps(nextProps) {
     this.setState({item: nextProps.item});
@@ -52,6 +52,9 @@ class ItemForm extends React.Component {
     formData.append("item[description]", this.state.description);
     formData.append("item[image]", this.state.imageFile);
     formData.append("item[collection_id]", this.state.collection_id);
+    if (this.props.formType !== 'create') {
+      formData.append("item[itemId]", this.props.item.id);
+    }
 
     this.props.submitAction(formData);
     this.props.closeModal();
@@ -82,7 +85,8 @@ class ItemForm extends React.Component {
       header = <p className="form-header">Edit</p>
     }
 
-    if (this.props.currentUser) {
+    if (this.props.collections) {
+      debugger
 
       const { collections } = this.props;
 

@@ -10,8 +10,6 @@ import ItemIndexContainer from './items/item_index_container';
 import ItemShowContainer from './items/item_show_container';
 import CollectionIndexContainer from './collections/collection_index_container';
 import CollectionShowContainer from './collections/collection_show_container';
-import EditItemContainer from './items/item_edit_container';
-import CreateItemContainer from './items/item_create_container';
 
 const App = () => {
   return (
@@ -21,11 +19,9 @@ const App = () => {
         <AuthRoute exact path="/signup" component={ SignupFormContainer }/>
         <AuthRoute exact path="/login" component={ LoginFormContainer }/>
         <ProtectedRoute exact path="/" component={ ItemIndexContainer } />
-        <ProtectedRoute exact path="/items/new" component={ CreateItemContainer } />
         <ProtectedRoute exact path="/items/:itemId" component={ ItemShowContainer } />
         <ProtectedRoute exact path="/collections" component={ CollectionIndexContainer } />
         <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
-        <ProtectedRoute exact path="/items/:itemId/edit" component={ EditItemContainer } />
       </Switch>
     </div>
   );

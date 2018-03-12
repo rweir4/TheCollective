@@ -29,7 +29,7 @@ export const createItem = (formData) => (
 
 export const updateItem = (formData) => (
   $.ajax({
-    url: `api/items/${formData.item.id}`,
+    url: `api/items/${formData.itemId}`,
     method: 'PATCH',
     contentType: false,
     processData: false,

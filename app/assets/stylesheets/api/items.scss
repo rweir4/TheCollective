@@ -71,6 +71,7 @@
   width: 236px;
   padding: 8px;
   margin: 3px;
+  overflow: hidden;
 }
 
 .img-holder {
@@ -93,7 +94,7 @@
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  max-height: 15000px;
+  max-height: 5000px;
   // margin-left: 1.5%;
   margin: 1.5%;
   // width: 1000px;
@@ -187,9 +188,33 @@
   position: relative;
 }
 
+.EditItem {
+  position: relative;
+  z-index: 5;
+  float: left;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.CollectItem {
+  position: relative;
+  z-index: 5;
+  float: right;
+  top: 0px;
+  right: 0px;
+  cursor: pointer;
+  width: 70px;
+  height: 40px;
+  border: none;
+}
+
 .addItem {
   position: fixed;
-  z-index: 20;
+  z-index: 5;
   float: right;
   bottom: 50px;
   right: 50px;

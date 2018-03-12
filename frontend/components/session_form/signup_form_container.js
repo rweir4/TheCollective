@@ -6,7 +6,8 @@ const mapStateToProps = state => {
   return {
     user: {email: '', password:''},
     formType: 'signup',
-    loginButton: true
+    loginButton: true,
+    errors: state.errors
   };
 };
 

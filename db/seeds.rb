@@ -25,24 +25,19 @@ User.all.each do |user|
 end
 
 Collection.all.each do |collection|
-  5.times do
-    Item.create!({ description: Faker::DrWho.quote, image_file_name: "baby-groot-fan-art-4k.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::HarryPotter.book, image_file_name: "harry-potter.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::VForVendetta.speech, image_file_name: "tall-art.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::HarryPotter.character, image_file_name: "hp-glasses.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::Lovecraft.tome, image_file_name: "john-green-quote.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::StarWars.call_sign, image_file_name: "keyboard-star-wars.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::HarryPotter.location, image_file_name: "GryffindorCommonRoomWallpaper.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::StarWars.character, image_file_name: "poster-star-wars.jpg", collection_id: collection.id})
-    Item.create!({ description: Faker::HarryPotter.quote, image_file_name: "deathly-hallows.jpg", collection_id: collection.id})
-  end
+  Item.create!({ description: Faker::DrWho.quote, image_file_name: "baby-groot-fan-art-4k.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::HarryPotter.book, image_file_name: "harry-potter.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::VForVendetta.speech, image_file_name: "tall-art.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::HarryPotter.character, image_file_name: "hp-glasses.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::Lovecraft.tome, image_file_name: "john-green-quote.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::StarWars.call_sign, image_file_name: "keyboard-star-wars.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::HarryPotter.location, image_file_name: "GryffindorCommonRoomWallpaper.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::StarWars.character, image_file_name: "poster-star-wars.jpg", collection_id: collection.id})
+  Item.create!({ description: Faker::HarryPotter.quote, image_file_name: "deathly-hallows.jpg", collection_id: collection.id})
 end
 
 # RUN AFTER SEED IN RAILS CONSOLE
-# i = 0
-# Item.all.each do |item|
-#   break if i > 10
-#   item.image = File.open("app/assets/images/#{image.image_file_name}")
-#   item.save!
-#   i += 1
-# end
+Item.all.each do |item|
+  item.image = File.open("app/assets/images/#{item.image_file_name}")
+  item.save!
+end

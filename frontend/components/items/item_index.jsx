@@ -14,7 +14,10 @@ class ItemIndex extends React.Component {
 
     if (this.props.items) {
       const items = this.props.items.map(item => {
-        return ( <ItemDetails key={item.id} item={ item } /> );
+        return ( <ItemDetails
+          openModal={this.props.openModal}
+          key={item.id}
+          item={ item } /> );
       });
 
       return (
@@ -27,7 +30,7 @@ class ItemIndex extends React.Component {
           </div>
           <button
             className="addItem"
-            onClick={() => this.props.openModal('CreateItem')}>
+            onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>
             <img src={window.white_item_btn} />
           </button>
         </div>
