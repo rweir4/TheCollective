@@ -8,17 +8,19 @@ class ItemIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchItems();
+    this.props.fetchUser(this.props.currentUserId);
   }
 
   render() {
 
-    if (this.props.items) {
+    if (this.props.items[0] && this.props.currentUser) {
+
       const items = this.props.items.map(item => {
         return ( <ItemDetails
+          currentUser = {this.props.currentUser}
           openModal={this.props.openModal}
           key={item.id}
-          item={ item }
-          page={'index'} />
+          item={ item }/>
         );
       });
 

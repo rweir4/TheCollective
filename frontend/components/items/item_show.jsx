@@ -5,10 +5,24 @@ import { Link } from 'react-router-dom';
 class ItemShow extends React.Component {
   componentDidMount() {
     this.props.fetchItem(this.props.match.params.itemId);
+    this.props.fetchUser(this.props.currentUserId)
   }
 
   render() {
-    if (this.props.item) {
+    if (this.props.item && this.props.currentUser) {
+
+      let editBtn;
+      if (this.props.currentUser.item_ids.includes(this.props.item.id)) {
+        editBtn = (
+          <button
+            className="edit-btn"
+            onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item})}>
+            <i class="fas fa-pencil-alt"></i>
+          </button>
+        );
+      } else {
+        editBtn = null;
+      }
 
       return (
         <div className="item-show">
@@ -19,12 +33,7 @@ class ItemShow extends React.Component {
           <div className="item-container-outer">
             <div className="item-container">
               <div className="collect-bar">
-                <button
-                  className="edit-item-show"
-                  onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item})}>
-                  <i class="fas fa-pencil-alt"></i>
-                </button>
-
+                { editBtn }
                 <button
                   className="collect-item-show"
                   onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item} )}>

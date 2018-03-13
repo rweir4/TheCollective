@@ -6,7 +6,7 @@ import Root from './components/root.jsx';
 document.addEventListener("DOMContentLoaded", () => {
   let store;
   if (window.currentUser) {
-    store = configureStore({session: {currentUser: window.currentUser}});
+    store = configureStore({session: {currentUser: window.currentUser.id}});
     delete window.currentUser;
   } else {
     store = configureStore();

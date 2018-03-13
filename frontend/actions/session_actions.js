@@ -2,6 +2,7 @@ import * as SessionAPIUtil from '../util/session_api_util';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const LOGOUT = 'LOGOUT';
 
 const receiveCurrentUser = (user) => ({
   type: RECEIVE_CURRENT_USER,
@@ -28,6 +29,6 @@ export const demoLogin = () => dispatch => (
   err => dispatch(receiveSessionErrors(err.responseJSON)))
 );
 export const logout = (id) => dispatch  => (
-  SessionAPIUtil.logout(id).then(user => dispatch(receiveCurrentUser(null)),
+  SessionAPIUtil.logout(id).then(user => dispatch({ type: LOGOUT }),
   err => dispatch(receiveSessionErrors(err.responseJSON)))
 );

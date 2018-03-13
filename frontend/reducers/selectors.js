@@ -1,7 +1,11 @@
 export const selectUserCollections = (state, user) => {
-  return user.collection_ids.map(collection_id => {
-    return state.entities.collections[collection_id];
-  });
+  if (user.collection_ids) {
+      return user.collection_ids.map(collection_id => {
+      return state.entities.collections[collection_id];
+    });
+  } else {
+    return [];
+  }
 };
 
 export const selectUserItems = (state, user) => {

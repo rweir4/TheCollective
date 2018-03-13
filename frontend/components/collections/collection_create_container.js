@@ -10,7 +10,6 @@ const mapStateToProps = (state) => {
   const collections = selectCollectionItems(state, state.session.currentUser);
   return {
     collection: {description: '', image: '', collection_id: ''},
-    collections: collections,
     formType: 'create'
   };
 };

@@ -19,11 +19,13 @@ class ItemForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchCollections();
+    this.props.fetchUser(this.props.currentUserId);
   }
 
   componentWillReceiveProps(nextProps) {
     this.setState({item: nextProps.item});
     this.setState({collections: nextProps.collections});
+    // this.setState({currentUser: this.props.currentUser});
   }
 
   handleDescription(e) {
@@ -88,6 +90,7 @@ class ItemForm extends React.Component {
 
 
       const { collections } = this.props;
+
       const collectionsList = Object.values(this.props.collections).map(collection => {
         return (
           <button

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -8,6 +9,10 @@ class NavBar extends React.Component {
     this.handleLogout = this.handleLogout.bind(this);
     this.goHome = this.goHome.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.fetchUser(this.props.currentUserId);
   }
 
   goHome(e) {
@@ -26,20 +31,26 @@ class NavBar extends React.Component {
   }
 
   render() {
-    return (
-      <div className="nav-bar-container">
-        <div className="nav-bar-left">
-          <button className="home-btn" onClick={this.goHome}><img src={window.logo} className="logo"/></button>
-          <div className="search">
-            <input placeholder="Search" value={this.state.search} onChange={this.handleSearch} />
-          </div>
+    if (this.props.currentUser) {
 
+      return (
+        <div className="nav-bar-container">
+          <div className="nav-bar-left">
+            <button className="home-btn" onClick={this.goHome}><img src={window.logo} className="logo"/></button>
+            <div className="search">
+              <input placeholder="Search" value={this.state.search} onChange={this.handleSearch} />
+            </div>
+
+          </div>
+          <div className="nav-bar-right">
+            <Link to='/profile'>{this.props.currentUser.email}</Link>
+            <button className="logout-btn" onClick={this.handleLogout}>Logout</button>
+          </div>
         </div>
-        <div className="nav-bar-right">
-          <button className="logout-btn" onClick={this.handleLogout}>Logout</button>
-        </div>
-      </div>
-    )
+      );
+    } else {
+      return null;
+    }
   }
 }
 

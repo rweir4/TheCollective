@@ -4,6 +4,7 @@ import { closeModal } from '../../actions/modal_actions';
 import CreateItemContainer from '../items/item_create_container';
 import EditItemContainer from '../items/item_edit_container';
 import CreateCollectionContainer from '../collections/collection_create_container';
+import EditCollectionContainer from '../collections/edit_collection_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -29,8 +30,11 @@ class Modal extends React.Component {
       case 'EditItem':
         component = ( <EditItemContainer item={this.props.modal.item}/> );
         break;
-      case 'CreateBoard':
-        component = ( <CreateCollectionContainer />)
+      case 'CreateCollection':
+        component = ( <CreateCollectionContainer />);
+        break;
+      case 'EditCollection':
+        component = ( <EditCollectionContainer item={this.props.modal.collection}/> );
       default:
         return null;
     }

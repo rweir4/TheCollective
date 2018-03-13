@@ -39,17 +39,21 @@ class ItemEditForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  const collections = selectUserCollections(state, state.session.currentUser);
+  const currentUser = state.entities.users[state.session.currentUser] || {};
+  const collections = selectUserCollections(state, currentUser);
 
   return {
     item: state.ui.modal.item,
     collections: collections,
-    formType: 'edit'
+    formType: 'edit',
+    currentUserId: state.session.currentUser,
+    currentUser
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUser: id => dispatch(fetchUser(id)),
     fetchCollections: () => dispatch(fetchCollections()),
     fetchItem: id => dispatch(fetchItem(id)),
     submitAction: item => dispatch(updateItem(item)),

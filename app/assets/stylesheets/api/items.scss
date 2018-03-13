@@ -98,6 +98,8 @@
   flex-wrap: wrap;
   max-height: 5000px;
   margin: 1.5%;
+  // width: 100%;
+  // overflow: hidden;
 }
 //max pin size
 //236x500
@@ -110,10 +112,17 @@
   color: #686868;
 }
 
+.item-description-show {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  color: #686868;
+}
+
 .form-item-description {
   max-height: 38px;
   overflow: hidden;
-  font-family: 'Roboto', sans-serif;
+
+font-family: 'Roboto', sans-serif;
   font-weight: 500;
   color: #686868;
   // background: blue;
@@ -241,7 +250,7 @@
   background: #d6d6d6;
 }
 
-.edit-item-show {
+.edit-btn {
   position: absolute;
   z-index: 5;
   float: left;

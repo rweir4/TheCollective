@@ -9,11 +9,13 @@ const receiveUsers = (users) => ({
   users
 });
 
-const receiveUser = ({ user, collection_ids }) => ({
-  type: RECEIVE_USER,
-  user,
-  collection_ids
-});
+const receiveUser = ({ user, collection_ids }) => {
+  return {
+    type: RECEIVE_USER,
+    user,
+    collection_ids
+  };
+};
 
 export const fetchUsers = () => dispatch => {
   return UserAPIUtil.fetchUsers().then(users => dispatch(receiveUsers(users)));

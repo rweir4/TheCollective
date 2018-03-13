@@ -1,5 +1,6 @@
 import { createItem, fetchItem } from '../../actions/item_actions';
 import { fetchCollections } from '../../actions/collection_actions';
+import { fetchUser } from '../../actions/user_actions';
 import { selectUserCollections } from '../../reducers/selectors';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
@@ -7,16 +8,22 @@ import ItemForm from './item_form';
 
 
 const mapStateToProps = (state) => {
-  const collections = selectUserCollections(state, state.session.currentUser);
+  if (state.entities.users[state.session.currentUser]) {
+    
+    const collections = selectUserCollections(state, state.entities.users[state.session.currentUser]);
+  }
   return {
     item: {description: '', image: '', collection_id: ''},
     collections: collections,
-    formType: 'create'
+    formType: 'create',
+    currentUserId: state.session.currentUser,
+    currentUser: state.entities.users[state.session.currentUser]
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchUser: id => dispatch(fetchUser(id)),
     fetchCollections: () => dispatch(fetchCollections()),
     fetchItem: id => dispatch(fetchItem(id)),
     submitAction: item => dispatch(createItem(item)),
