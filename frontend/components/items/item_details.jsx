@@ -25,12 +25,6 @@ class ItemDetails extends React.Component {
       buttons = (
         <div>
           <button
-            className="EditItem"
-            onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item})}>
-            <img className="edit-img" src={window.edit} />
-          </button>
-
-          <button
             className="CollectItem"
             onClick={() => this.props.openModal({modal: 'EditItem', item: this.props.item} )}>
             <img src={window.collect} />

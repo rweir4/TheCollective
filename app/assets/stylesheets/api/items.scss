@@ -10,9 +10,8 @@
 .create-item-container {
   background: #fcfcfc;
   width: 804px;
-  // margin-left: 32.5%;
   border-radius: 10px;
-  height: 459px;
+  min-height: 459px;
 }
 
 .form-img-holder {
@@ -26,7 +25,6 @@
 }
 
 .file-btn {
-  // padding-top: 160px;
   padding-left: 35px;
 }
 
@@ -34,37 +32,37 @@
   height: 44px;
   width: 1026px;
   padding: 14px 32px 14px 32px;
-}
-
-.collect-bar a {
-  float: right;
-  padding: 10px;
-  background: #ba1414;
-  color: white;
-  font-family: 'PT Sans', sans-serif;
-  border-radius: 5px;
-  font-size: 16px;
+  position: relative;
 }
 
 .item-show {
-  background: #e8e8e8;
-  height: 100vh;
+  background: #EEEEEE;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  min-height: 459px;
+  overflow: auto;
+}
+
+.item-container-outer {
+  width: 800px;
+  background: white;
+  margin: auto;
+  border-radius: 10px;
 }
 
 .item-container {
-  width: 1090px;
-  background: white;
-  margin: 100px auto;
-  border-radius: 10px;
+  width: 95%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: auto;
 }
 
 .item-show-details {
   display: flex;
+  justify-content: space-around;
 }
 
 .item-details {
@@ -76,9 +74,10 @@
 }
 
 .img-holder {
-  max-width: 496px;
-  padding: 50px 0 50px 50px;
+  // margin-left:
+  max-width: 428px;
   background: white;
+  vertical-align: baseline;
 }
 
 .item-img {
@@ -86,9 +85,11 @@
   width: 100%;
 }
 
+
 .item-info {
-  padding: 5;
-  width: 40%;
+  // padding: 50px;
+  width: 300px;
+  margin: auto;
 }
 
 .item-list {
@@ -217,4 +218,60 @@
   cursor: pointer;
   width: 39px;
   height: 39px;
+}
+
+.back {
+  padding: 5px 10px;
+  border-radius: 50px;
+  margin-top: 30px;
+  margin-left: 30px;
+  font-size: 20px;
+  color: #565656;
+  display: flex;
+  justify-content: center;
+  font-size: 30px;
+  align-items: center;
+  p {
+    font-size: 16px;
+    margin-left: 10px;
+  }
+}
+
+.back:hover {
+  background: #d6d6d6;
+}
+
+.edit-item-show {
+  position: absolute;
+  z-index: 5;
+  float: left;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: #B5B5B5;
+  border: none;
+}
+
+.edit-item-show:hover {
+  background: #d6d6d6;
+  border-radius: 100%;
+}
+
+.collect-item-show {
+  position: absolute;
+  z-index: 5;
+  float: right;
+  top: 5px;
+  right: 65px;
+  cursor: pointer;
+  width: 150px;
+  height: 50px;
+  border: none;
+}
+
+.collect-item-show:hover {
+  filter: brightness(90%);
 }

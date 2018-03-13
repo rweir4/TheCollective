@@ -17,7 +17,9 @@ class ItemIndex extends React.Component {
         return ( <ItemDetails
           openModal={this.props.openModal}
           key={item.id}
-          item={ item } /> );
+          item={ item }
+          page={'index'} />
+        );
       });
 
       return (

@@ -1,6 +1,8 @@
 import { fetchItem, fetchItems } from '../../actions/item_actions';
+import { openModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ItemShow from './item_show';
+import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => ({
   item: state.entities.items[ownProps.match.params.itemId]
@@ -8,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchItems: () => dispatch(fetchItems()),
-  fetchItem: id => dispatch(fetchItem(id))
+  fetchItem: id => dispatch(fetchItem(id)),
+  openModal: modal => dispatch(openModal(modal))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemShow);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ItemShow));
