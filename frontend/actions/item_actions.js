@@ -11,7 +11,7 @@ const receiveItems = (items) => ({
   items
 });
 
-export const receiveItem = (item) => ({
+export const receiveItem = ({item}) => ({
   type: RECEIVE_ITEM,
   item
 });
@@ -33,7 +33,7 @@ export const fetchItems = () => dispatch => {
 };
 
 export const fetchItem = id => dispatch => {
-  return ItemAPIUtil.fetchItem(id).then(item => dispatch(receiveItem(item)));
+  return ItemAPIUtil.fetchItem(id).then(payload => dispatch(receiveItem(payload)));
 };
 
 export const createItem = item => dispatch => {

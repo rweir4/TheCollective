@@ -5,17 +5,21 @@
   align-content: center;
   font-family: 'PT Sans', sans-serif;
   color: #686868;
+  padding: 10px;
 }
 
 .create-item-container {
   background: #fcfcfc;
-  width: 804px;
+  width: 660px;
+  height: 660px;
   border-radius: 10px;
-  min-height: 459px;
+  form {
+    position: relative;
+  }
 }
 
 .form-img-holder {
-  margin-left: 80px;
+  margin-left: 50px;
   background: black;
   background: #fcfcfc;
   width: 232px;
@@ -78,6 +82,7 @@
   max-width: 428px;
   background: white;
   vertical-align: baseline;
+  cursor: zoom-in;
 }
 
 .item-img {
@@ -94,12 +99,12 @@
 
 .item-list {
   display: flex;
-  flex-direction: column;
+  // flex-direction: column;
   flex-wrap: wrap;
   max-height: 5000px;
   margin: 1.5%;
   // width: 100%;
-  // overflow: hidden;
+  // overflow: auto;
 }
 //max pin size
 //236x500
@@ -121,12 +126,10 @@
 .form-item-description {
   max-height: 38px;
   overflow: hidden;
-
-font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 500;
   color: #686868;
-  // background: blue;
-  margin-left: 80px;
+  margin-left: 50px;
   width: 232px;
 }
 
@@ -148,25 +151,34 @@ font-family: 'Roboto', sans-serif;
 }
 
 .collection-list-header {
+  padding: 10px;
+  border-bottom: 1px solid grey;
 }
 
 .collections-list-container {
   float: right;
   position: absolute;
-  top: 150px;
-  left: 375px;
-  margin-right: 50px;
-  // background: green;
-  padding: 10px;
+  top: 0px;
+  left: 300px;
+  border: 1px solid grey;
   width: 314px;
+  button {
+    padding: 15px;
+  }
 }
 
-.collections-list button {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  border-top: 1px solid grey;
-  border-bottom: 1px solid grey;
+.collections-list {
+  height: 416px;
+  overflow: scroll;
+  button {
+    cursor: pointer;
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    text-align: center;
+    border-bottom: 1px solid grey;
+  }
 }
 
 .collections-list button:hover {
@@ -174,8 +186,9 @@ font-family: 'Roboto', sans-serif;
 }
 
 .collect-btn {
-  right: 0;
+  margin-right: 20px;
   height: 20px;
+
 }
 
 .collection-title {

@@ -7,8 +7,7 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USERS:
       return merge({}, state, action.users);
     case RECEIVE_USER:
-
-      return merge({}, state, { [action.user.id]: action.user });
+      return merge({}, state, {[action.user.id]: action.user });
     default:
       return state;
   }

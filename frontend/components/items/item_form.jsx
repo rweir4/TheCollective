@@ -64,8 +64,9 @@ class ItemForm extends React.Component {
   render() {
     let image;
     let header;
+    const { formType } = this.props;
 
-    if (this.props.formType === 'create') {
+    if (formType === 'create') {
       image = (
         <div>
           <div className="form-img-holder">
@@ -75,15 +76,15 @@ class ItemForm extends React.Component {
         </div>
       );
 
-      header = <p className="form-header">Add a Pin</p>
+      header = ( <p className="form-header">Create an Item</p> );
 
     } else {
       image = (
         <div className="form-img-holder">
-          <img className="item-img" src={this.props.item.image}></img>;
+          <img className="item-img" src={this.props.item.image}></img>
         </div>
       );
-      header = <p className="form-header">Edit</p>
+      header = <p className="form-header">{formType !== 'repin' ? 'Edit this item' : 'Save'}</p>;
     }
 
     if (this.props.collections[0]) {

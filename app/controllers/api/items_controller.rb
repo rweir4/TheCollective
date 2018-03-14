@@ -29,6 +29,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
+    puts "hi"
     @item = Item.find(params[:id])
   end
 

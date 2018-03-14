@@ -4,15 +4,15 @@ import { ProtectedRoute } from '../../util/route_util';
 import NavBarContainer from '../navBar/nav_bar_container';
 
 class CollectionIndex extends React.Component {
-  componentDidMount() {
-    this.props.fetchCollections();
-  }
 
   render() {
 
+    console.log(this.props.collections)
+    console.log(this.props.collection)
     if (this.props.collections[0]) {
       const collections = Object.values(this.props.collections).map(collection => {
         return ( <CollectionDetails
+          currentLoggedInUser={this.props.currentLoggedInUser}
           openModal={this.props.openModal}
           key={collection.id}
           collection={ collection } /> );
@@ -21,7 +21,6 @@ class CollectionIndex extends React.Component {
       return (
         <div className="parent-index">
           <div>
-            <ProtectedRoute path="/" component={ NavBarContainer } />
             <button
               className="addCollection"
               onClick={() => this.props.openModal({modal:'createCollection', item: undefined})}>
@@ -36,7 +35,6 @@ class CollectionIndex extends React.Component {
     } else {
       return (
         <div>
-          <ProtectedRoute path="/" component={ NavBarContainer } />
           <p>Loading</p>
         </div>
       );

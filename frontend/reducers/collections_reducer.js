@@ -9,6 +9,7 @@ const collectionsReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, action.collections);
     case RECEIVE_COLLECTION:
+    
       return merge({}, state, {[action.collection.id]: action.collection});
     case REMOVE_COLLECTION:
       const nextState = merge({}, state);

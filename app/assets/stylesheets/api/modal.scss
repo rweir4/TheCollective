@@ -7,11 +7,15 @@
   // opacity: 0.5;
   padding-top: 60px;
   background-color: rgba(45,45,45,0.8);
+  cursor: zoom-out;
 }
 
 .inner-modal {
-  position: relative;
-  top: 0;
-  left: 22.5%;
+  position: fixed;
+  top: 60px;
+  left: 30%;
+  // right: 0;
   opacity: 1;
+  cursor: default;
+  z-index: 20;
 }

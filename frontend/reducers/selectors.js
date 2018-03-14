@@ -1,4 +1,5 @@
 export const selectUserCollections = (state, user) => {
+  debugger
   if (user.collection_ids) {
       return user.collection_ids.map(collection_id => {
       return state.entities.collections[collection_id];
@@ -9,9 +10,13 @@ export const selectUserCollections = (state, user) => {
 };
 
 export const selectUserItems = (state, user) => {
-  return user.item_ids.map(item_id => {
-    return state.entities.items[item_id];
-  });
+  if (user.item_ids) {
+    return user.item_ids.map(item_id => {
+      return state.entities.items[item_id];
+    });
+  } else {
+    return [];
+  }
 };
 
 export const selectCollectionItems = (state, collection) => {

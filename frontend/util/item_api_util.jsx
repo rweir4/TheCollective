@@ -7,12 +7,12 @@ export const fetchItems = () => (
   })
 );
 
-export const fetchItem = (id) => (
-  $.ajax({
+export const fetchItem = (id) => {
+  return $.ajax({
     url: `api/items/${id}`,
     method: 'GET'
-  })
-);
+  });
+};
 
 export const createItem = (formData) => {
   return $.ajax({
@@ -28,7 +28,7 @@ export const createItem = (formData) => {
 };
 
 export const updateItem = (formData) => {
-  
+
   return $.ajax({
     url: `api/items/${formData.get('item[itemId]')}`,
     method: 'PATCH',

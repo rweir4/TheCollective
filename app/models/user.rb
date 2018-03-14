@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :follows
+
   has_many :followers
 
   has_many :collections,
@@ -21,7 +22,7 @@ class User < ApplicationRecord
   # attr_accessor :image_file_name
 
   def self.find_by_credentials(email, password)
-    
+
     user = User.find_by(email: email)
     user && BCrypt::Password.new(user.password_digest).is_password?(password) ? user : nil
   end

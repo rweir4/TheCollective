@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import repin form
 
 class ItemDetails extends React.Component {
   constructor(props) {
@@ -9,6 +8,13 @@ class ItemDetails extends React.Component {
 
     this.onMouseEnter = this.onMouseEnter.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
+  }
+
+  componentDidMount() {
+    if (!this.props.currentUser) {
+
+      this.props.fetchUser(this.props.currentUserId);
+    }
   }
 
   onMouseEnter() {
@@ -33,9 +39,8 @@ class ItemDetails extends React.Component {
           </button>
         </div>
       );
-
-
-      if (currentUser.item_ids.includes(item.id)) {
+      
+      if (this.props.currentUser.item_ids.includes(item.id)) {
         editBtn = (
           <button
             className="edit-btn"

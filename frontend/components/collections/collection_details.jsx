@@ -19,20 +19,18 @@ class CollectionDetails extends React.Component {
   }
 
   render() {
-      let buttons;
-      if (this.state.hover) {
-        buttons = (
+      let editBtn;
+      if (this.props.currentLoggedInUser.collection_ids.includes(this.props.collection.id)) {
+        editBtn = (
           <button
             className="EditCollection"
-            onClick={() => this.props.openModal({modal: 'EditCollection', item: this.props.collection})}>
-            <img className="edit-img" src={window.edit} />
+            onClick={() => this.props.openModal({modal:'EditCollection', item: this.props.collection})}>
+            <i class="fas fa-pencil-alt"></i>
           </button>
         );
       } else {
-        buttons = null;
+        editBtn = null;
       }
-
-
       return (
         <div className="collection-details" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
           <Link to={`/collections/${this.props.collection.id}`}>
@@ -40,7 +38,7 @@ class CollectionDetails extends React.Component {
               hi
             </div>
             <p className="collection-description">{this.props.collection.title}</p>
-            { buttons }
+            { editBtn }
           </Link>
         </div>
       );

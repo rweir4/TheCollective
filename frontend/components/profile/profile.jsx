@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemDetails from '../items/item_details';
+import ItemDetailsContainer from '../items/item_details_container';
 import CollectionDetails from '../collections/collection_details';
 import NavBarContainer from '../navBar/nav_bar_container';
 
@@ -7,61 +7,90 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showItems: false };
+    this.state = { showItems: 'collections' };
     this.toggleItems = this.toggleItems.bind(this);
   }
 
 
   componentDidMount() {
     this.props.fetchUser(this.props.currentUserId);
+    this.props.fetchUser(this.props.match.params.userId);
   }
 
-  toggleItems() {
-    if (this.state.showItems) {
-      this.setState({showItems: false});
-    } else {
-      this.setState({showItems: true});
-    }
+  toggleItems(field) {
+    return (e) => {
+      if (field === 'items') {
+        this.setState({showItems: 'items'});
+      } else {
+        this.setState({showItems: 'collections'});
+      }
+    };
   }
 
   render() {
 
-    if (this.props.currentUser) {
-      const { currentUser } = this.props;
+    if (this.props.currentPageUser && this.props.currentLoggedInUser) {
+      const { currentPageUser } = this.props;
+
+      let toShowClass;
       let toShow;
-      if (this.state.showItems) {
-        toShow = Object.values(currentUser.items).map(item => {
-          return ( <ItemDetails
-            currentUser = {this.props.currentUser}
+
+      if (this.state.showItems === 'items') {
+        toShow = Object.values(currentPageUser.items).map(item => {
+          return ( <ItemDetailsContainer
+            currentUser={this.props.currentLoggedInUser}
             openModal={this.props.openModal}
             key={item.id}
             item={ item } />
           );
         });
+
+        toShowClass="item-list";
       } else {
-        toShow = Object.values(currentUser.collections).map(collection => {
+        toShow = Object.values(currentPageUser.collections).map(collection => {
           return ( <CollectionDetails
+            currentLoggedInUser = {this.props.currentLoggedInUser}
             openModal={this.props.openModal}
             key={collection.id}
             collection={ collection } />
           );
         });
+
+        toShowClass="collection-list";
+      }
+
+      let addCollectionBtn;
+      if (currentPageUser.id === this.props.currentLoggedInUser.id) {
+        addCollectionBtn = (
+          <button
+            className="add-collection-container"
+            onClick={() => this.props.openModal({modal:'CreateCollection', item: undefined})}>
+            <img src={window.red_item_btn} />
+          </button>
+        );
+      } else {
+        addCollectionBtn = null;
       }
 
       return (
         <div>
           <NavBarContainer />
-          <div className="profile-info">
-            {currentUser.email}
-            {currentUser.bio}
-            <img src={currentUser.image} />
-          </div>
-          <div className="profile-nav">
-            <button onClick={this.toggleItems}>Items</button>
-            <button onClick={this.toggleItems}>Collections</button>
-          </div>
-          <div>
-            { toShow }
+          <div className="profile-container">
+            <div className="profile-info">
+              <p>{currentPageUser.email}</p>
+              <p>{currentPageUser.bio}</p>
+              <img src={currentPageUser.image} />
+            </div>
+            <div className="profile-nav">
+              <button onClick={this.toggleItems('collections')}>Collections</button>
+              <button onClick={this.toggleItems('items')}>Items</button>
+            </div>
+            <div className={toShowClass}>
+              <ul>
+                { addCollectionBtn }
+                { toShow }
+              </ul>
+            </div>
           </div>
         </div>
       );

@@ -1,5 +1,5 @@
 import React from 'react';
-import ItemDetails from './item_details';
+import ItemDetailsContainer from './item_details_container';
 import NavBarContainer from '../navBar/nav_bar_container';
 import { ProtectedRoute } from '../../util/route_util';
 import { Route } from 'react-router-dom';
@@ -16,8 +16,8 @@ class ItemIndex extends React.Component {
     if (this.props.items[0] && this.props.currentUser) {
 
       const items = this.props.items.map(item => {
-        return ( <ItemDetails
-          currentUser = {this.props.currentUser}
+        return ( <ItemDetailsContainer
+          currentUser={this.props.currentUser}
           openModal={this.props.openModal}
           key={item.id}
           item={ item }/>

@@ -8,16 +8,14 @@ import ItemForm from './item_form';
 
 
 const mapStateToProps = (state) => {
-  if (state.entities.users[state.session.currentUser]) {
-    
-    const collections = selectUserCollections(state, state.entities.users[state.session.currentUser]);
-  }
+  const currentUser = state.entities.users[state.session.currentUser] || {};
+  const collections = selectUserCollections(state, currentUser);
   return {
     item: {description: '', image: '', collection_id: ''},
-    collections: collections,
+    collections,
     formType: 'create',
     currentUserId: state.session.currentUser,
-    currentUser: state.entities.users[state.session.currentUser]
+    currentUser
   };
 };
 

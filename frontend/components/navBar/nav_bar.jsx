@@ -32,7 +32,6 @@ class NavBar extends React.Component {
 
   render() {
     if (this.props.currentUser) {
-
       return (
         <div className="nav-bar-container">
           <div className="nav-bar-left">
@@ -43,8 +42,11 @@ class NavBar extends React.Component {
 
           </div>
           <div className="nav-bar-right">
-            <Link to='/profile'>{this.props.currentUser.email}</Link>
-            <button className="logout-btn" onClick={this.handleLogout}>Logout</button>
+            <Link to={`/profile/${this.props.currentUser.id}`}>
+              <img className src={this.props.currentUser.image} />
+              {this.props.currentUser.email}
+            </Link>
+            <button onClick={this.handleLogout}>Logout</button>
           </div>
         </div>
       );

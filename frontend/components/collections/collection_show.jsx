@@ -4,9 +4,18 @@ import NavBarContainer from '../navBar/nav_bar_container';
 import { ProtectedRoute } from '../../util/route_util';
 
 class CollectionShow extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.removeCollection = this.removeCollection.bind(this);
+  }
   componentDidMount() {
     this.props.fetchCollection(this.props.match.params.collectionId);
     this.props.fetchUser(this.props.currentUserId);
+  }
+
+  removeCollection () {
+
   }
 
 
@@ -41,6 +50,7 @@ class CollectionShow extends React.Component {
             <p className="collection-show-title">{this.props.collection.title}</p>
             <p>{items.length} Items</p>
             <p>{this.props.collection.description}</p>
+            <button onClick={this.removeCollection}>Delete Collection</button>
           </div>
           <div>
             <ul className="items">

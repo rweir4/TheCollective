@@ -8,9 +8,11 @@
   margin: 0;
   position: sticky;
   width: 100%;
+  font-family: 'PT Sans', sans-serif;
 }
 
 .nav-bar-left {
+  // vertical-align: middle;
   display: flex;
   margin-top: 10px;
   justify-content: center;
@@ -18,21 +20,8 @@
 
 .home-btn {
   background: #11ffee00;
-  padding: 0 10px 10px 10px;
-}
-
-.home-btn:focus {
-  // border: 1 px solid blue;
-  // box-shadow: 5px blue;
-}
-
-.logout-btn {
   padding: 10px;
-}
-
-.logout-btn:hover {
-  background: #c6c6c6;
-  border-radius: 10px;
+  align-items: center;
 }
 
 .logo {
@@ -40,7 +29,13 @@
   height: 40px;
 }
 
+.home-btn:active {
+  background: #e8e8e8;
+  border-radius: 50px;
+}
+
 .search {
+  margin-left: 30px;
   align-self: center;
 }
 
@@ -48,4 +43,39 @@
   align-self: center;
   font-size: 16px;
 
+}
+
+.nav-bar-right {
+  a {
+    padding: 10px;
+  }
+  img {
+    width: 24px;
+    height: 24px;
+    border-radius: 100%;
+    padding: 5px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 20px;
+  }
+  vertical-align: middle;
+  font-size: 16px;
+  color: #555555;
+  padding: 0 20px;
+  font-weight: 700;
+
+}
+
+.nav-bar-right > a:hover {
+    background: #e8e8e8;
+    border-radius: 20px;
+}
+
+
+.nav-bar-right > button:hover {
+  background: #e8e8e8;
+  border-radius: 20px;
 }

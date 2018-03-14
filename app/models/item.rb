@@ -5,4 +5,7 @@ class Item < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :collection
+  has_one :author,
+    through: :collection,
+    source: :author
 end

@@ -21,7 +21,7 @@ const App = () => {
         <ProtectedRoute exact path="/items/:itemId" component={ ItemShowContainer } />
         <ProtectedRoute exact path="/collections" component={ CollectionIndexContainer } />
         <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
-        <ProtectedRoute exact path="/profile" component={ ProfileContainer } />
+        <ProtectedRoute exact path="/profile/:userId" component={ ProfileContainer } />
       </Switch>
     </div>
   );

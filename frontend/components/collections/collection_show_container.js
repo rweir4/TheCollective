@@ -1,4 +1,4 @@
-import { fetchCollection, fetchCollections } from '../../actions/collection_actions';
+import { fetchCollection, fetchCollections, deleteCollection } from '../../actions/collection_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { selectCollectionItems } from '../../reducers/selectors';
 import { connect } from 'react-redux';
@@ -20,7 +20,8 @@ const mapDispatchToProps = dispatch => {
     fetchUser: id => dispatch(fetchUser(id)),
     fetchCollection: id => dispatch(fetchCollection(id)),
     fetchCollections: () => dispatch(fetchCollections()),
-    openModal: modal => dispatch(openModal(modal))
+    openModal: modal => dispatch(openModal(modal)),
+    deleteCollection: id => dispatch(deleteCollection(id))
   };
 };
 
