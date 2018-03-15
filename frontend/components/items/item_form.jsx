@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ErrorsList from '../errors/errors_list';
+import { withRouter } from 'react-router-dom';
 
 class ItemForm extends React.Component {
   constructor(props) {
@@ -163,4 +164,4 @@ class ItemForm extends React.Component {
   }
 }
 
-export default ItemForm;
+export default withRouter(ItemForm);
