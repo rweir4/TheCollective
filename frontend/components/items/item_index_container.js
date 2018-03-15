@@ -6,8 +6,8 @@ import ItemIndex from './item_index';
 
 const mapStateToProps = state => ({
   items: Object.values(state.entities.items),
-  // currentUser: state.entities.users[state.session.currentUser],
-  currentUserId: state.session.currentUser
+  currentUserId: state.session.currentUser,
+  errors: state.errors.item
 });
 
 const mapDispatchToProps = dispatch => ({

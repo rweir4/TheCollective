@@ -21,7 +21,7 @@ class Api::ItemsController < ApplicationController
     if @item.update(item_params)
       render :show
     else
-      render json: { errors: @item.errors.full_messages }
+      render json: @item.errors.full_messages, status: 422
     end
   end
 

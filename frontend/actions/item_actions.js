@@ -24,6 +24,7 @@ const removeItem = (itemId) => ({
 });
 
 const receiveItemErrors = itemErrors => {
+  debugger
   return {
     type: RECEIVE_ITEM_ERRORS,
     itemErrors
