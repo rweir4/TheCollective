@@ -26,7 +26,6 @@ class ItemShow extends React.Component {
         editBtn = null;
       }
 
-
       return (
         <div className="item-show">
           <button className="back" onClick={this.props.history.goBack}>

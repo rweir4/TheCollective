@@ -11,7 +11,6 @@ class CollectionEditForm extends React.Component {
 
   render() {
     const {
-      fetchCollection,
       closeModal,
       collection,
       formType,
@@ -20,7 +19,6 @@ class CollectionEditForm extends React.Component {
     return (
 
       <CollectionForm
-        fetchCollection={fetchCollection}
         closeModal={closeModal}
         collection={collection}
         formType={formType}

@@ -1,8 +1,9 @@
-import { updateItem, fetchItem } from '../../actions/item_actions';
+import { updateItem, fetchItem, deleteItem } from '../../actions/item_actions';
 import { fetchCollections } from '../../actions/collection_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { selectUserCollections } from '../../reducers/selectors';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { closeModal } from '../../actions/modal_actions';
 import ItemForm from './item_form';
 import React from 'react';
@@ -15,6 +16,7 @@ class ItemEditForm extends React.Component {
   render() {
     const {
       fetchCollections,
+      deleteItem,
       closeModal,
       item,
       currentUser,
@@ -27,6 +29,7 @@ class ItemEditForm extends React.Component {
     return (
 
       <ItemForm
+        deleteItem={deleteItem}
         fetchCollections={fetchCollections}
         closeModal={closeModal}
         item={item}
@@ -60,8 +63,9 @@ const mapDispatchToProps = dispatch => {
     fetchCollections: () => dispatch(fetchCollections()),
     fetchItem: id => dispatch(fetchItem(id)),
     submitAction: item => dispatch(updateItem(item)),
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    deleteItem: id => dispatch(deleteItem(id))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemEditForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ItemEditForm));

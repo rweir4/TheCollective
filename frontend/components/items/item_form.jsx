@@ -9,14 +9,17 @@ class ItemForm extends React.Component {
       description: this.props.item.description,
       collection_id: '',
       imageFile: this.props.item.image,
-      imageUrl: null
+      imageUrl: null,
+      url: ''
     };
 
     this.handleDescription = this.handleDescription.bind(this);
+    this.handleURL = this.handleURL.bind(this);
     this.handleCollectionId = this.handleCollectionId.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleErrors = this.handleErrors.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   componentDidMount() {
@@ -29,8 +32,18 @@ class ItemForm extends React.Component {
     this.setState({collections: nextProps.collections});
   }
 
+  removeItem() {
+    this.props.deleteItem(this.props.item.id).then(() => {
+      this.props.history.push('/');
+    });
+  }
+
   handleDescription(e) {
     this.setState({description: e.target.value});
+  }
+
+  handleURL(e) {
+    this.setState({imageFile: e.target.value});
   }
 
   handleCollectionId(e) {
@@ -81,6 +94,8 @@ class ItemForm extends React.Component {
           <div className="form-img-holder">
             <input type="file" onChange={this.handleFile} />
             <img className="item-img" src={this.state.imageUrl} />
+            <p>or upload via url:</p>
+            <input placeholder="url" type="text" onChange={this.handleURL}/>
           </div>
         </div>
       );
@@ -125,6 +140,7 @@ class ItemForm extends React.Component {
                 className = "form-item-description"
                 value={this.state.description}
                 onChange={this.handleDescription} />
+              <button className="delete-item-btn" onClick={this.removeItem}>Delete</button>
               <div className="collections-list-container">
                 <p className="collection-list-header">Choose a Collection</p>
                 <ul className="collections-list">

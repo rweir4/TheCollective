@@ -18,8 +18,6 @@ const mapStateToProps = (state, ownProps) => {
     author = state.entities.users[item.author_id];
   }
 
-  
-
   return {
     item,
     isCurrentUser,
@@ -32,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
   fetchUser: id => dispatch(fetchUser(id)),
   fetchItems: () => dispatch(fetchItems()),
   fetchItem: id => dispatch(fetchItem(id)),
-  openModal: modal => dispatch(openModal(modal))
+  openModal: modal => dispatch(openModal(modal)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ItemShow));
