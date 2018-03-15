@@ -37,7 +37,7 @@ Collection.all.each do |collection|
 end
 
 # RUN AFTER SEED IN RAILS CONSOLE
-Item.all.each do |item|
-  item.image = File.open("app/assets/images/#{item.image_file_name}")
-  item.save!
-end
+# Item.all.each do |item|
+#   item.image = File.open("app/assets/images/#{item.image_file_name}")
+#   item.save!
+# end

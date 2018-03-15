@@ -10,13 +10,6 @@ class ItemDetails extends React.Component {
     this.onMouseLeave = this.onMouseLeave.bind(this);
   }
 
-  componentDidMount() {
-    if (!this.props.currentUser) {
-
-      this.props.fetchUser(this.props.currentUserId);
-    }
-  }
-
   onMouseEnter() {
     this.setState( {hover: true} );
   }
@@ -26,21 +19,21 @@ class ItemDetails extends React.Component {
   }
 
   render() {
-    const { currentUser, item } = this.props;
+    const { isCurrentUser, item } = this.props;
     let collectBtn;
     let editBtn;
-    if (this.state.hover && this.props.currentUser.item_ids) {
+    if (this.state.hover && isCurrentUser) {
       collectBtn = (
         <div>
           <button
             className="CollectItem"
-            onClick={() => this.props.openModal({modal: 'EditItem', item} )}>
+            onClick={() => this.props.openModal({modal: 'CollectItem', item} )}>
             <img src={window.collect} />
           </button>
         </div>
       );
-      
-      if (this.props.currentUser.item_ids.includes(item.id)) {
+
+      if (isCurrentUser) {
         editBtn = (
           <button
             className="edit-btn"

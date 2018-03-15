@@ -9,11 +9,12 @@ const receiveUsers = (users) => ({
   users
 });
 
-const receiveUser = ({ user, collection_ids }) => {
+const receiveUser = ({ user, collections, items }) => {
   return {
     type: RECEIVE_USER,
     user,
-    collection_ids
+    collections,
+    items
   };
 };
 

@@ -10,27 +10,34 @@ class CollectionShow extends React.Component {
     this.removeCollection = this.removeCollection.bind(this);
   }
   componentDidMount() {
+    // this.props.fetchCollections();
+    // this.props.fetchUser(this.props.currentUserId);
     this.props.fetchCollection(this.props.match.params.collectionId);
-    this.props.fetchUser(this.props.currentUserId);
   }
 
   removeCollection () {
-
+    this.props.deleteCollection(this.props.collection.id).then(() => {
+      this.props.history.push(`/profile/${this.props.author.id}`);
+    });
   }
 
 
   render() {
-    if (this.props.collection && this.props.currentUser) {
 
-      const items = Object.values(this.props.collection.items).map(item => {
+    if (this.props.collection) {
+      const { isCurrentUser, items, author, collection } = this.props;
+
+      const itemsList = Object.values(items).map(item => {
         return ( <ItemDetails
-          currentUser = {this.props.currentUser}
+          openModal={this.props.openModal}
+          isCurrentUser={isCurrentUser}
           key={item.id}
           item={item}/> );
       });
 
       let editBtn;
-      if (this.props.currentUser.collection_ids.includes(this.props.collection.id)) {
+      let deleteBtn;
+      if (isCurrentUser) {
         editBtn = (
           <button
             className="edit-collection"
@@ -38,8 +45,12 @@ class CollectionShow extends React.Component {
             <i class="fas fa-pencil-alt"></i>
           </button>
         );
+
+        deleteBtn = ( <button onClick={this.removeCollection}>Delete Collection</button> );
+
       } else {
         editBtn = null;
+        deleteBtn = null;
       }
 
       return (
@@ -47,10 +58,10 @@ class CollectionShow extends React.Component {
           <ProtectedRoute path="/" component={ NavBarContainer } />
           { editBtn }
           <div className="collection-info">
-            <p className="collection-show-title">{this.props.collection.title}</p>
+            <p className="collection-show-title">{collection.title}</p>
             <p>{items.length} Items</p>
-            <p>{this.props.collection.description}</p>
-            <button onClick={this.removeCollection}>Delete Collection</button>
+            <p>{collection.description}</p>
+            { deleteBtn }
           </div>
           <div>
             <ul className="items">
@@ -59,7 +70,7 @@ class CollectionShow extends React.Component {
                 onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>
                 <img src={window.red_item_btn} />
               </button>
-              { items }
+              { itemsList }
             </ul>
           </div>
         </div>

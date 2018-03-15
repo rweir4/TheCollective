@@ -4,12 +4,16 @@ import { fetchItems } from '../../actions/item_actions';
 import { openModal } from '../../actions/modal_actions';
 import Profile from './profile';
 import { withRouter } from 'react-router-dom';
+import { selectUserCollections, selectUserItems } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
+  const currentPageUser = state.entities.users[ownProps.match.params.userId] || {};
   return {
     currentUserId: state.session.currentUser,
     currentLoggedInUser: state.entities.users[state.session.currentUser],
-    currentPageUser: state.entities.users[ownProps.match.params.userId]
+    currentPageUser,
+    collections: selectUserCollections(state, currentPageUser),
+    items: selectUserItems(state, currentPageUser),
   };
 };
 

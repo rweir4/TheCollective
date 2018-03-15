@@ -6,13 +6,12 @@ import NavBarContainer from '../navBar/nav_bar_container';
 class CollectionIndex extends React.Component {
 
   render() {
-
-    console.log(this.props.collections)
-    console.log(this.props.collection)
     if (this.props.collections[0]) {
+      let isCurrentUser;
       const collections = Object.values(this.props.collections).map(collection => {
+        isCurrentUser = collection.author_id === this.props.currentUserId;
         return ( <CollectionDetails
-          currentLoggedInUser={this.props.currentLoggedInUser}
+          isCurrentUser={isCurrentUser}
           openModal={this.props.openModal}
           key={collection.id}
           collection={ collection } /> );

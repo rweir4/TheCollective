@@ -4,21 +4,17 @@ import { Link } from 'react-router-dom';
 
 class ItemShow extends React.Component {
   componentDidMount() {
-    
-    this.props.fetchItem(this.props.match.params.itemId).then(() => {
-      this.props.fetchUser(this.props.currentUserId);
-    });
+    this.props.fetchItem(this.props.match.params.itemId);
   }
 
   render() {
 
-    if (this.props.currentUser) {
-      
+    if (this.props.collection) {
 
       const { item, currentUser } = this.props;
 
       let editBtn;
-      if (currentUser.item_ids.includes(item.id)) {
+      if (this.props.isCurrentUser) {
         editBtn = (
           <button
             className="edit-btn"
@@ -43,7 +39,7 @@ class ItemShow extends React.Component {
                 { editBtn }
                 <button
                   className="collect-item-show"
-                  onClick={() => this.props.openModal({modal: 'EditItem', item: item} )}>
+                  onClick={() => this.props.openModal({modal: 'CollectItem', item: item} )}>
                   <img src={window.collect} />
                 </button>
               </div>
@@ -53,8 +49,8 @@ class ItemShow extends React.Component {
                 </div>
                 <div className="item-info">
                   <p className="item-description-show">{item.description}</p>
-                  <Link to={`/collections/${item.collection_id}`}>{item.collection.title}</Link>
-                  <Link to={`/profile/${item.author.id}`}>{item.author.email}</Link>
+                  <Link to={`/collections/${this.props.collection.id}`}>{this.props.collection.title}</Link>
+                  <Link to={`/profile/${this.props.author.id}`}>{this.props.author.email}</Link>
                 </div>
               </div>
             </div>

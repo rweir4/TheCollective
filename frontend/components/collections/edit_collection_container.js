@@ -19,10 +19,10 @@ class CollectionEditForm extends React.Component {
     } = this.props;
     return (
 
-      <ItemForm
+      <CollectionForm
+        fetchCollection={fetchCollection}
         closeModal={closeModal}
         collection={collection}
-        currentUser={currentUser}
         formType={formType}
         submitAction={submitAction} />
     );
@@ -30,7 +30,7 @@ class CollectionEditForm extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  const collections = selectCollectionItems(state, state.session.currentUser);
+  // const collections = selectCollectionItems(state, state.session.currentUser);
   return {
     collection: state.ui.modal.item,
     formType: 'edit'
@@ -40,7 +40,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchCollection: id => dispatch(fetchCollection(id)),
-    submitAction: collection => dispatch(createCollection(collection)),
+    submitAction: collection => dispatch(updateCollection(collection)),
     closeModal: () => dispatch(closeModal())
   };
 };

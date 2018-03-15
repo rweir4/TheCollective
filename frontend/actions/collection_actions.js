@@ -12,11 +12,12 @@ const receiveCollections = (collections) => {
   };
 };
 
-const receiveCollection = ({collection, items}) => {
+const receiveCollection = ({collection, items, user}) => {
   return {
     type: RECEIVE_COLLECTION,
     collection,
-    items
+    items,
+    user
   };
 };
 

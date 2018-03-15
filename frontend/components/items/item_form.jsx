@@ -1,5 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
+import ErrorsList from '../errors/errors_list';
 
 class ItemForm extends React.Component {
   constructor(props) {
@@ -12,9 +13,10 @@ class ItemForm extends React.Component {
     };
 
     this.handleDescription = this.handleDescription.bind(this);
-    this.handleCid = this.handleCid.bind(this);
+    this.handleCollectionId = this.handleCollectionId.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleErrors = this.handleErrors.bind(this);
   }
 
   componentDidMount() {
@@ -25,13 +27,13 @@ class ItemForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({item: nextProps.item});
     this.setState({collections: nextProps.collections});
-    // this.setState({currentUser: this.props.currentUser});
   }
 
   handleDescription(e) {
     this.setState({description: e.target.value});
   }
-  handleCid(e) {
+
+  handleCollectionId(e) {
     this.setState({collection_id: e.currentTarget.value});
   }
 
@@ -53,7 +55,7 @@ class ItemForm extends React.Component {
     formData.append("item[description]", this.state.description);
     formData.append("item[image]", this.state.imageFile);
     formData.append("item[collection_id]", this.state.collection_id);
-    if (this.props.formType !== 'create') {
+    if (this.props.formType === 'edit') {
       formData.append("item[itemId]", this.props.item.id);
     }
 
@@ -61,10 +63,17 @@ class ItemForm extends React.Component {
     this.props.closeModal();
   }
 
+  handleErrors() {
+    if (this.props.errors[0]){
+      this.props.openModal({modal: 'Errors', item: `${this.props.errors}`});
+    }
+  }
+
   render() {
     let image;
     let header;
-    const { formType } = this.props;
+    const { formType, errors } = this.props;
+
 
     if (formType === 'create') {
       image = (
@@ -84,7 +93,7 @@ class ItemForm extends React.Component {
           <img className="item-img" src={this.props.item.image}></img>
         </div>
       );
-      header = <p className="form-header">{formType !== 'repin' ? 'Edit this item' : 'Save'}</p>;
+      header = <p className="form-header">{formType !== 'collect' ? 'Edit this item' : 'Save'}</p>;
     }
 
     if (this.props.collections[0]) {
@@ -95,7 +104,7 @@ class ItemForm extends React.Component {
       const collectionsList = Object.values(this.props.collections).map(collection => {
         return (
           <button
-            onClick={this.handleCid}
+            onClick={this.handleCollectionId}
             key={collection.id}
             value={collection.id}>
             <p className="collection-title">{collection.title}</p>
@@ -103,6 +112,8 @@ class ItemForm extends React.Component {
           </button>
         );
       });
+
+      this.handleErrors();
 
       return (
         <div className="create-item-background">
@@ -128,7 +139,9 @@ class ItemForm extends React.Component {
     } else {
 
       return (
-        <p>Loading</p>
+        <div>
+          <p>Loading</p>
+        </div>
       );
     }
   }

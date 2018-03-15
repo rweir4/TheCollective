@@ -21,7 +21,8 @@ class ItemEditForm extends React.Component {
       collections,
       formType,
       submitAction,
-      fetchUser
+      fetchUser,
+      errors
     } = this.props;
     return (
 
@@ -33,7 +34,8 @@ class ItemEditForm extends React.Component {
         collections={collections}
         formType={formType}
         submitAction={submitAction}
-        fetchUser={fetchUser} />
+        fetchUser={fetchUser}
+        errors={errors} />
     );
   }
 }
@@ -47,7 +49,8 @@ const mapStateToProps = (state, ownProps) => {
     collections: collections,
     formType: 'edit',
     currentUserId: state.session.currentUser,
-    currentUser
+    currentUser,
+    errors: state.errors.item
   };
 };
 

@@ -4,6 +4,7 @@ class Api::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+
     if @item.save
       render :show
     else
@@ -29,7 +30,6 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
-    puts "hi"
     @item = Item.find(params[:id])
   end
 

@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import CreateItemContainer from '../items/item_create_container';
 import EditItemContainer from '../items/item_edit_container';
+import CollectItemContainer from '../items/item_collect_container';
 import CreateCollectionContainer from '../collections/collection_create_container';
 import EditCollectionContainer from '../collections/edit_collection_container';
+import ErrorsList from '../errors/errors_list';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -30,11 +32,18 @@ class Modal extends React.Component {
       case 'EditItem':
         component = ( <EditItemContainer item={this.props.modal.item}/> );
         break;
+      case 'CollectItem':
+        component = ( <CollectItemContainer item={this.props.modal.item} />);
+        break;
       case 'CreateCollection':
         component = ( <CreateCollectionContainer />);
         break;
       case 'EditCollection':
-        component = ( <EditCollectionContainer item={this.props.modal.collection}/> );
+        component = ( <EditCollectionContainer item={this.props.modal.item}/> );
+        break;
+      case 'Errors':
+        component = ( <ErrorsList errors={this.props.modal.item} />);
+        break;
       default:
         return null;
     }

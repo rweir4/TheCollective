@@ -8,11 +8,23 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
   const item = state.entities.items[ownProps.match.params.itemId];
-  // 
+
+  let isCurrentUser;
+  let collection;
+  let author;
+  if (item) {
+    isCurrentUser = state.session.currentUser === item.author_id;
+    collection = state.entities.collections[item.collection_id];
+    author = state.entities.users[item.author_id];
+  }
+
+  
+
   return {
     item,
-    currentUser: state.entities.users[state.session.currentUser],
-    currentUserId: state.session.currentUser
+    isCurrentUser,
+    collection,
+    author
   };
 };
 

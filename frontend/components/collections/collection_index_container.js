@@ -8,9 +8,10 @@ import CollectionIndex from './collection_index';
 const mapStateToProps = (state, ownProps) => {
   const user = state.entities.users[ownProps.match.params.userId];
   const collections = selectUserCollections(state, user);
-  console.log(collections)
+
   return {
-    collections: selectUserCollections(state, user)
+    collections: selectUserCollections(state, user),
+    currentUserId: state.session.currentUser
   };
 };
 

@@ -1,5 +1,4 @@
-import { fetchCollection, fetchCollections, deleteCollection } from '../../actions/collection_actions';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchCollection, deleteCollection } from '../../actions/collection_actions';
 import { selectCollectionItems } from '../../reducers/selectors';
 import { connect } from 'react-redux';
 import CollectionShow from './collection_show';
@@ -7,19 +6,28 @@ import { withRouter } from 'react-router-dom';
 import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const collection = state.entities.collections[ownProps.match.params.collectionId];
+  const collection = state.entities.collections[ownProps.match.params.collectionId] || {};
+
+  let isCurrentUser;
+  let items;
+  let author;
+  if (collection) {
+    isCurrentUser = state.session.currentUser === collection.author_id;
+    author = state.entities.users[collection.author_id];
+    items = selectCollectionItems(state, collection);
+  }
+
   return {
     collection,
-    currentUser: state.entities.users[state.session.currentUser],
-    currentUserId: state.session.currentUser
+    items,
+    author,
+    isCurrentUser
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUser: id => dispatch(fetchUser(id)),
     fetchCollection: id => dispatch(fetchCollection(id)),
-    fetchCollections: () => dispatch(fetchCollections()),
     openModal: modal => dispatch(openModal(modal)),
     deleteCollection: id => dispatch(deleteCollection(id))
   };

@@ -20,7 +20,7 @@ class CollectionDetails extends React.Component {
 
   render() {
       let editBtn;
-      if (this.props.currentLoggedInUser.collection_ids.includes(this.props.collection.id)) {
+      if (this.props.isCurrentUser) {
         editBtn = (
           <button
             className="EditCollection"

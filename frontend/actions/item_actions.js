@@ -11,9 +11,11 @@ const receiveItems = (items) => ({
   items
 });
 
-export const receiveItem = ({item}) => ({
+export const receiveItem = ({item, user, collection}) => ({
   type: RECEIVE_ITEM,
-  item
+  item,
+  user,
+  collection
 });
 
 const removeItem = (itemId) => ({
