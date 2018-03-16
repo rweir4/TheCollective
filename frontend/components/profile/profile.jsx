@@ -39,7 +39,7 @@ class Profile extends React.Component {
       if (currentPageUser.id === currentLoggedInUser.id) {
         btn = (
           <button
-            className="add-collection-container"
+            className="add-item-container"
             onClick={() => openModal({modal:'CreateItem', item: undefined})}>
             <img src={window.red_item_btn} />
           </button>
@@ -55,7 +55,7 @@ class Profile extends React.Component {
         }
       );
 
-      toShowClass="item-list";
+      toShowClass="profile-item-list";
     } else {
       if (currentPageUser.id === currentLoggedInUser.id) {
         btn = (
@@ -69,6 +69,7 @@ class Profile extends React.Component {
 
       toShow = Object.values(collections).map(collection => {
         return ( <CollectionDetails
+          item={this.props.items[0]}
           isCurrentUser={currentLoggedInUser.id}
           openModal={openModal}
           key={collection.id}

@@ -35,7 +35,7 @@ class CollectionDetails extends React.Component {
         <div className="collection-details" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
           <Link to={`/collections/${this.props.collection.id}`}>
             <div className="collection-thumbnail">
-              hi
+              <img src={this.props.item.image} />
             </div>
             <p className="collection-description">{this.props.collection.title}</p>
             { editBtn }

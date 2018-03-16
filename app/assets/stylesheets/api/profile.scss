@@ -36,3 +36,40 @@
   background: #e8e8e8;
   border-radius: 20px;
 }
+
+.profile-item-list ul {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 2000px;
+  margin: 1.5%;
+}
+
+.add-collection-container {
+  margin: 20px 20px 0 20px;
+  width: 300px;
+  height: 200px;
+  background: grey;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.add-item-container {
+  display: inline-block;
+  margin: 20px 20px 20px 12px;
+  width: 225px;
+  height: 200px;
+  background: #EFEFEF;
+  border-radius: 10px;
+  padding: 5px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.add-item-container:hover {
+  filter: brightness(95%);
+}

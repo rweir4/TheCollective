@@ -1,0 +1,194 @@
+/* line 1, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.EditCollection {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+
+/* line 8, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.edit-img {
+  background: white;
+  padding: 10px;
+  border-radius: 50%;
+  overflow: visible;
+}
+
+/* line 15, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.addCollection {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+
+/* line 22, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.items {
+  padding-top: 15%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-height: 1000px;
+  margin: 1.5%;
+}
+/* line 29, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.items button {
+  margin-left: 10px;
+}
+
+/* line 34, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-show-title {
+  font-size: 50px;
+  color: #555555;
+  font-weight: 700;
+}
+
+/* line 40, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-info p {
+  font-family: 'PT Sans', sans-serif;
+  text-align: center;
+}
+
+/* line 45, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.edit-collection {
+  margin: auto;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  font-size: 20px;
+  color: #B5B5B5;
+  border: none;
+}
+
+/* line 55, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-add-item {
+  width: 236px;
+  height: 236px;
+  background: #EFEFEF;
+  border-radius: 10px;
+}
+/* line 60, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-add-item img {
+  margin: auto;
+  vertical-align: middle;
+  width: 40px;
+  height: 40px;
+}
+
+/* line 68, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-add-item:hover {
+  background: #B5B5B5;
+}
+
+/* line 72, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-details {
+  width: 300px;
+  height: 200px;
+  margin: 20px;
+  background: blue;
+}
+
+/* line 79, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.collection-list ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 30px;
+}
+
+/* line 87, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-background {
+  font-family: 'PT Sans', sans-serif;
+  background: white;
+  width: 600px;
+  height: 309px;
+  border-radius: 20px;
+}
+/* line 93, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-background h1 {
+  font-size: 24px;
+  font-family: 'PT Sans', sans-serif;
+  font-weight: 700;
+  padding: 20px;
+  color: #555555;
+}
+
+/* line 102, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container {
+  font-weight: 500;
+  position: relative;
+  margin: 0 20px 0 20px;
+}
+/* line 106, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container form {
+  position: relative;
+}
+/* line 108, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container form label {
+  color: #555555;
+}
+/* line 111, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container form button {
+  position: absolute;
+  top: 160px;
+  right: 30px;
+  padding: 10px;
+  background: #CD0000;
+  color: white;
+  font-size: 16px;
+  font-family: 'PT Sans', sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+}
+/* line 124, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container form button:hover {
+  filter: brightness(90%);
+}
+/* line 128, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container button {
+  position: absolute;
+  top: 160px;
+  right: 90px;
+  padding: 10px;
+  background: #e8e8e8;
+  color: #555555;
+  font-size: 16px;
+  font-family: 'PT Sans', sans-serif;
+  border-radius: 10px;
+  cursor: pointer;
+}
+/* line 141, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.create-collection-container button:hover {
+  filter: brightness(90%);
+}
+
+/* line 146, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.title-input {
+  width: 426px;
+  background: white;
+  border: 1px solid grey;
+  margin-left: 70px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 10px;
+}
+
+/* line 156, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.add-collection-container {
+  margin: 20px 20px 0 20px;
+  width: 300px;
+  height: 200px;
+  background: grey;
+}
+/* line 161, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.add-collection-container img {
+  width: 40px;
+  height: 40px;
+}
+
+/* line 167, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/collections.scss */
+.profile-item-list {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: 500px;
+  margin: 1.5%;
+}

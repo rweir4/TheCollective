@@ -1,0 +1,90 @@
+/* line 1, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-container {
+  position: relative;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e8e8e8;
+  padding: 0;
+  margin: 0;
+  position: sticky;
+  width: 100%;
+  font-family: 'PT Sans', sans-serif;
+}
+
+/* line 15, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-left {
+  display: flex;
+  justify-content: center;
+}
+
+/* line 20, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.home-btn {
+  background: #11ffee00;
+  padding: 8px;
+  margin: 5px;
+  align-items: center;
+}
+
+/* line 27, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+/* line 32, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.home-btn:active {
+  background: #e8e8e8;
+  border-radius: 30px;
+}
+
+/* line 37, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.search {
+  margin-left: 30px;
+  align-self: center;
+}
+
+/* line 42, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.search input {
+  align-self: center;
+  font-size: 16px;
+}
+
+/* line 47, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-right {
+  vertical-align: middle;
+  font-size: 16px;
+  color: #555555;
+  padding: 0 20px;
+  font-weight: 700;
+}
+/* line 48, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-right a {
+  padding: 10px;
+}
+/* line 51, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-right img {
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  padding: 5px;
+}
+/* line 58, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-right button {
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-left: 20px;
+}
+
+/* line 71, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-right > a:hover {
+  background: #e8e8e8;
+  border-radius: 20px;
+}
+
+/* line 77, /Users/rebeccaweir/Documents/TheCollective/app/assets/stylesheets/api/navBar.scss */
+.nav-bar-right > button:hover {
+  background: #e8e8e8;
+  border-radius: 20px;
+}
