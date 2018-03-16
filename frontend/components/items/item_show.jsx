@@ -48,8 +48,15 @@ class ItemShow extends React.Component {
                 </div>
                 <div className="item-info">
                   <p className="item-description-show">{item.description}</p>
-                  <Link to={`/collections/${this.props.collection.id}`}>{this.props.collection.title}</Link>
-                  <Link to={`/profile/${this.props.author.id}`}>{this.props.author.email}</Link>
+                  <br></br>
+                  <div className="link-container">
+                    <Link className="item-info-links" to={`/profile/${this.props.author.id}`}>
+                      <img src={this.props.author.image} />
+                      {this.props.author.email}
+                    </Link>
+                    <p> saved to </p>
+                    <Link className="item-info-links" to={`/collections/${this.props.collection.id}`}>{this.props.collection.title}</Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -46,7 +46,13 @@ class CollectionShow extends React.Component {
           </button>
         );
 
-        deleteBtn = ( <button onClick={this.removeCollection}>Delete Collection</button> );
+        deleteBtn = (
+          <button
+            className="delete-collection-show"
+            onClick={this.removeCollection}>
+            Delete Collection
+          </button>
+        );
 
       } else {
         editBtn = null;

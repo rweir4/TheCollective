@@ -1,7 +1,3 @@
-.col-description {
-
-  position: relative;
-}
 
 .EditCollection {
   position: absolute;
@@ -28,6 +24,7 @@
 
 .items {
   padding-top: 15%;
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -78,7 +75,7 @@
 
 .collection-details {
   width: 300px;
-  height: 200px;
+  height: 230px;
   margin: 20px;
   padding: 5px;
   border-radius: 10px;
@@ -86,6 +83,9 @@
 
 .collection-details:hover {
   background: #EFEFEF;
+  button {
+    background: #EFEFEF;
+  }
 }
 
 .collection-list ul {
@@ -123,9 +123,10 @@
     }
     textarea {
       position: absolute;
-      top: 50px;
-      left: 30px;
+      top: 0px;
+      left: 110px;
       padding: 10px;
+      width: 426px;
       border: 1px solid #555555;
       font-size: 16px;
       font-family: 'PT Sans', sans-serif;
@@ -166,12 +167,18 @@
   }
 }
 
+.col-description {
+  position: relative;
+  display: flex;
+}
+
 .description-label {
   position: absolute;
-  top: 60px;
+  top: 20px;
   color: #555555;
   font-size: 16px;
   font-family: 'PT Sans', sans-serif;
+  width: 426px;
 }
 
 .title-input {
@@ -186,4 +193,56 @@
 
 .collection-thumbnail img {
   border-radius: 10px;
+  display: flex;
+}
+
+.img-right {
+  float: right;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.img-1 {
+  float: left;
+  object-fit: cover;
+  height: 184px;
+  width: 150px;
+}
+
+.img-2 {
+  max-height: 100px;
+  object-fit: cover;
+}
+
+.img-3 {
+  object-fit: cover;
+  max-height: 100px;
+}
+
+.collection-description {
+  width: 300px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.collection-thumbnail:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.delete-collection-show {
+  position: relative;
+  top: -80px;
+  left: 10px;
+  padding: 10px;
+  color: #B5B5B5;
+}
+
+.delete-collection-show:hover {
+  background: #B5B5B5;
+  cursor: pointer;
+  border-radius: 5px;
+  color: white;
 }

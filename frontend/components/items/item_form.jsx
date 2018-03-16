@@ -91,8 +91,8 @@ class ItemForm extends React.Component {
 
     if (formType === 'create') {
       image = (
-        <div>
-          <div className="form-img-holder">
+        <div className="form-img-holder">
+          <div className="form-img-input">
             <input type="file" onChange={this.handleFile} />
             <img className="item-img" src={this.state.imageUrl} />
             <p>or upload via url:</p>

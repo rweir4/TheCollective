@@ -587,7 +587,7 @@ var removeItem = function removeItem(itemId) {
 };
 
 var receiveItemErrors = function receiveItemErrors(itemErrors) {
-  debugger;
+  ;
   return {
     type: RECEIVE_ITEM_ERRORS,
     itemErrors: itemErrors
@@ -39979,7 +39979,7 @@ var itemErrorsReducer = function itemErrorsReducer() {
   Object.freeze(state);
   switch (action.type) {
     case _item_actions.RECEIVE_ITEM_ERRORS:
-      debugger;
+      ;
       return action.itemErrors;
     default:
       return state;

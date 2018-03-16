@@ -31,15 +31,38 @@ class CollectionDetails extends React.Component {
       } else {
         editBtn = null;
       }
+
+      let items;
+      if (this.props.item[0]) {
+        items = (
+          <div>
+            <div className="img-left">
+              <img className="img-1" src={this.props.item[0].image} />
+            </div>
+            <div className="img-right">
+              <img className="img-2" src={this.props.item[1].image} />
+              <img className="img-3" src={this.props.item[2].image} />
+            </div>
+          </div>
+        );
+      } else {
+        items = (
+          <div>
+            No pins
+          </div>
+        );
+      }
+
+
       return (
         <div className="collection-details" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
           <Link to={`/collections/${this.props.collection.id}`}>
             <div className="collection-thumbnail">
-              <img src={this.props.item.image} />
+              { items }
             </div>
             <p className="collection-description">{this.props.collection.title}</p>
-            { editBtn }
           </Link>
+          { editBtn }
         </div>
       );
     }

@@ -69,7 +69,7 @@ class Profile extends React.Component {
 
       toShow = Object.values(collections).map(collection => {
         return ( <CollectionDetails
-          item={this.props.items[0]}
+          item={this.props.items.slice(0,3)}
           isCurrentUser={currentLoggedInUser.id}
           openModal={openModal}
           key={collection.id}
