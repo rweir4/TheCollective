@@ -26,6 +26,7 @@
   height: 367px;
   border: 2px dashed grey;
   border-radius: 10px;
+  padding-bottom: 10px;
 }
 
 .file-btn {
@@ -75,6 +76,7 @@
   padding: 8px;
   margin: 3px;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 .img-holder {
@@ -86,20 +88,23 @@
 }
 
 .item-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border-radius: 10px;
-  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 
 .item-info {
-  // padding: 50px;
   width: 300px;
   margin: auto;
 }
 
 .item-list {
   display: flex;
-  // flex-direction: column;
+  flex-direction: column;
   flex-wrap: wrap;
   max-height: 5000px;
   margin: 1.5%;
@@ -115,6 +120,7 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   color: #686868;
+  cursor: zoom-in;
 }
 
 .item-description-show {
@@ -143,6 +149,7 @@
   border-radius: 10px;
   max-height: 500px;
   overflow: hidden;
+  cursor: zoom-in;
 }
 
 .item-details:hover {
@@ -151,33 +158,37 @@
 }
 
 .collection-list-header {
-  padding: 10px;
+  padding: 20px;
   border-bottom: 1px solid grey;
+  font-size: 20px;
+  font-family: 'Roboto', sans-serif;
 }
 
 .collections-list-container {
-  float: right;
   position: absolute;
-  top: 0px;
-  left: 300px;
-  border: 1px solid grey;
-  width: 314px;
+  top: -63px;
+  left: 330px;
+  border-left: 1px solid grey;
+  width: 330px;
   button {
     padding: 15px;
   }
 }
 
 .collections-list {
-  height: 416px;
+  height: 622px;
   overflow: scroll;
+  width: 330px;
+  font-family: 'Roboto', sans-serif;
   button {
+    margin-right: 20px;
     cursor: pointer;
-    width: 300px;
+    width: 330px;
     display: flex;
     justify-content: space-between;
-    // align-items: center;
     text-align: center;
     border-bottom: 1px solid grey;
+    font-size: 16px;
   }
 }
 
@@ -186,9 +197,16 @@
 }
 
 .collect-btn {
-  margin-right: 20px;
-  height: 20px;
+  display: none;
+}
 
+.collections-list button:hover {
+  .collect-btn {
+    height: 20px;
+    display: block;
+    margin-right: 20px;
+    cursor: pointer;
+  }
 }
 
 .collection-title {
@@ -229,6 +247,9 @@
   width: 120px;
   height: 40px;
   border: none;
+  img {
+    cursor: pointer;
+  }
 }
 
 .addItem {

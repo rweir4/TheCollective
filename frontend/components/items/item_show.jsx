@@ -9,7 +9,7 @@ class ItemShow extends React.Component {
 
   render() {
 
-    if (this.props.collection) {
+    if (this.props.collection && this.props.author) {
 
       const { item, currentUser } = this.props;
 

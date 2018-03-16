@@ -22,7 +22,7 @@ class ItemDetails extends React.Component {
     const { isCurrentUser, item } = this.props;
     let collectBtn;
     let editBtn;
-    if (this.state.hover && isCurrentUser) {
+    if (this.state.hover) {
       collectBtn = (
         <div>
           <button

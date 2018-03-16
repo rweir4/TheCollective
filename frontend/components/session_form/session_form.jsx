@@ -54,7 +54,7 @@ class SessionForm extends React.Component {
               { this.props.formType === 'signup' ? null : <p>Not on The Collective yet?<Link to='/signup' className="signup-link">Sign Up</Link></p>}
             </div>
           </form>
-          <button onClick={this.props.demoLogin}>Demo Login</button>
+          <button className="demo" onClick={this.props.demoLogin}>Demo Login</button>
         </div>
       </div>
     );

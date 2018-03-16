@@ -101,3 +101,16 @@
   width: 70%;
   margin: 5px auto;
 }
+
+.demo {
+  margin-left: 34%;
+  margin-top: 5px;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.demo:hover {
+  background: #eaeaea;
+  border-radius: 20px;
+}
