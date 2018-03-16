@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## The Collective
 
-Things you may want to cover:
+<img src="app/assets/images/collective_Logo.png" align="middle"/>
 
-* Ruby version
+<img src="https://img.shields.io/badge/Ruby%20Version-2.3.1-red.svg" />  <img src="https://img.shields.io/badge/NPM%20Version-3.10.10-blue.svg"/>  <img src="https://img.shields.io/badge/Rails%20Version-%205.1.5-green.svg" />
 
-* System dependencies
+To get started, run bundle exec rails db:setup, bundle exec rails db:seed, and npm install.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+There is a demo login for a seeded account.

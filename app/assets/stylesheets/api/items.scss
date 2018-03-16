@@ -140,13 +140,23 @@
 }
 
 .item-list {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  max-height: 5000px;
-  margin: 1.5%;
-  // width: 100%;
-  // overflow: auto;
+  // display: flex;
+  // flex-direction: column;
+  // flex-wrap: wrap;
+  // max-height: 5000px;
+  // margin: 1.5%;
+  display: grid;
+  margin: 150px;
+}
+
+@media (min-width: 500px) {
+  .item-list {
+    grid-template-columns: repeat(auto-fit, 1fr);
+  }
+
+  .item-details {
+    
+  }
 }
 //max pin size
 //236x500
