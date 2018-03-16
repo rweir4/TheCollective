@@ -49,11 +49,16 @@
   margin: 20px 20px 0 20px;
   width: 300px;
   height: 200px;
-  background: grey;
+  background: #EFEFEF;
+  border-radius: 10px;
   img {
     width: 40px;
     height: 40px;
   }
+}
+
+.add-collection-container:hover {
+  filter: brightness(95%);
 }
 
 .add-item-container {

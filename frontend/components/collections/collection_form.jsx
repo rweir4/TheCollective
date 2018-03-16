@@ -33,14 +33,14 @@ class CollectionForm extends React.Component {
       let deleteCollection;
 
       if (this.props.formType === 'create') {
-        header = <p className="form-header">Add a Collection</p>
+        header = <p className="form-header">Add a Collection</p>;
         deleteCollection = null;
         description = null;
       } else {
-        header = <p className="form-header">Edit</p>
-        deleteCollection = <button onClick={() => this.props.deleteCollection(collection.id)}>Delete</button>
+        header = <p className="form-header">Edit</p>;
+        deleteCollection = <button onClick={() => this.props.deleteCollection(collection.id)}>Delete</button>;
         description = (
-          <label>Description
+          <label className="description-label">Description
             <textarea
               placeholder="What is your collection about?"
               className = "form-collection-description"
@@ -62,7 +62,9 @@ class CollectionForm extends React.Component {
                   value={this.state.title}
                   onChange={this.handleChange('title')}/>
               </label>
-              { description }
+              <div className="col-description">
+                { description }
+              </div>
               <button>Save</button>
             </form>
             { deleteCollection }

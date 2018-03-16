@@ -1,8 +1,15 @@
+.col-description {
+
+  position: relative;
+}
+
 .EditCollection {
+  position: absolute;
   cursor: pointer;
   width: 25px;
   height: 25px;
   border: none;
+  z-index: 5;
 }
 
 .edit-img {
@@ -73,7 +80,12 @@
   width: 300px;
   height: 200px;
   margin: 20px;
-  background: blue;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.collection-details:hover {
+  background: #EFEFEF;
 }
 
 .collection-list ul {
@@ -107,6 +119,17 @@
     position: relative;
     label {
       color: #555555;
+
+    }
+    textarea {
+      position: absolute;
+      top: 50px;
+      left: 30px;
+      padding: 10px;
+      border: 1px solid #555555;
+      font-size: 16px;
+      font-family: 'PT Sans', sans-serif;
+      border-radius: 10px;
     }
     button {
       position: absolute;
@@ -143,6 +166,14 @@
   }
 }
 
+.description-label {
+  position: absolute;
+  top: 60px;
+  color: #555555;
+  font-size: 16px;
+  font-family: 'PT Sans', sans-serif;
+}
+
 .title-input {
   width: 426px;
   background: white;
@@ -150,5 +181,9 @@
   margin-left: 70px;
   padding: 10px;
   font-size: 14px;
+  border-radius: 10px;
+}
+
+.collection-thumbnail img {
   border-radius: 10px;
 }
