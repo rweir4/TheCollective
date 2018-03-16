@@ -26,8 +26,7 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div>
-        <ErrorsList errors={this.props.errors} />
-        { <ErrorsList errors={ this.props.errors } /> ? this.props.errors.length > 0 : null }
+        { <ErrorsList errors={ this.props.errors } /> ? this.props.errors[0] : null }
         <div className="login-link-container">
           { this.props.formType === 'signup' ? <Link to='/login' className="login-link">Log in</Link> : <p></p>}
         </div>
