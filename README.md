@@ -2,7 +2,7 @@
 
 ## The Collective
 
-<img src="app/assets/images/collective_Logo.png" align="middle"/>
+<img src="app/assets/images/collective_Logo.png" align="middle" width="150px" height="150px"/>
 
 <img src="https://img.shields.io/badge/Ruby%20Version-2.3.1-red.svg" />  <img src="https://img.shields.io/badge/NPM%20Version-3.10.10-blue.svg"/>  <img src="https://img.shields.io/badge/Rails%20Version-%205.1.5-green.svg" />
 
