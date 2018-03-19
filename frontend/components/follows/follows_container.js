@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Follows from './follows';
+// import Follows from './follows';
 
 const mapStateToProps = state => {
   return {
@@ -11,6 +11,6 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchUser: id => dispatch(fetchUser(id)),
-    
+
   };
 };
