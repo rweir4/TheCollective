@@ -22,4 +22,6 @@ Preserving the images on AWS using paperclip presented a particular challange, b
 
 Accounting for automatic refresh, aka upon change state was another difficulty that was solved by sending formatting my json with adequate user information to which my reducers could add the appropriate information. This methodology was used for collections and items.
 
+Follows will soon be implemented so that only the items saved by a followed person will appear in the home feed.
+
 Search, notifications, and messaging are features to come.
