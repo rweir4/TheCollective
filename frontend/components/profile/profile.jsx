@@ -7,15 +7,26 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { showItems: 'collections' };
+    this.state = {
+      showItems: 'collections',
+      follows: false
+    };
     this.toggleItems = this.toggleItems.bind(this);
+    this.toggleFollow = this.toggleFollow.bind(this);
     this.determineShow = this.determineShow.bind(this);
   }
 
 
   componentDidMount() {
-    this.props.fetchUser(this.props.currentUserId);
-    this.props.fetchUser(this.props.match.params.userId);
+    const userId = this.props.match.params.userId;
+    this.props.fetchUser(this.props.currentUserId).then((user) => {
+      // debugger
+      if (user.user.follows.includes(userId)) {
+        this.setState({follows: true});
+      }
+    });
+
+    this.props.fetchUser(userId);
   }
 
   toggleItems(field) {
@@ -26,6 +37,15 @@ class Profile extends React.Component {
         this.setState({showItems: 'collections'});
       }
     };
+  }
+
+  toggleFollow() {
+    if (this.state.follow) {
+      this.setState({follow: false});
+      // this.addFollow();
+    } else {
+      this.setState({follow: true});
+    }
   }
 
   determineShow() {
@@ -121,6 +141,7 @@ class Profile extends React.Component {
               <p>{currentPageUser.email}</p>
               <p>{currentPageUser.bio}</p>
               <img src={currentPageUser.image} />
+              <button onClick={this.toggleFollow}>{this.state.follow ? 'Unfollow': 'Follow'}</button>
             </div>
             <div className="profile-nav">
               <button onClick={this.toggleItems('collections')}>Collections</button>
