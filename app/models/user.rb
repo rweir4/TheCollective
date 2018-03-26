@@ -6,9 +6,21 @@ class User < ApplicationRecord
   has_attached_file :image, default_url: "profile-me.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  has_many :follows
+  has_many :in_follows,
+    foreign_key: :followee_id,
+    class_name: :Follow
 
-  has_many :followers
+  has_many :out_follows,
+    foreign_key: :follower_id,
+    class_name: :Follow
+
+  has_many :followers,
+    through: :in_follows,
+    source: :follower
+
+  has_many :followees,
+    through: :out_follows,
+    source: :followee
 
   has_many :collections,
     class_name: :Collection,

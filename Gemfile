@@ -6,7 +6,6 @@ git_source(:github) do |repo_name|
 end
 gem 'jquery-rails'
 gem 'bcrypt'
-gem 'pry-rails'
 gem 'paperclip', '~> 5.0.0'
 gem 'figaro'
 gem 'aws-sdk', '< 3.0'
@@ -42,6 +41,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'pry-rails'
 end
 
 group :development do
