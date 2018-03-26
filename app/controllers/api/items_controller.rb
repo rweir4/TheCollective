@@ -26,6 +26,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def index
+    @follows = current_user.followees
     @items = Item.all
   end
 

@@ -55,7 +55,7 @@ class Profile extends React.Component {
         }
       );
 
-      toShowClass="profile-item-list";
+      toShowClass="item-list";
     } else {
       if (currentPageUser.id === currentLoggedInUser.id) {
         btn = (

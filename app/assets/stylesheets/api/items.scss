@@ -140,6 +140,8 @@
 .item-list {
   column-width: 236px;
   margin: 1% 1.5%;
+  height: 500px;
+  column-fill: balance;
 }
 
 .item-description {
@@ -167,12 +169,7 @@
   width: 232px;
 }
 
-.item-index {
-  // width: inherit;
-}
-
 .item-img-details {
-  // height: auto;
   width: 236px;
   border-radius: 10px;
   max-height: 500px;
@@ -183,7 +180,7 @@
 
 .item-details {
   display: inline-block;
-  // column-break-inside: avoid;
+  column-break-inside: avoid;
 }
 
 .item-details:hover {

@@ -70,7 +70,7 @@ class CollectionShow extends React.Component {
             { deleteBtn }
           </div>
           <div>
-            <ul className="items">
+            <ul className="item-list">
               <button
                 className="collection-add-item"
                 onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>
