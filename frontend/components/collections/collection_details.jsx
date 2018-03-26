@@ -32,27 +32,26 @@ class CollectionDetails extends React.Component {
         editBtn = null;
       }
 
-      let items;
-      if (this.props.item[0]) {
-        items = (
-          <div>
-            <div className="img-left">
-              <img className="img-1" src={this.props.item[0].image} />
-            </div>
-            <div className="img-right">
-              <img className="img-2" src={this.props.item[1].image} />
-              <img className="img-3" src={this.props.item[2].image} />
-            </div>
-          </div>
-        );
-      } else {
-        items = (
-          <div>
-            No pins
-          </div>
-        );
-      }
+      const images = [];
+      this.props.items.forEach(item => {
+        if (item) {
+          images.push(item.image);
+        } else {
+          images.push(window.default_img);
+        }
+      });
 
+      const items = (
+        <div>
+          <div className="img-left">
+            <img className="img-1" src={images[0]} />
+          </div>
+          <div className="img-right">
+            <img className="img-2" src={images[1]} />
+            <img className="img-3" src={images[2]} />
+          </div>
+        </div>
+      );
 
       return (
         <div className="collection-details" onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>

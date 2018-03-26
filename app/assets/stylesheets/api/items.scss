@@ -138,10 +138,21 @@
 }
 
 .item-list {
-  column-width: 236px;
-  margin: 1% 1.5%;
-  height: 500px;
   column-fill: balance;
+  // column-count: 4;
+  margin: 1% 1.5%;
+  // height: auto;
+  // width: 100%;
+  column-width: 236px;
+}
+
+.container-item-list {
+  column-fill: balance;
+  // column-count: 4;
+  margin: 10% 25%;
+  // height: auto;
+  // width: 100%;
+  column-width: 236px;
 }
 
 .item-description {

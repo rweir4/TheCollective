@@ -10,8 +10,6 @@ class CollectionShow extends React.Component {
     this.removeCollection = this.removeCollection.bind(this);
   }
   componentDidMount() {
-    // this.props.fetchCollections();
-    // this.props.fetchUser(this.props.currentUserId);
     this.props.fetchCollection(this.props.match.params.collectionId);
   }
 
@@ -70,7 +68,7 @@ class CollectionShow extends React.Component {
             { deleteBtn }
           </div>
           <div>
-            <ul className="item-list">
+            <ul className="container-item-list">
               <button
                 className="collection-add-item"
                 onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>

@@ -34,7 +34,6 @@ class Profile extends React.Component {
     let toShowClass;
     let toShow;
     let btn;
-
     if (this.state.showItems === 'items') {
       if (currentPageUser.id === currentLoggedInUser.id) {
         btn = (
@@ -67,15 +66,32 @@ class Profile extends React.Component {
         );
       }
 
+      let collectionItems;
+      let itemsInfo;
+      const that = Object.assign({}, this);
       toShow = Object.values(collections).map(collection => {
+        collectionItems = Object.values(collection.item_ids.slice(0,3));
+
+        itemsInfo = [];
+
+        collectionItems.forEach(item_id => {
+          that.props.items.forEach(item => {
+            if (item.id === item_id) {
+              itemsInfo.push(item);
+            }
+          });
+        });
+
+        //gonna need a default image for if the board doesnt have three
         return ( <CollectionDetails
-          item={this.props.items.slice(0,3)}
+          items={itemsInfo}
           isCurrentUser={currentLoggedInUser.id}
           openModal={openModal}
           key={collection.id}
-          collection={ collection } />
+          collection={ collection }/>
         );
       });
+
 
       toShowClass="collection-list";
     }

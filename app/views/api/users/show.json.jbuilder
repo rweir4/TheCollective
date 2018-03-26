@@ -5,7 +5,7 @@ end
 json.collections do
   @user.collections.each do |collection|
     json.set! collection.id do
-      json.extract! collection, :id, :title
+      json.extract! collection, :id, :title, :item_ids
     end
   end
 end
