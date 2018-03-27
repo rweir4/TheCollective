@@ -1,6 +1,7 @@
 import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions';
 import { RECEIVE_COLLECTION } from '../actions/collection_actions';
 import { RECEIVE_ITEM } from '../actions/item_actions';
+import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from '../actions/follows_actions';
 import { merge } from 'lodash';
 
 const usersReducer = (state = {}, action) => {
@@ -12,7 +13,12 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER:
     case RECEIVE_COLLECTION:
     case RECEIVE_ITEM:
+    case RECEIVE_FOLLOW:
       return merge({}, state, {[action.user.id]: action.user });
+    case REMOVE_FOLLOW:
+      const nextState = merge({}, state);
+      delete nextState.follows[action.id];
+      return nextState;
     default:
       return state;
   }

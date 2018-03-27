@@ -9,7 +9,8 @@ class Profile extends React.Component {
 
     this.state = {
       showItems: 'collections',
-      follows: false
+      follows: false,
+      clickable: true
     };
     this.toggleItems = this.toggleItems.bind(this);
     this.toggleFollow = this.toggleFollow.bind(this);
@@ -40,11 +41,20 @@ class Profile extends React.Component {
   }
 
   toggleFollow() {
-    if (this.state.follow) {
-      this.setState({follow: false});
-      // this.addFollow();
-    } else {
-      this.setState({follow: true});
+    if (this.state.follow && this.state.clickable) {
+      this.setState({clickable: false});
+
+      this.props.createFollow(this.props.currentPageUser.id).then(() => {
+        this.setState({follow: false});
+        this.setState({clickable: true});
+      });
+    } else if (!this.state.follow && this.state.clickable) {
+      this.setState({clickable: false});
+
+      this.props.deleteFollow(this.props.currentPageUser.id).then(() => {
+        this.setState({follow: true});
+        this.setState({clickable: true});
+      });
     }
   }
 
@@ -90,6 +100,7 @@ class Profile extends React.Component {
       let itemsInfo;
       const that = Object.assign({}, this);
       toShow = Object.values(collections).map(collection => {
+        // debugger
         collectionItems = Object.values(collection.item_ids.slice(0,3));
 
         itemsInfo = [];
@@ -124,7 +135,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (this.props.collections[0] && this.props.items[0]) {
+    if (this.props.collections[0] && this.props.items[0] && this.props.currentPageUser) {
 
       const { currentPageUser, currentLoggedInUser, openModal, collections, items } = this.props;
 

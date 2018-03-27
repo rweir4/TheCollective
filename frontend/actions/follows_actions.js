@@ -23,6 +23,6 @@ export const createFollow = (id) => dispatch => {
   return FollowsAPIUtil.createFollow(id).then(payload => dispatch(receive_follow(payload)));
 };
 
-export const deleteFollow = (user_id, id) => dispatch => {
-  return FollowsAPIUtil.deleteFollow(user_id, id).then(payload => dispatch(remove_follow(payload)));
+export const deleteFollow = (id) => dispatch => {
+  return FollowsAPIUtil.deleteFollow(id).then(payload => dispatch(remove_follow(payload)));
 };
