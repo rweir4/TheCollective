@@ -13,11 +13,23 @@ const usersReducer = (state = {}, action) => {
     case RECEIVE_USER:
     case RECEIVE_COLLECTION:
     case RECEIVE_ITEM:
+    return merge({}, state, {[action.user.id]: action.user });
     case RECEIVE_FOLLOW:
-      return merge({}, state, {[action.user.id]: action.user });
+      return merge({}, state,
+        {[action.follower_id.follows]:
+         state[action.follower_id].follows.push(action.followee_id)
+        },
+        {[action.followee_id.followers]:
+          state[action.followee_id].followers.push(action.follower_id)
+        });
     case REMOVE_FOLLOW:
       const nextState = merge({}, state);
-      delete nextState.follows[action.id];
+
+      debugger
+      delete nextState[action.follower_id.follows].followee_id;
+      delete nextState[action.followee_id.followers].follower_id;
+      debugger
+
       return nextState;
     default:
       return state;

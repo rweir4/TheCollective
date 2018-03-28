@@ -33,12 +33,14 @@ class ItemDetails extends React.Component {
         </div>
       );
 
+      //
+
       if (isCurrentUser) {
         editBtn = (
           <button
             className="edit-btn"
             onClick={() => this.props.openModal({modal: 'EditItem', item })}>
-            <i class="fas fa-pencil-alt"></i>
+            <i className="fas fa-pencil-alt"></i>
           </button>
         );
       } else {

@@ -4,6 +4,7 @@ import NavBarContainer from '../navBar/nav_bar_container';
 import { ProtectedRoute } from '../../util/route_util';
 import { Route } from 'react-router-dom';
 import ErrorsList from '../errors/errors_list';
+import Loading from '../loading';
 
 class ItemIndex extends React.Component {
 
@@ -20,7 +21,9 @@ class ItemIndex extends React.Component {
   render() {
 
     if (this.props.items[0]) {
+
       let isCurrentUser;
+
       const items = this.props.items.map(item => {
         isCurrentUser = item.author_id === this.props.currentUserId;
         return ( <ItemDetails
@@ -31,11 +34,13 @@ class ItemIndex extends React.Component {
         );
       });
 
+      const errors = this.handleErrors();
+
       return (
         <div className="parent-index">
           <div>
             <ProtectedRoute path="/" component={ NavBarContainer } />
-            {this.handleErrors}
+            { errors }
             <ul className="item-list">
               { items }
             </ul>
@@ -51,11 +56,11 @@ class ItemIndex extends React.Component {
       return (
         <div>
           <ProtectedRoute path="/" component={ NavBarContainer } />
-          <p>Loading</p>
+          <Loading />
         </div>
       );
     }
   }
-};
+}
 
 export default ItemIndex;

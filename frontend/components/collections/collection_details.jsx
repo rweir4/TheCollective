@@ -25,30 +25,21 @@ class CollectionDetails extends React.Component {
           <button
             className="EditCollection"
             onClick={() => this.props.openModal({modal:'EditCollection', item: this.props.collection})}>
-            <i class="fas fa-pencil-alt"></i>
+            <i className="fas fa-pencil-alt"></i>
           </button>
         );
       } else {
         editBtn = null;
       }
 
-      const images = [];
-      this.props.items.forEach(item => {
-        if (item) {
-          images.push(item.image);
-        } else {
-          images.push(window.default_img);
-        }
-      });
-
       const items = (
         <div>
           <div className="img-left">
-            <img className="img-1" src={images[0]} />
+            <img className="img-1" src={this.props.items[0]} />
           </div>
           <div className="img-right">
-            <img className="img-2" src={images[1]} />
-            <img className="img-3" src={images[2]} />
+            <img className="img-2" src={this.props.items[1]} />
+            <img className="img-3" src={this.props.items[2]} />
           </div>
         </div>
       );

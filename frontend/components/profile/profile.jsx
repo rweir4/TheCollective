@@ -2,6 +2,7 @@ import React from 'react';
 import ItemDetails from '../items/item_details';
 import CollectionDetails from '../collections/collection_details';
 import NavBarContainer from '../navBar/nav_bar_container';
+import Loading from '../loading';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -20,14 +21,28 @@ class Profile extends React.Component {
 
   componentDidMount() {
     const userId = this.props.match.params.userId;
+    const that = this;
     this.props.fetchUser(this.props.currentUserId).then((user) => {
-      // debugger
-      if (user.user.follows.includes(userId)) {
-        this.setState({follows: true});
+      if (user.user.follows.includes(parseInt(userId))) {
+        that.setState({follows: true});
       }
     });
 
     this.props.fetchUser(userId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    const userId = newProps.match.params.userId;
+    const that = this;
+    if (userId != this.props.currentPageUser.id) {
+      this.props.fetchUser(this.props.match.params.userId).then((user) => {
+        if (this.props.currentLoggedInUser.follows.includes(parseInt(userId))) {
+          that.setState({follows: true});
+        } else {
+          that.setState({follows: false});
+        }
+      });
+    }
   }
 
   toggleItems(field) {
@@ -41,18 +56,18 @@ class Profile extends React.Component {
   }
 
   toggleFollow() {
-    if (this.state.follow && this.state.clickable) {
+    if (this.state.follows && this.state.clickable) {
       this.setState({clickable: false});
 
-      this.props.createFollow(this.props.currentPageUser.id).then(() => {
-        this.setState({follow: false});
+      this.props.deleteFollow(this.props.currentPageUser.id, this.props.currentUserId).then(() => {
+        this.setState({follows: false});
         this.setState({clickable: true});
       });
     } else if (!this.state.follow && this.state.clickable) {
       this.setState({clickable: false});
 
-      this.props.deleteFollow(this.props.currentPageUser.id).then(() => {
-        this.setState({follow: true});
+      this.props.createFollow(this.props.currentPageUser.id).then(() => {
+        this.setState({follows: true});
         this.setState({clickable: true});
       });
     }
@@ -60,10 +75,10 @@ class Profile extends React.Component {
 
   determineShow() {
     const { currentPageUser, currentLoggedInUser, openModal, collections, items } = this.props;
-
     let toShowClass;
     let toShow;
     let btn;
+    let follow;
     if (this.state.showItems === 'items') {
       if (currentPageUser.id === currentLoggedInUser.id) {
         btn = (
@@ -100,7 +115,6 @@ class Profile extends React.Component {
       let itemsInfo;
       const that = Object.assign({}, this);
       toShow = Object.values(collections).map(collection => {
-        // debugger
         collectionItems = Object.values(collection.item_ids.slice(0,3));
 
         itemsInfo = [];
@@ -108,12 +122,15 @@ class Profile extends React.Component {
         collectionItems.forEach(item_id => {
           that.props.items.forEach(item => {
             if (item.id === item_id) {
-              itemsInfo.push(item);
+              itemsInfo.push(item.image);
             }
           });
         });
 
-        //gonna need a default image for if the board doesnt have three
+        while (itemsInfo.length < 3) {
+          itemsInfo.push(window.default_img);
+        }
+
         return ( <CollectionDetails
           items={itemsInfo}
           isCurrentUser={currentLoggedInUser.id}
@@ -125,17 +142,24 @@ class Profile extends React.Component {
 
 
       toShowClass="collection-list";
-    }
 
+      if (currentPageUser.id !== currentLoggedInUser.id) {
+        follow = ( <button onClick={this.toggleFollow}>{this.state.follows ? 'Unfollow': 'Follow'}</button> );
+      }
+    }
     return {
       btn: btn,
       toShow: toShow,
-      toShowClass: toShowClass
+      toShowClass: toShowClass,
+      follow: follow
     };
   }
 
   render() {
-    if (this.props.collections[0] && this.props.items[0] && this.props.currentPageUser) {
+    if (this.props.collections[0] &&
+      this.props.items[0] &&
+      this.props.currentPageUser &&
+      this.props.currentLoggedInUser) {
 
       const { currentPageUser, currentLoggedInUser, openModal, collections, items } = this.props;
 
@@ -143,6 +167,7 @@ class Profile extends React.Component {
       const btn = show.btn;
       const toShow = show.toShow;
       const toShowClass = show.toShowClass;
+      const follow = show.follow;
 
       return (
         <div>
@@ -152,7 +177,7 @@ class Profile extends React.Component {
               <p>{currentPageUser.email}</p>
               <p>{currentPageUser.bio}</p>
               <img src={currentPageUser.image} />
-              <button onClick={this.toggleFollow}>{this.state.follow ? 'Unfollow': 'Follow'}</button>
+              { follow }
             </div>
             <div className="profile-nav">
               <button onClick={this.toggleItems('collections')}>Collections</button>
@@ -169,7 +194,7 @@ class Profile extends React.Component {
       );
     } else {
       return (
-        <div>Loading</div>
+        <Loading />
       );
     }
   }

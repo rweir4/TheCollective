@@ -12,7 +12,6 @@ const itemsReducer = (state = {}, action) => {
     case RECEIVE_USER:
       return merge({}, state, action.items);
     case RECEIVE_ITEM:
-    case RECEIVE_USER:
       return merge({}, state, {[action.item.id]: action.item});
     case REMOVE_ITEM:
       const nextState = merge({}, state);

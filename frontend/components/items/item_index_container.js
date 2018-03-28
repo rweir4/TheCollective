@@ -4,11 +4,13 @@ import { fetchUser } from '../../actions/user_actions';
 import { connect } from 'react-redux';
 import ItemIndex from './item_index';
 
-const mapStateToProps = state => ({
-  items: Object.values(state.entities.items),
-  currentUserId: state.session.currentUser,
-  errors: state.errors.item
-});
+const mapStateToProps = state => {
+  return {
+    items: Object.values(state.entities.items),
+    currentUserId: state.session.currentUser,
+    errors: state.errors.item
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchUser: id => dispatch(fetchUser(id)),

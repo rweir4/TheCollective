@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     createFollow: id => dispatch(createFollow(id)),
-    deleteFollow: id => dispatch(deleteFollow(id)),
+    deleteFollow: (id, user_id) => dispatch(deleteFollow(id, user_id)),
     fetchItems: () => dispatch(fetchItems()),
     openModal: modal => dispatch(openModal(modal)),
     fetchUser: id => dispatch(fetchUser(id))

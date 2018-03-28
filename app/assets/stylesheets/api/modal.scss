@@ -1,21 +1,16 @@
 .outer-modal {
   position: absolute;
   z-index: 10;
-  // background: black;
   width: 100%;
   height: 5000px;
-  // opacity: 0.5;
   padding-top: 60px;
   background-color: rgba(45,45,45,0.8);
   cursor: zoom-out;
 }
 
 .inner-modal {
-  position: fixed;
-  // align-self: center;
-  top: 60px;
-  left: 32%;
-  // right: 0;
+  margin: 0 auto;
+  width: max-content;
   opacity: 1;
   cursor: default;
   z-index: 20;

@@ -27,7 +27,6 @@ class Api::ItemsController < ApplicationController
 
   def index
     @follows = current_user.followees
-    @items = Item.all
   end
 
   def show

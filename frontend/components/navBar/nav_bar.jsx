@@ -17,7 +17,9 @@ class NavBar extends React.Component {
 
   goHome(e) {
     e.preventDefault();
-    this.props.history.push('/');
+    if (this.props.history.location.pathname !== '/') {
+      this.props.history.push('/');
+    }
   }
 
   //move search to own container/element
@@ -43,7 +45,7 @@ class NavBar extends React.Component {
           </div>
           <div className="nav-bar-right">
             <Link to={`/profile/${this.props.currentUser.id}`}>
-              <img className src={this.props.currentUser.image} />
+              <img src={this.props.currentUser.image} />
               {this.props.currentUser.email}
             </Link>
             <button onClick={this.handleLogout}>Logout</button>

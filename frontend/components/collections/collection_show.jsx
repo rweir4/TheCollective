@@ -40,7 +40,7 @@ class CollectionShow extends React.Component {
           <button
             className="edit-collection"
             onClick={() => this.props.openModal({modal:'EditCollection', item: this.props.collection})}>
-            <i class="fas fa-pencil-alt"></i>
+            <i className="fas fa-pencil-alt"></i>
           </button>
         );
 
