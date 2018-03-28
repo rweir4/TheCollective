@@ -11,7 +11,8 @@ class ItemIndex extends React.Component {
   componentDidMount() {
     this.props.fetchItems();
     this.props.fetchUser(this.props.currentUserId);
-    this.handleErrors = this.handleErrors.bind(this);
+
+    // this.handleErrors = this.handleErrors.bind(this);
   }
 
   handleErrors() {

@@ -9,6 +9,7 @@ class Profile extends React.Component {
     super(props);
 
     this.state = {
+      items: this.props.items,
       showItems: 'collections',
       follows: false,
       clickable: true
@@ -25,6 +26,7 @@ class Profile extends React.Component {
     this.props.fetchUser(this.props.currentUserId).then((user) => {
       if (user.user.follows.includes(parseInt(userId))) {
         that.setState({follows: true});
+        that.setState({items: this.props.items});
       }
     });
 
@@ -34,6 +36,12 @@ class Profile extends React.Component {
   componentWillReceiveProps(newProps) {
     const userId = newProps.match.params.userId;
     const that = this;
+    if (!newProps.items[0]) {
+      return null;
+    } else {
+      // debugger
+      // that.setState({items: newProps.items});
+    }
     if (userId != this.props.currentPageUser.id) {
       this.props.fetchUser(this.props.match.params.userId).then((user) => {
         if (this.props.currentLoggedInUser.follows.includes(parseInt(userId))) {
@@ -43,6 +51,7 @@ class Profile extends React.Component {
         }
       });
     }
+    that.setState({items: newProps.items});
   }
 
   toggleItems(field) {
@@ -74,7 +83,8 @@ class Profile extends React.Component {
   }
 
   determineShow() {
-    const { currentPageUser, currentLoggedInUser, openModal, collections, items } = this.props;
+    const { currentPageUser, currentLoggedInUser, openModal, collections } = this.props;
+    const { items } = this.state;
     let toShowClass;
     let toShow;
     let btn;
@@ -116,11 +126,10 @@ class Profile extends React.Component {
       const that = Object.assign({}, this);
       toShow = Object.values(collections).map(collection => {
         collectionItems = Object.values(collection.item_ids.slice(0,3));
-
         itemsInfo = [];
 
         collectionItems.forEach(item_id => {
-          that.props.items.forEach(item => {
+          that.state.items.forEach(item => {
             if (item.id === item_id) {
               itemsInfo.push(item.image);
             }
@@ -157,11 +166,12 @@ class Profile extends React.Component {
 
   render() {
     if (this.props.collections[0] &&
-      this.props.items[0] &&
+      this.state.items[0] &&
       this.props.currentPageUser &&
       this.props.currentLoggedInUser) {
 
-      const { currentPageUser, currentLoggedInUser, openModal, collections, items } = this.props;
+      const { currentPageUser, currentLoggedInUser, openModal, collections } = this.props;
+      const { items } = this.state;
 
       const show = this.determineShow();
       const btn = show.btn;

@@ -12,6 +12,7 @@ const receive_follow = ({followee_id, follower_id}) => {
 };
 
 const remove_follow = ({followee_id, follower_id}) => {
+  // debugger
   return {
     type: REMOVE_FOLLOW,
     followee_id,

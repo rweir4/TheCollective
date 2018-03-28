@@ -24,12 +24,8 @@ const usersReducer = (state = {}, action) => {
         });
     case REMOVE_FOLLOW:
       const nextState = merge({}, state);
-
-      debugger
-      delete nextState[action.follower_id.follows].followee_id;
-      delete nextState[action.followee_id.followers].follower_id;
-      debugger
-
+      delete nextState[action.follower_id].follows.followee_id;
+      delete nextState[action.followee_id].followers.follower_id;
       return nextState;
     default:
       return state;

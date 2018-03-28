@@ -295,9 +295,15 @@
   float: right;
   bottom: 50px;
   right: 50px;
-  cursor: pointer;
   width: 39px;
   height: 39px;
+  img {
+    cursor: pointer;
+  }
+}
+
+.addItem:hover {
+  filter: brightness(90%);
 }
 
 .back {
