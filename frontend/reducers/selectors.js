@@ -27,3 +27,15 @@ export const selectCollectionItems = (state, collection) => {
     return [];
   }
 };
+
+export const selectUserFollowsItems = (state, user) => {
+  if (user.follows) {
+    return user.follows.forEach(user => {
+      return user.item_ids.map(item => {
+        return state.entities.items[item_id];
+      });
+    });
+  } else {
+    return [];
+  }
+};

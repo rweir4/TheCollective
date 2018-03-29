@@ -39,6 +39,7 @@ class NavBar extends React.Component {
           <div className="nav-bar-left">
             <button className="home-btn" onClick={this.goHome}><img src={window.logo} className="logo"/></button>
             <div className="search">
+              <img src={window.search} />
               <input placeholder="Search" value={this.state.search} onChange={this.handleSearch} />
             </div>
 

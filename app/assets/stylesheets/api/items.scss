@@ -16,9 +16,8 @@
 }
 
 .form-img-holder {
-  margin-left: 50px;
-  background: black;
-  background: #fcfcfc;
+  background: #eaeaea;
+  margin-left: 40px;
   width: 232px;
   height: 367px;
   border: 2px dashed grey;
@@ -28,15 +27,34 @@
 
 .form-img-input {
   position: relative;
+  margin-top: 115px;
+  font-family: 'Open Sans', sans-serif;
   input {
+    font-size: 14px;
     display: block;
     position: absolute;
-    left: 50px;
+    left: 27px;
   }
-}
 
-.file-btn {
-  padding-left: 35px;
+  textarea {
+    border: 1px solid grey;
+    border-radius: 5px;
+    top: 100px;
+    padding: 10px;
+    left: 27px;
+    font-size: 14px;
+    display: block;
+    position: absolute;
+    background: #fcfcfc;
+  }
+
+  p {
+    font-size: 14px;
+    position: absolute;
+    left: 65px;
+    top: 50px;
+    text-align: center;
+  }
 }
 
 .collect-bar {
@@ -144,12 +162,6 @@
   width: 96.5%;
 }
 
-// .container-item-list {
-//   column-fill: balance;
-//   margin: 10% 25%;
-//   column-width: 236px;
-// }
-
 .item-description {
   max-height: 38px;
   overflow: hidden;
@@ -166,17 +178,24 @@
 }
 
 .form-item-description {
-  max-height: 38px;
-  overflow: hidden;
+  height: 100px;
+  width: 230px;
+  margin: 10px 0 0 45px;
+  overflow: scroll;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
+  font-size: 14px;
   color: #686868;
-  margin-left: 50px;
-  width: 232px;
+}
+
+.delete-item-btn {
+  display: block;
+  margin: 80px 0 10px 10px;
 }
 
 .item-img-details {
   width: 236px;
+  margin: auto;
   border-radius: 10px;
   max-height: 500px;
   overflow: hidden;
@@ -207,23 +226,19 @@
   left: 330px;
   border-left: 1px solid grey;
   width: 330px;
-  button {
-    padding: 15px;
-  }
 }
 
 .collections-list {
-  height: 622px;
+  height: 615px;
   overflow: scroll;
-  width: 330px;
+  width: 329px;
   font-family: 'Roboto', sans-serif;
   button {
-    margin-right: 20px;
+    width: 329px;
+    height: 52px;
     cursor: pointer;
-    width: 330px;
     display: flex;
     justify-content: space-between;
-    text-align: center;
     border-bottom: 1px solid grey;
     font-size: 16px;
   }
@@ -238,17 +253,20 @@
 }
 
 .collections-list button:hover {
+  align-items: center;
   .collect-btn {
-    height: 50px;
+    box-sizing: border-box;
+    width: 85px;
     display: block;
-    margin-right: 20px;
+    margin-right: 24px;
     cursor: pointer;
   }
 }
 
 .collection-title {
-  text-align: center;
-
+  text-align: left;
+  margin-left: 24px;
+  cursor: pointer;
 }
 
 .parent-index {

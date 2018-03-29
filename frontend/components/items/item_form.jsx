@@ -35,6 +35,7 @@ class ItemForm extends React.Component {
 
   removeItem() {
     this.props.deleteItem(this.props.item.id).then(() => {
+      this.props.closeModal();
       this.props.history.push('/');
     });
   }
@@ -86,6 +87,7 @@ class ItemForm extends React.Component {
   render() {
     let image;
     let header;
+    let deleteBtn;
     const { formType, errors } = this.props;
 
 
@@ -96,10 +98,12 @@ class ItemForm extends React.Component {
             <input type="file" onChange={this.handleFile} />
             <img className="item-img" src={this.state.imageUrl} />
             <p>or upload via url:</p>
-            <input placeholder="url" type="text" onChange={this.handleURL}/>
+            <textarea placeholder="url" type="text" onChange={this.handleURL}/>
           </div>
         </div>
       );
+
+      deleteBtn = '';
 
       header = ( <p className="form-header">Create an Item</p> );
 
@@ -110,6 +114,7 @@ class ItemForm extends React.Component {
         </div>
       );
       header = <p className="form-header">{formType !== 'collect' ? 'Edit this item' : 'Save'}</p>;
+      deleteBtn = <button className="delete-item-btn" onClick={this.removeItem}>Delete</button>;
     }
 
     if (this.props.collections[0]) {
@@ -138,10 +143,11 @@ class ItemForm extends React.Component {
             <form onSubmit={this.handleSubmit}>
               { image }
               <textarea
-                className = "form-item-description"
+                placeholder="Description..."
+                className="form-item-description"
                 value={this.state.description}
                 onChange={this.handleDescription} />
-              <button className="delete-item-btn" onClick={this.removeItem}>Delete</button>
+              { deleteBtn }
               <div className="collections-list-container">
                 <p className="collection-list-header">Choose a Collection</p>
                 <ul className="collections-list">

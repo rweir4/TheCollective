@@ -61,6 +61,11 @@ class ItemShow extends React.Component {
               </div>
             </div>
           </div>
+          <button
+            className="addItem"
+            onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>
+            <img src={window.white_item_btn} />
+          </button>
         </div>
       );
     } else {
