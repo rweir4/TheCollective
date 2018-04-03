@@ -11,14 +11,7 @@ class ItemIndex extends React.Component {
   componentDidMount() {
     this.props.fetchItems();
     this.props.fetchUser(this.props.currentUserId);
-
-    // this.handleErrors = this.handleErrors.bind(this);
   }
-
-  handleErrors() {
-    return this.props.errors[0] ? this.props.openModal({modal: 'Errors', item: this.props.errors}) : null;
-  }
-
   render() {
 
     if (this.props.items[0]) {
@@ -35,13 +28,10 @@ class ItemIndex extends React.Component {
         );
       });
 
-      const errors = this.handleErrors();
-
       return (
         <div className="parent-index">
           <div>
             <ProtectedRoute path="/" component={ NavBarContainer } />
-            { errors }
             <ul className="item-list">
               { items }
             </ul>

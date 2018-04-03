@@ -13,6 +13,7 @@
   box-shadow: 5px black;
   font-family: 'PT Sans', sans-serif;
   font-weight: 700;
+  position: relative;
 }
 
 .login-link-container {
@@ -113,4 +114,10 @@
 .demo:hover {
   background: #eaeaea;
   border-radius: 20px;
+}
+
+#session-errors {
+  position: absolute;
+  top: 135px;
+  right: -150px;
 }

@@ -382,3 +382,11 @@
 .collect-item-show:hover {
   filter: brightness(90%);
 }
+
+.be-translucent {
+  opacity: .5;
+}
+
+.turn-opaque {
+  opacity: 1;
+}

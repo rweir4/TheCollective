@@ -1,6 +1,7 @@
 import { signup, demoLogin } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import SessionForm from './session_form';
+import { clearSessionErrors } from '../../actions/session_actions';
 
 const mapStateToProps = state => {
   return {
@@ -14,7 +15,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     submitAction: (user) => dispatch(signup(user)),
-    demoLogin: () => dispatch(demoLogin())
+    demoLogin: () => dispatch(demoLogin()),
+    clearSessionErrors: () => dispatch(clearSessionErrors())
   };
 };
 

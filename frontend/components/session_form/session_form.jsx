@@ -9,6 +9,7 @@ class SessionForm extends React.Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
   }
 
   handleChange(field) {
@@ -23,12 +24,18 @@ class SessionForm extends React.Component {
     this.setState({email: '', password: ''});
   }
 
+  demoLogin() {
+    this.props.demoLogin();
+    this.props.clearSessionErrors();
+  }
+
   render() {
+    const { clearSessionErrors } = this.props;
+
     return (
       <div>
-        { <ErrorsList errors={ this.props.errors } /> ? this.props.errors[0] : null }
         <div className="login-link-container">
-          { this.props.formType === 'signup' ? <Link to='/login' className="login-link">Log in</Link> : <p></p>}
+          { this.props.formType === 'signup' ? <Link to='/login' onClick={() => clearSessionErrors()} className="login-link">Log in</Link> : <p></p>}
         </div>
         <div className="session-form-container">
           <img src={window.logo} id="session-logo" className="logo"/>
@@ -54,7 +61,8 @@ class SessionForm extends React.Component {
               { this.props.formType === 'signup' ? null : <p>Not on The Collective yet?<Link to='/signup' className="signup-link">Sign Up</Link></p>}
             </div>
           </form>
-          <button className="demo" onClick={this.props.demoLogin}>Demo Login</button>
+          <button className="demo" onClick={this.demoLogin}>Demo Login</button>
+          { this.props.errors[0] ? <ErrorsList errors={ this.props.errors } type="session-errors"/> : null }
         </div>
       </div>
     );

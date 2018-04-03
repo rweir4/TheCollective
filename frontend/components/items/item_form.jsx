@@ -14,12 +14,13 @@ class ItemForm extends React.Component {
       url: ''
     };
 
+    // this.submitable = false;
+
     this.handleDescription = this.handleDescription.bind(this);
     this.handleURL = this.handleURL.bind(this);
     this.handleCollectionId = this.handleCollectionId.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleErrors = this.handleErrors.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
 
@@ -74,13 +75,10 @@ class ItemForm extends React.Component {
       formData.append("item[itemId]", this.props.item.id);
     }
 
-    this.props.submitAction(formData);
-    this.props.closeModal();
-  }
-
-  handleErrors() {
-    if (this.props.errors[0]){
-      this.props.openModal({modal: 'Errors', item: `${this.props.errors}`});
+    if (this.state.imageFile || this.state.url) {
+      this.props.submitAction(formData).then(() => {
+         this.props.closeModal();
+      });
     }
   }
 
@@ -134,9 +132,15 @@ class ItemForm extends React.Component {
         );
       });
 
-      this.handleErrors();
+      if (this.state.imageFile || this.state.url) {
+        const collectionsListTranslucent = document.querySelector('.collections-list');
+
+        collectionsListTranslucent.classList.remove('be-translucent');
+        collectionsListTranslucent.classList.add('turn-opaque');
+      }
 
       return (
+
         <div className="create-item-background">
           <div className="create-item-container">
             <h1>{ header }</h1>
@@ -150,7 +154,7 @@ class ItemForm extends React.Component {
               { deleteBtn }
               <div className="collections-list-container">
                 <p className="collection-list-header">Choose a Collection</p>
-                <ul className="collections-list">
+                <ul className="collections-list be-translucent">
                   { collectionsList }
                 </ul>
               </div>
