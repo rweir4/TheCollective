@@ -35,7 +35,18 @@ class Api::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id]) || current_user
+    string = false;
+    params[:id].chars.each do |letter|
+      if ("a".."z").include?(letter)
+        string = true;
+      end
+    end
+
+    if string
+      @user = User.find_by(email: params[:id])
+    else
+      @user = User.find(params[:id])
+    end
   end
 
   def destroy
