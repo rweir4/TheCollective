@@ -16,6 +16,7 @@
 }
 
 .form-img-holder {
+  position: relative;
   background: #eaeaea;
   margin-left: 40px;
   width: 232px;
@@ -30,6 +31,7 @@
   margin-top: 115px;
   font-family: 'Open Sans', sans-serif;
   input {
+    width: 175px;
     font-size: 14px;
     display: block;
     position: absolute;
@@ -111,6 +113,10 @@
 }
 
 .item-img {
+  // position: sticky;
+  // z-index: 5;
+  // top: 350;
+  // left: 300;
   display: block;
   border-radius: 10px;
   max-width: 100%;

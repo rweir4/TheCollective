@@ -90,16 +90,24 @@ class ItemForm extends React.Component {
 
 
     if (formType === 'create') {
-      image = (
-        <div className="form-img-holder">
-          <div className="form-img-input">
-            <input type="file" onChange={this.handleFile} />
-            <img className="item-img" src={this.state.imageUrl} />
-            <p>or upload via url:</p>
-            <textarea placeholder="url" type="text" onChange={this.handleURL}/>
+      if (this.state.imageFile) {
+        image = (
+          <div className="form-img-holder">
+            <img className="item-img" src={this.state.imageUrl}></img>
           </div>
-        </div>
-      );
+        );
+      } else {
+        image = (
+          <div className="form-img-holder">
+            <div className="form-img-input">
+              <input type="file" onChange={this.handleFile} />
+              <img className="item-img" src={this.state.imageUrl} />
+              <p>or upload via url:</p>
+              <textarea placeholder="url" type="text" onChange={this.handleURL}/>
+            </div>
+          </div>
+        );
+      }
 
       deleteBtn = '';
 
