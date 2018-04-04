@@ -11,7 +11,8 @@ class ItemForm extends React.Component {
       collection_id: '',
       imageFile: this.props.item.image,
       imageUrl: null,
-      url: ''
+      url: '',
+      loaded: false
     };
 
     // this.submitable = false;
@@ -140,12 +141,14 @@ class ItemForm extends React.Component {
         );
       });
 
-      if (this.state.imageFile || this.state.url) {
+      if (this.state.loaded) {
         const collectionsListTranslucent = document.querySelector('.collections-list');
-
+        // debugger
         collectionsListTranslucent.classList.remove('be-translucent');
         collectionsListTranslucent.classList.add('turn-opaque');
       }
+
+      this.state.loaded = true;
 
       return (
 
