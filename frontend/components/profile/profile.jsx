@@ -39,7 +39,7 @@ class Profile extends React.Component {
     if (!newProps.items[0]) {
       return null;
     } else {
-      // debugger
+      // 
       // that.setState({items: newProps.items});
     }
     if (userId != this.props.currentPageUser.id) {
