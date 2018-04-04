@@ -143,7 +143,7 @@ class ItemForm extends React.Component {
 
       if (this.state.loaded) {
         const collectionsListTranslucent = document.querySelector('.collections-list');
-        // debugger
+        
         collectionsListTranslucent.classList.remove('be-translucent');
         collectionsListTranslucent.classList.add('turn-opaque');
       }
