@@ -1,6 +1,7 @@
 import { updateItem, fetchItem, deleteItem } from '../../actions/item_actions';
 import { fetchCollections } from '../../actions/collection_actions';
 import { fetchUser } from '../../actions/user_actions';
+import { makeOpaque } from '../../actions/ui_actions';
 import { selectUserCollections } from '../../reducers/selectors';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -24,7 +25,9 @@ class ItemEditForm extends React.Component {
       formType,
       submitAction,
       fetchUser,
-      errors
+      makeOpaque,
+      errors,
+      loaded
     } = this.props;
     return (
 
@@ -38,7 +41,9 @@ class ItemEditForm extends React.Component {
         formType={formType}
         submitAction={submitAction}
         fetchUser={fetchUser}
-        errors={errors} />
+        makeOpaque={makeOpaque}
+        errors={errors}
+        loaded={loaded} />
     );
   }
 }
@@ -53,7 +58,8 @@ const mapStateToProps = (state, ownProps) => {
     formType: 'edit',
     currentUserId: state.session.currentUser,
     currentUser,
-    errors: state.errors.item
+    errors: state.errors.item,
+    loaded: state.ui.style.loaded
   };
 };
 
@@ -62,6 +68,7 @@ const mapDispatchToProps = dispatch => {
     fetchUser: id => dispatch(fetchUser(id)),
     fetchCollections: () => dispatch(fetchCollections()),
     fetchItem: id => dispatch(fetchItem(id)),
+    makeOpaque: () => dispatch(makeOpaque()),
     submitAction: item => dispatch(updateItem(item)),
     closeModal: () => dispatch(closeModal()),
     deleteItem: id => dispatch(deleteItem(id))

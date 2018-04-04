@@ -12,10 +12,8 @@ class ItemForm extends React.Component {
       imageFile: this.props.item.image,
       imageUrl: null,
       url: '',
-      loaded: false
+      // loaded: false
     };
-
-    // this.submitable = false;
 
     this.handleDescription = this.handleDescription.bind(this);
     this.handleURL = this.handleURL.bind(this);
@@ -33,6 +31,8 @@ class ItemForm extends React.Component {
   componentWillReceiveProps(nextProps) {
     this.setState({item: nextProps.item});
     this.setState({collections: nextProps.collections});
+
+    this.setState({loaded: nextProps.loaded});
   }
 
   removeItem() {
@@ -54,12 +54,19 @@ class ItemForm extends React.Component {
     this.setState({collection_id: e.currentTarget.value});
   }
 
+  // handleTranslucence() {
+  //   if (this.props.loaded === 'false' && (this.state.imageFile || this.state.url)) {
+  //     this.props.makeOpaque();
+  //   }
+  // }
+
   handleFile(e) {
     const file = e.currentTarget.files[0];
 
     const fileReader = new FileReader();
     fileReader.onloadend = () => {
       this.setState({imageFile: file, imageUrl: fileReader.result });
+      this.props.makeOpaque();
     };
 
     fileReader.readAsDataURL(file);
@@ -76,7 +83,7 @@ class ItemForm extends React.Component {
       formData.append("item[itemId]", this.props.item.id);
     }
 
-    if (this.state.imageFile || this.state.url) {
+    if (this.props.loaded) {
       this.props.submitAction(formData).then(() => {
          this.props.closeModal();
       });
@@ -127,7 +134,7 @@ class ItemForm extends React.Component {
     if (this.props.collections[0]) {
 
 
-      const { collections } = this.props;
+      const { collections, loaded } = this.props;
 
       const collectionsList = Object.values(this.props.collections).map(collection => {
         return (
@@ -141,14 +148,9 @@ class ItemForm extends React.Component {
         );
       });
 
-      if (this.state.loaded) {
-        const collectionsListTranslucent = document.querySelector('.collections-list');
-        
-        collectionsListTranslucent.classList.remove('be-translucent');
-        collectionsListTranslucent.classList.add('turn-opaque');
-      }
+      const classOpaque = this.props.loaded === 'true' ? 'turn-opaque' : 'be-translucent';
 
-      this.state.loaded = true;
+      // this.handleTranslucence();
 
       return (
 
@@ -165,7 +167,7 @@ class ItemForm extends React.Component {
               { deleteBtn }
               <div className="collections-list-container">
                 <p className="collection-list-header">Choose a Collection</p>
-                <ul className="collections-list be-translucent">
+                <ul className={`collections-list ${classOpaque}`}>
                   { collectionsList }
                 </ul>
               </div>
