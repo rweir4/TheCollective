@@ -7,7 +7,6 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const collection = state.entities.collections[ownProps.match.params.collectionId] || {};
-
   let isCurrentUser;
   let items;
   let author;

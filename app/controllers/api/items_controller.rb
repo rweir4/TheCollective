@@ -17,7 +17,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def update
-    debugger
+
     @item = current_user.items.find(params[:id])
     if @item.update(item_params)
       render :show
@@ -35,12 +35,13 @@ class Api::ItemsController < ApplicationController
   end
 
   def destroy
-    debugger
+
     @item = current_user.items.find(params[:id])
     @item.destroy
-    @items = Item.all
-    @follows = current_user.followees
-    render :index
+    # @items = Item.all
+    # @follows = current_user.followees
+    
+    render :show
   end
 
   private

@@ -36,6 +36,7 @@ class CollectionShow extends React.Component {
 
       let editBtn;
       let deleteBtn;
+      let addItemBtn;
       if (isCurrentUser) {
         editBtn = (
           <button
@@ -53,9 +54,18 @@ class CollectionShow extends React.Component {
           </button>
         );
 
+        addItemBtn = (
+          <button
+            className="collection-add-item"
+            onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>
+            <img src={window.red_item_btn} />
+          </button>
+        )
+
       } else {
         editBtn = null;
         deleteBtn = null;
+        addItemBtn = null;
       }
 
       return (
@@ -70,11 +80,7 @@ class CollectionShow extends React.Component {
           </div>
           <div>
             <ul className="item-list">
-              <button
-                className="collection-add-item"
-                onClick={() => this.props.openModal({modal:'CreateItem', item: undefined})}>
-                <img src={window.red_item_btn} />
-              </button>
+              { addItemBtn }
               { itemsList }
             </ul>
           </div>

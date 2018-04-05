@@ -39,7 +39,7 @@ class ItemForm extends React.Component {
   removeItem(e) {
     e.preventDefault();
     this.props.deleteItem(this.props.item.id).then(() => {
-      debugger
+      
       this.props.closeModal();
       if (this.props.history.location.pathname !== '/') {
         this.props.history.push('/');

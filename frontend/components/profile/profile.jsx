@@ -99,6 +99,7 @@ class Profile extends React.Component {
           </button>
         );
       }
+
       toShow = Object.values(items).map(item => {
           return ( <ItemDetails
             isCurrentUser={currentLoggedInUser.id}
@@ -140,9 +141,10 @@ class Profile extends React.Component {
           itemsInfo.push(window.default_img);
         }
 
+        const isCurrentUser = currentPageUser.id === currentLoggedInUser.id
         return ( <CollectionDetails
           items={itemsInfo}
-          isCurrentUser={currentLoggedInUser.id}
+          isCurrentUser={isCurrentUser}
           openModal={openModal}
           key={collection.id}
           collection={ collection }/>
@@ -166,6 +168,8 @@ class Profile extends React.Component {
 
   render() {
     if (
+      this.props.collections[0] &&
+      this.props.items[0] &&
       this.props.currentPageUser &&
       this.props.currentLoggedInUser) {
 

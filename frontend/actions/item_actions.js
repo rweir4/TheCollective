@@ -18,10 +18,13 @@ export const receiveItem = ({item, user, collection}) => ({
   collection
 });
 
-const removeItem = (itemId) => ({
-  type: REMOVE_ITEM,
-  itemId
-});
+const removeItem = ({item, collection}) => {
+  return {
+    type: REMOVE_ITEM,
+    itemId: item.id,
+    collectionId: collection.id
+  };
+};
 
 const receiveItemErrors = itemErrors => {
 
@@ -50,9 +53,7 @@ export const updateItem = item => dispatch => {
 };
 
 export const deleteItem = itemId => dispatch => {
-debugger
-  return ItemAPIUtil.deleteItem(itemId).then(item => {
-debugger
-    dispatch(removeItem(itemId));
+  return ItemAPIUtil.deleteItem(itemId).then(payload => {
+    dispatch(removeItem(payload));
   });
 };

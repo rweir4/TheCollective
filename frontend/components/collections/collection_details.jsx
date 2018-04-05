@@ -21,6 +21,7 @@ class CollectionDetails extends React.Component {
   render() {
       let editBtn;
       if (this.props.isCurrentUser) {
+        
         editBtn = (
           <button
             className="EditCollection"

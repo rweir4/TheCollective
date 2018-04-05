@@ -6,10 +6,10 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # @user.in_follows.new(follower_id: 51)
 
     if @user.save
       login(@user)
+      @follow = Follow.create(follower_id: @user.id, followee_id: User.first.id)
       render :show
     else
       render json: @user.errors.full_messages, status: 422
