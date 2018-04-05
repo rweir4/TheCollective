@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 class ItemShow extends React.Component {
   componentDidMount() {
+    window.scroll(0,0);
     this.props.fetchItem(this.props.match.params.itemId);
   }
 

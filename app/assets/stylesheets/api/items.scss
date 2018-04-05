@@ -171,12 +171,16 @@
   font-weight: 500;
   color: #686868;
   cursor: zoom-in;
+  text-overflow: ellipsis;
 }
 
 .item-description-show {
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   color: #686868;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .form-item-description {

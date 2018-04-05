@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    # @user.in_follows.new(follower_id: 51)
 
     if @user.save
       login(@user)

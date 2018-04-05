@@ -20,6 +20,7 @@ class ItemEditForm extends React.Component {
       deleteItem,
       closeModal,
       item,
+      currentUserId,
       currentUser,
       collections,
       formType,

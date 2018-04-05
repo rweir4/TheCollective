@@ -25,8 +25,8 @@ class ItemForm extends React.Component {
 
 
   componentDidMount() {
+    window.scroll(0,0);
     this.props.fetchCollections();
-    this.props.fetchUser(this.props.currentUserId);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,15 +36,14 @@ class ItemForm extends React.Component {
     this.setState({loaded: nextProps.loaded});
   }
 
-  removeItem() {
+  removeItem(e) {
+    e.preventDefault();
     this.props.deleteItem(this.props.item.id).then(() => {
+      debugger
       this.props.closeModal();
-      // if (this.props.history.location.pathname !== '/') {
-      //   this.props.history.push('/');
-      // } else {
-      //   // this.props.history.push(`/profile/${this.props.currentUserId}`);
-      //   this.setState({itemRemoved: true});
-      // }
+      if (this.props.history.location.pathname !== '/') {
+        this.props.history.push('/');
+      }
     });
   }
 

@@ -17,6 +17,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def update
+    debugger
     @item = current_user.items.find(params[:id])
     if @item.update(item_params)
       render :show
@@ -34,7 +35,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def destroy
-
+    debugger
     @item = current_user.items.find(params[:id])
     @item.destroy
     @items = Item.all

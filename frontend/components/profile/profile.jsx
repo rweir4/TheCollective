@@ -165,8 +165,7 @@ class Profile extends React.Component {
   }
 
   render() {
-    if (this.props.collections[0] &&
-      this.state.items[0] &&
+    if (
       this.props.currentPageUser &&
       this.props.currentLoggedInUser) {
 

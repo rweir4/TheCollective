@@ -11,6 +11,10 @@ class CollectionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    window.scroll(0,0);
+  }
+
   handleChange(field) {
     return (e) => {
       this.setState({[field]: e.target.value});

@@ -10,6 +10,7 @@ class CollectionShow extends React.Component {
     this.removeCollection = this.removeCollection.bind(this);
   }
   componentDidMount() {
+    window.scroll(0,0);
     this.props.fetchCollection(this.props.match.params.collectionId);
   }
 
