@@ -50,9 +50,9 @@ export const updateItem = item => dispatch => {
 };
 
 export const deleteItem = itemId => dispatch => {
-  debugger
+
   return ItemAPIUtil.deleteItem(itemId).then(item => {
-    debugger
+
     dispatch(removeItem(itemId));
   });
 };

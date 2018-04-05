@@ -34,7 +34,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def destroy
-    debugger
+
     @item = current_user.items.find(params[:id])
     @item.destroy
     @items = Item.all
