@@ -6,6 +6,7 @@ class CollectionForm extends React.Component {
     super(props);
 
     this.state = this.props.collection;
+    this.state.description = "";
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -33,9 +34,9 @@ class CollectionForm extends React.Component {
       let deleteCollection;
 
       if (this.props.formType === 'create') {
-        header = <p className="form-header">Add a Collection</p>;
+        header = (<p className="form-header">Add a Collection</p>);
         deleteCollection = null;
-        description = null;
+        description = "";
       } else {
         header = <p className="form-header">Edit</p>;
         deleteCollection = <button onClick={() => this.props.deleteCollection(collection.id)}>Delete</button>;

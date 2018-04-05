@@ -47,7 +47,9 @@ class ItemForm extends React.Component {
   }
 
   handleURL(e) {
+    this.props.makeOpaque();
     this.setState({imageFile: e.target.value});
+    this.setState({imageUrl: e.target.value});
   }
 
   handleCollectionId(e) {

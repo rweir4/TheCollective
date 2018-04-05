@@ -29,7 +29,7 @@ class ItemShow extends React.Component {
       return (
         <div className="item-show">
           <button className="back" onClick={this.props.history.goBack}>
-            <i class="fa fa-angle-left"></i>
+            <i className="fa fa-angle-left"></i>
             <p>Back</p>
           </button>
           <div className="item-container-outer">
