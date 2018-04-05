@@ -24,7 +24,7 @@ const removeItem = (itemId) => ({
 });
 
 const receiveItemErrors = itemErrors => {
-  
+
   return {
     type: RECEIVE_ITEM_ERRORS,
     itemErrors
@@ -50,5 +50,9 @@ export const updateItem = item => dispatch => {
 };
 
 export const deleteItem = itemId => dispatch => {
-  return ItemAPIUtil.deleteItem(itemId).then(item => dispatch(removeItem(itemId)));
+  debugger
+  return ItemAPIUtil.deleteItem(itemId).then(item => {
+    debugger
+    dispatch(removeItem(itemId));
+  });
 };

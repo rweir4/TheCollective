@@ -11,7 +11,8 @@ class ItemForm extends React.Component {
       collection_id: '',
       imageFile: this.props.item.image,
       imageUrl: null,
-      url: ''
+      url: '',
+      itemRemoved: false
     };
 
     this.handleDescription = this.handleDescription.bind(this);
@@ -38,7 +39,12 @@ class ItemForm extends React.Component {
   removeItem() {
     this.props.deleteItem(this.props.item.id).then(() => {
       this.props.closeModal();
-      this.props.history.push('/');
+      // if (this.props.history.location.pathname !== '/') {
+      //   this.props.history.push('/');
+      // } else {
+      //   // this.props.history.push(`/profile/${this.props.currentUserId}`);
+      //   this.setState({itemRemoved: true});
+      // }
     });
   }
 

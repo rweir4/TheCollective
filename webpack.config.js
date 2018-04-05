@@ -20,7 +20,7 @@ var prodPlugins = [
 
 plugins = plugins.concat(
   process.env.NODE_ENV === 'production' ? prodPlugins : devPlugins
-)
+);
 
 module.exports = {
   context: __dirname,
@@ -44,5 +44,6 @@ module.exports = {
   devtool: 'source-map',
   resolve: {
     extensions: [".js", ".jsx", "*"]
-  }
+  },
+  plugins
 };
