@@ -11,7 +11,7 @@ import ItemForm from './item_form';
 const mapStateToProps = (state) => {
   const currentUser = state.entities.users[state.session.currentUser] || {};
   const collections = selectUserCollections(state, currentUser);
-  debugger
+  
   return {
     item: {description: '', image: '', collection_id: ''},
     collections,

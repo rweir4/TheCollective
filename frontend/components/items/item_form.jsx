@@ -11,8 +11,7 @@ class ItemForm extends React.Component {
       collection_id: '',
       imageFile: this.props.item.image,
       imageUrl: null,
-      url: '',
-      // loaded: false
+      url: ''
     };
 
     this.handleDescription = this.handleDescription.bind(this);
@@ -22,6 +21,7 @@ class ItemForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeItem = this.removeItem.bind(this);
   }
+
 
   componentDidMount() {
     this.props.fetchCollections();
@@ -53,12 +53,6 @@ class ItemForm extends React.Component {
   handleCollectionId(e) {
     this.setState({collection_id: e.currentTarget.value});
   }
-
-  // handleTranslucence() {
-  //   if (this.props.loaded === 'false' && (this.state.imageFile || this.state.url)) {
-  //     this.props.makeOpaque();
-  //   }
-  // }
 
   handleFile(e) {
     const file = e.currentTarget.files[0];
@@ -148,9 +142,12 @@ class ItemForm extends React.Component {
         );
       });
 
-      const classOpaque = this.props.loaded === 'true' ? 'turn-opaque' : 'be-translucent';
-
-      // this.handleTranslucence();
+      let classOpaque;
+      if (this.props.loaded === 'true' || this.props.formType !== 'create') {
+        classOpaque = 'turn-opaque';
+      } else {
+        classOpaque = 'be-translucent';
+      }
 
       return (
 

@@ -39,7 +39,7 @@ class Profile extends React.Component {
     if (!newProps.items[0]) {
       return null;
     } else {
-      // 
+      //
       // that.setState({items: newProps.items});
     }
     if (userId != this.props.currentPageUser.id) {
@@ -153,7 +153,7 @@ class Profile extends React.Component {
       toShowClass="collection-list";
 
       if (currentPageUser.id !== currentLoggedInUser.id) {
-        follow = ( <button onClick={this.toggleFollow}>{this.state.follows ? 'Unfollow': 'Follow'}</button> );
+        follow = ( <button className="follow" onClick={this.toggleFollow}>{this.state.follows ? 'Unfollow': 'Follow'}</button> );
       }
     }
     return {
@@ -186,8 +186,8 @@ class Profile extends React.Component {
             <div className="profile-info">
               <p>{currentPageUser.email}</p>
               <p>{currentPageUser.bio}</p>
-              <img src={currentPageUser.image} />
               { follow }
+              <img src={currentPageUser.image} />
             </div>
             <div className="profile-nav">
               <button onClick={this.toggleItems('collections')}>Collections</button>

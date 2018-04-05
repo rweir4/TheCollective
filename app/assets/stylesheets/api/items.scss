@@ -231,6 +231,7 @@
 }
 
 .collections-list {
+  border-radius: 10px;
   height: 615px;
   overflow: scroll;
   width: 329px;
@@ -391,4 +392,26 @@
 
 .turn-opaque {
   opacity: 1;
+}
+
+.follow {
+  background: #C90000;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  margin-top: 100px;
+  margin-left: 185px;
+  padding: 10px;
+  height: 22px;
+  width: 60px;
+  border-radius: 20px;
+}
+
+.follow:hover {
+  background: #a80101;
+  cursor: pointer;
+}
+
+.follow:active {
+  transform: translate(1px, 1px);
 }
