@@ -6,17 +6,22 @@ export const REMOVE_ITEM = 'REMOVE_ITEM';
 export const RECEIVE_ITEM_ERRORS = 'RECEIVE_ITEM_ERRORS';
 
 
-const receiveItems = (items) => ({
-  type: RECEIVE_ITEMS,
-  items
-});
+const receiveItems = (items) => {
+  return {
+    type: RECEIVE_ITEMS,
+    items
+  };
+};
 
-export const receiveItem = ({item, user, collection}) => ({
-  type: RECEIVE_ITEM,
-  item,
-  user,
-  collection
-});
+export const receiveItem = ({item, user, collection}) => {
+
+  return {
+    type: RECEIVE_ITEM,
+    item,
+    user,
+    collection
+  };
+};
 
 const removeItem = ({item, collection}) => {
   return {

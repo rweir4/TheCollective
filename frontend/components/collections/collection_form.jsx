@@ -1,4 +1,5 @@
 import React from 'react';
+import Loading from '../loading';
 import { Redirect } from 'react-router-dom';
 
 class CollectionForm extends React.Component {
@@ -79,7 +80,7 @@ class CollectionForm extends React.Component {
       );
     } else {
       return (
-        <p>Loading</p>
+        <Loading/>
       );
     }
   }

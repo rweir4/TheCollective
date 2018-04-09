@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ErrorsList from '../errors/errors_list';
+import Loading from '../loading';
 import { withRouter } from 'react-router-dom';
 
 class ItemForm extends React.Component {
@@ -188,11 +189,7 @@ class ItemForm extends React.Component {
 
     } else {
 
-      return (
-        <div>
-          <p>Loading</p>
-        </div>
-      );
+      return <Loading/>;
     }
   }
 }

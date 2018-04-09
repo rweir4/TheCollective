@@ -20,6 +20,7 @@ export const selectUserItems = (state, user) => {
 
 export const selectCollectionItems = (state, collection) => {
   if (collection.item_ids) {
+    
     return collection.item_ids.map(item_id => {
       return state.entities.items[item_id];
     });

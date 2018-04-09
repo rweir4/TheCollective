@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-//import repin form
+import Loading from '../loading';
 
 class ItemShow extends React.Component {
   componentDidMount() {
@@ -70,7 +70,7 @@ class ItemShow extends React.Component {
         </div>
       );
     } else {
-      return <p>Loading</p>
+      return <Loading/>
     }
   }
 }

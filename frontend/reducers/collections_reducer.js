@@ -20,6 +20,7 @@ const collectionsReducer = (state = {}, action) => {
     case REMOVE_ITEM:
       const currItems = nextState[action.collectionId].item_ids.filter(itemId => itemId !== action.itemId);
       nextState[action.collectionId].item_ids = currItems;
+
       return nextState;
     default:
       return state;

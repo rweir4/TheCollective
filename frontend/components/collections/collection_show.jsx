@@ -1,17 +1,30 @@
 import React from 'react';
 import ItemDetails from '../items/item_details';
+import Loading from '../loading';
 import NavBarContainer from '../navBar/nav_bar_container';
 import { ProtectedRoute } from '../../util/route_util';
 
 class CollectionShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      items: this.props.items
+    };
 
     this.removeCollection = this.removeCollection.bind(this);
   }
   componentDidMount() {
     window.scroll(0,0);
     this.props.fetchCollection(this.props.match.params.collectionId);
+  }
+
+  componentWillReceiveProps(newProps) {
+
+    if (!newProps.items[0]) {
+      return null;
+    } else {
+      this.setState({items: newProps.items});
+    }
   }
 
   removeCollection () {
@@ -26,7 +39,8 @@ class CollectionShow extends React.Component {
     if (this.props.collection) {
       const { isCurrentUser, items, author, collection } = this.props;
 
-      const itemsList = Object.values(items).map(item => {
+      const itemsList = Object.values(this.state.items).map(item => {
+        debugger
         return ( <ItemDetails
           openModal={this.props.openModal}
           isCurrentUser={isCurrentUser}
@@ -92,7 +106,7 @@ class CollectionShow extends React.Component {
         </div>
       );
     } else {
-      return ( <p>Loading</p> );
+      return <Loading/>;
     }
   }
 }
