@@ -10,7 +10,6 @@ const itemsReducer = (state = {}, action) => {
   let nextState;
   switch (action.type) {
     case RECEIVE_ITEMS:
-
     case RECEIVE_COLLECTION:
     case RECEIVE_USER:
       return merge({}, state, action.items);
@@ -28,6 +27,7 @@ const itemsReducer = (state = {}, action) => {
           itemsToDelete.push(item.id);
         }
       });
+
       itemsToDelete.forEach(itemId => {
         delete nextState[itemId];
       });

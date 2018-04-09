@@ -39,7 +39,7 @@ class ItemForm extends React.Component {
   removeItem(e) {
     e.preventDefault();
     this.props.deleteItem(this.props.item.id).then(() => {
-      
+
       this.props.closeModal();
       if (this.props.history.location.pathname !== '/') {
         this.props.history.push('/');
@@ -80,7 +80,7 @@ class ItemForm extends React.Component {
     formData.append("item[description]", this.state.description);
     formData.append("item[image]", this.state.imageFile);
     formData.append("item[collection_id]", this.state.collection_id);
-    if (this.props.formType === 'edit') {
+    if (this.props.formType !== 'create') {
       formData.append("item[itemId]", this.props.item.id);
     }
 
@@ -128,8 +128,14 @@ class ItemForm extends React.Component {
           <img className="item-img" src={this.props.item.image}></img>
         </div>
       );
+
       header = <p className="form-header">{formType !== 'collect' ? 'Edit this item' : 'Save'}</p>;
-      deleteBtn = <button className="delete-item-btn" onClick={this.removeItem}>Delete</button>;
+
+      if (this.props.currentUser.item_ids.includes(this.props.item.id)) {
+        deleteBtn = <button className="delete-item-btn" onClick={this.removeItem}>Delete</button>;
+      } else {
+        deleteBtn = null;
+      }
     }
 
     if (this.props.collections[0]) {

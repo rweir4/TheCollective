@@ -2,12 +2,13 @@ import { createItem, fetchItem } from '../../actions/item_actions';
 import { fetchCollections } from '../../actions/collection_actions';
 import { fetchUser } from '../../actions/user_actions';
 import { selectUserCollections } from '../../reducers/selectors';
+import { makeOpaque } from '../../actions/ui_actions';
 import { connect } from 'react-redux';
 import { closeModal } from '../../actions/modal_actions';
 import ItemForm from './item_form';
 import React from 'react';
 
-class ItemEditForm extends React.Component {
+class ItemCollectForm extends React.Component {
   componentDidMount() {
     this.props.fetchItem(this.props.item.id);
   }
@@ -50,7 +51,8 @@ const mapStateToProps = (state, ownProps) => {
     formType: 'collect',
     currentUserId: state.session.currentUser,
     currentUser,
-    errors: state.errors.item
+    errors: state.errors.item,
+    loaded: state.ui.style.loaded
   };
 };
 
@@ -59,9 +61,11 @@ const mapDispatchToProps = dispatch => {
     fetchUser: id => dispatch(fetchUser(id)),
     fetchCollections: () => dispatch(fetchCollections()),
     fetchItem: id => dispatch(fetchItem(id)),
-    submitAction: item => dispatch(createItem(item)),
-    closeModal: () => dispatch(closeModal())
+    makeOpaque: () => dispatch(makeOpaque()),
+    submitAction: item => dispatch(updateItem(item)),
+    closeModal: () => dispatch(closeModal()),
+    deleteItem: id => dispatch(deleteItem(id))
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ItemEditForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ItemCollectForm);

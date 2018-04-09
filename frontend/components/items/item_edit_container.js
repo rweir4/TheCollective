@@ -52,9 +52,10 @@ class ItemEditForm extends React.Component {
 const mapStateToProps = (state, ownProps) => {
   const currentUser = state.entities.users[state.session.currentUser] || {};
   const collections = selectUserCollections(state, currentUser);
-
+  const item = state.ui.modal.item
+  
   return {
-    item: state.ui.modal.item,
+    item,
     collections: collections,
     formType: 'edit',
     currentUserId: state.session.currentUser,

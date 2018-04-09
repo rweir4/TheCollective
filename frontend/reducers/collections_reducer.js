@@ -17,11 +17,9 @@ const collectionsReducer = (state = {}, action) => {
       return nextState;
     case RECEIVE_ITEM:
       return merge({}, state, {[action.collection.id]: action.collection});
-
     case REMOVE_ITEM:
       const currItems = nextState[action.collectionId].item_ids.filter(itemId => itemId !== action.itemId);
       nextState[action.collectionId].item_ids = currItems;
-
       return nextState;
     default:
       return state;
