@@ -19,7 +19,10 @@ const collectionsReducer = (state = {}, action) => {
       return merge({}, state, {[action.collection.id]: action.collection});
     case REMOVE_ITEM:
       const currItems = nextState[action.collectionId].item_ids.filter(itemId => itemId !== action.itemId);
-      nextState[action.collectionId].item_ids = currItems;
+      // debugger
+      //i'm not getting the collection id for teh current collection, only for the one i click in the form
+      // nextState[action.collectionId].item_ids = currItems;
+      // debugger
 
       return nextState;
     default:

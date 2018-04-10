@@ -54,8 +54,8 @@ export const createItem = item => dispatch => {
 
 export const updateItem = item => dispatch => {
   return ItemAPIUtil.updateItem(item).then(item => {
-    dispatch(receiveItem(item));
     dispatch(removeItem(item));
+    dispatch(receiveItem(item));
   },err => dispatch(receiveItemErrors(err.responseJSON)));
 };
 

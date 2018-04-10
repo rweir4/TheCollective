@@ -28,7 +28,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCollection: id => dispatch(fetchCollection(id)),
     openModal: modal => dispatch(openModal(modal)),
-    deleteCollection: id => dispatch(deleteCollection(id))
+    deleteCollection: id => dispatch(deleteCollection(id)),
   };
 };
 

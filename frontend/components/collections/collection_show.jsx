@@ -23,6 +23,7 @@ class CollectionShow extends React.Component {
     if (!newProps.items[0]) {
       return null;
     } else {
+      debugger
       this.setState({items: newProps.items});
     }
   }
@@ -40,12 +41,14 @@ class CollectionShow extends React.Component {
       const { isCurrentUser, items, author, collection } = this.props;
 
       const itemsList = Object.values(this.state.items).map(item => {
-        debugger
-        return ( <ItemDetails
-          openModal={this.props.openModal}
-          isCurrentUser={isCurrentUser}
-          key={item.id}
-          item={item}/> );
+        // debugger
+        if (item !== undefined) {
+          return ( <ItemDetails
+            openModal={this.props.openModal}
+            isCurrentUser={isCurrentUser}
+            key={item.id}
+            item={item}/> );
+        }
       });
 
       let editBtn;
