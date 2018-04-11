@@ -14,7 +14,6 @@ const receiveItems = (items) => {
 };
 
 export const receiveItem = ({item, user, collection}) => {
-
   return {
     type: RECEIVE_ITEM,
     item,

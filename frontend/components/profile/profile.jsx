@@ -36,22 +36,27 @@ class Profile extends React.Component {
   componentWillReceiveProps(newProps) {
     const userId = newProps.match.params.userId;
     const that = this;
+
     if (!newProps.items[0]) {
       return null;
-    } else {
-      //
-      // that.setState({items: newProps.items});
     }
+
     if (userId != this.props.currentPageUser.id) {
       this.props.fetchUser(this.props.match.params.userId).then((user) => {
-        if (this.props.currentLoggedInUser.follows.includes(parseInt(userId))) {
+        if (newProps.currentLoggedInUser && newProps.currentLoggedInUser.follows.includes(parseInt(userId))) {
           that.setState({follows: true});
         } else {
           that.setState({follows: false});
         }
       });
+      that.setState({items: newProps.items});
+    } else {
+      if (newProps.currentLoggedInUser && newProps.currentLoggedInUser.follows.includes(parseInt(this.props.currentPageUser.id))) {
+        this.setState({follows: true});
+      } else {
+        this.setState({follows: false});
+      }
     }
-    that.setState({items: newProps.items});
   }
 
   toggleItems(field) {
@@ -131,6 +136,7 @@ class Profile extends React.Component {
 
         collectionItems.forEach(item_id => {
           that.state.items.forEach(item => {
+            
             if (item.id === item_id) {
               itemsInfo.push(item.image);
             }

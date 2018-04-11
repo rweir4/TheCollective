@@ -23,7 +23,8 @@ class ItemCollectForm extends React.Component {
       formType,
       submitAction,
       fetchUser,
-      errors
+      errors,
+      loaded
     } = this.props;
     return (
 
@@ -36,7 +37,9 @@ class ItemCollectForm extends React.Component {
         formType={formType}
         submitAction={submitAction}
         fetchUser={fetchUser}
-        errors={errors} />
+        loaded={loaded}
+        errors={errors}
+         />
     );
   }
 }
@@ -62,7 +65,7 @@ const mapDispatchToProps = dispatch => {
     fetchCollections: () => dispatch(fetchCollections()),
     fetchItem: id => dispatch(fetchItem(id)),
     makeOpaque: () => dispatch(makeOpaque()),
-    submitAction: item => dispatch(updateItem(item)),
+    submitAction: item => dispatch(createItem(item)),
     closeModal: () => dispatch(closeModal()),
     deleteItem: id => dispatch(deleteItem(id))
   };

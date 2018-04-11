@@ -86,6 +86,7 @@ class ItemForm extends React.Component {
     }
 
     if (this.props.loaded) {
+      
       this.props.submitAction(formData).then(() => {
          this.props.closeModal();
       });
@@ -147,6 +148,7 @@ class ItemForm extends React.Component {
       const collectionsList = Object.values(this.props.collections).map(collection => {
         return (
           <button
+            type="submit"
             onClick={this.handleCollectionId}
             key={collection.id}
             value={collection.id}>
