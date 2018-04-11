@@ -136,7 +136,7 @@ class Profile extends React.Component {
 
         collectionItems.forEach(item_id => {
           that.state.items.forEach(item => {
-            
+
             if (item.id === item_id) {
               itemsInfo.push(item.image);
             }
@@ -216,9 +216,50 @@ class Profile extends React.Component {
           </button>
         </div>
       );
+    } else if (this.props.currentPageUser) {
+      let btn;
+
+      if (this.state.showItems === 'items') {
+        btn = (
+          <button
+            className="add-item-container"
+            onClick={() => openModal({modal:'CreateItem', item: undefined})}>
+            <img src={window.red_item_btn} />
+          </button>
+        );
+      } else {
+        btn = (
+          <button
+            className="add-collection-container"
+            onClick={() => this.props.openModal({modal:'CreateCollection', item: undefined})}>
+            <img src={window.red_item_btn} />
+          </button>
+        );
+      }
+
+      return (
+        <div>
+          <NavBarContainer />
+          <div className="profile-container">
+            <div className="profile-info">
+              <p>{this.props.currentPageUser.email}</p>
+              <p>{this.props.currentPageUser.bio}</p>
+              <img src={this.props.currentPageUser.image} />
+            </div>
+          </div>
+          <div className="profile-nav">
+            <button onClick={this.toggleItems('collections')}>Collections</button>
+            <button onClick={this.toggleItems('items')}>Items</button>
+          </div>
+          { btn }
+        </div>
+      );
     } else {
       return (
-        <Loading />
+        <div>
+          <NavBarContainer />
+          <Loading />
+        </div>
       );
     }
   }
