@@ -50,12 +50,6 @@ class Profile extends React.Component {
         }
       });
       that.setState({items: newProps.items});
-    } else {
-      if (newProps.currentLoggedInUser && newProps.currentLoggedInUser.follows.includes(parseInt(this.props.currentPageUser.id))) {
-        this.setState({follows: true});
-      } else {
-        this.setState({follows: false});
-      }
     }
   }
 
@@ -118,6 +112,7 @@ class Profile extends React.Component {
       toShowClass="item-list";
     } else {
       if (currentPageUser.id === currentLoggedInUser.id) {
+        follow = null;
         btn = (
           <button
             className="add-collection-container"
@@ -157,13 +152,13 @@ class Profile extends React.Component {
         );
       });
 
-
       toShowClass="collection-list";
-
-      if (currentPageUser.id !== currentLoggedInUser.id) {
-        follow = ( <button className="follow" onClick={this.toggleFollow}>{this.state.follows ? 'Unfollow': 'Follow'}</button> );
-      }
     }
+
+    if (currentPageUser.id !== currentLoggedInUser.id) {
+      follow = ( <button className="follow" onClick={this.toggleFollow}>{this.state.follows ? 'Unfollow': 'Follow'}</button> );
+    }
+
     return {
       btn: btn,
       toShow: toShow,
@@ -216,8 +211,12 @@ class Profile extends React.Component {
           </button>
         </div>
       );
-    } else if (this.props.currentPageUser) {
+
+    } else if (this.props.currentPageUser && this.props.currentLoggedInUser) {
+      const { currentPageUser, currentLoggedInUser, openModal } = this.props;
+
       let btn;
+      let follow;
 
       if (this.state.showItems === 'items') {
         btn = (
@@ -231,10 +230,16 @@ class Profile extends React.Component {
         btn = (
           <button
             className="add-collection-container"
-            onClick={() => this.props.openModal({modal:'CreateCollection', item: undefined})}>
+            onClick={() => openModal({modal:'CreateCollection', item: undefined})}>
             <img src={window.red_item_btn} />
           </button>
         );
+      }
+
+      if (currentPageUser.id !== currentLoggedInUser.id) {
+        follow = ( <button className="follow" onClick={this.toggleFollow}>{this.state.follows ? 'Unfollow': 'Follow'}</button> );
+      } else {
+        follow = null;
       }
 
       return (
@@ -242,9 +247,10 @@ class Profile extends React.Component {
           <NavBarContainer />
           <div className="profile-container">
             <div className="profile-info">
-              <p>{this.props.currentPageUser.email}</p>
-              <p>{this.props.currentPageUser.bio}</p>
-              <img src={this.props.currentPageUser.image} />
+              <p>{currentPageUser.email}</p>
+              <p>{currentPageUser.bio}</p>
+              { follow }
+              <img src={currentPageUser.image} />
             </div>
           </div>
           <div className="profile-nav">
