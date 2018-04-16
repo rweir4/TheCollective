@@ -8,6 +8,7 @@ import ItemIndexContainer from './items/item_index_container';
 import ItemShowContainer from './items/item_show_container';
 import CollectionShowContainer from './collections/collection_show_container';
 import ProfileContainer from './profile/profile_container';
+import SettingsContainer from './profile/settings_container';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <ProtectedRoute exact path="/items/:itemId" component={ ItemShowContainer } />
         <ProtectedRoute exact path="/collections/:collectionId" component={ CollectionShowContainer } />
         <ProtectedRoute exact path="/profile/:userId" component={ ProfileContainer } />
+        <ProtectedRoute exact path="/settings" component={ SettingsContainer } />
       </Switch>
     </div>
   );

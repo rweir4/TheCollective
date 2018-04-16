@@ -1,4 +1,4 @@
-import { RECEIVE_USER, RECEIVE_USERS } from '../actions/user_actions';
+import { RECEIVE_USER, RECEIVE_USERS, REMOVE_USER } from '../actions/user_actions';
 import { RECEIVE_COLLECTION } from '../actions/collection_actions';
 import { RECEIVE_ITEM } from '../actions/item_actions';
 import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from '../actions/follows_actions';
@@ -7,6 +7,7 @@ import { merge } from 'lodash';
 const usersReducer = (state = {}, action) => {
   Object.freeze(state);
   let user;
+  let nextState = merge({}, state);
   switch (action.type) {
     case RECEIVE_USERS:
       return merge({}, state, action.users);
@@ -23,10 +24,12 @@ const usersReducer = (state = {}, action) => {
           state[action.followee_id].followers.push(action.follower_id)
         });
     case REMOVE_FOLLOW:
-      const nextState = merge({}, state);
       delete nextState[action.follower_id].follows.followee_id;
       delete nextState[action.followee_id].followers.follower_id;
       return nextState;
+    case REMOVE_USER:
+      debugger
+      delete nextState[action.user]
     default:
       return state;
   }

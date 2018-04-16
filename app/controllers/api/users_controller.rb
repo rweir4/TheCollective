@@ -25,7 +25,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       login(@user)
-      render 'api/users'
+      render :show
     else
       render json: {errors: @user.errors.full_messages}
     end
