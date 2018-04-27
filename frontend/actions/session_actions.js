@@ -16,6 +16,7 @@ const receiveSessionErrors = (errors) => {
     sessionErrors: errors
   };
 };
+
 export const clearSessionErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS
@@ -26,14 +27,17 @@ export const signup = (user) => dispatch => (
   SessionAPIUtil.signup(user).then(user => dispatch(receiveCurrentUser(user)),
   err => dispatch(receiveSessionErrors(err.responseJSON)))
 );
+
 export const login = (user) => dispatch => (
   SessionAPIUtil.login(user).then(user => dispatch(receiveCurrentUser(user)),
   err => dispatch(receiveSessionErrors(err.responseJSON)))
 );
+
 export const demoLogin = () => dispatch => (
-  SessionAPIUtil.login({ email: 'rweir11', password: 'starwars11' }).then(user => dispatch(receiveCurrentUser(user)),
+  SessionAPIUtil.demoLogin().then(user => dispatch(receiveCurrentUser(user)),
   err => dispatch(receiveSessionErrors(err.responseJSON)))
 );
+
 export const logout = (id) => dispatch  => (
   SessionAPIUtil.logout(id).then(user => dispatch({ type: LOGOUT }),
   err => dispatch(receiveSessionErrors(err.responseJSON)))

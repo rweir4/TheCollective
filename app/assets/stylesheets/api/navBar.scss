@@ -14,7 +14,6 @@
 
 .nav-bar-left {
   display: flex;
-  // vertical-align: middle;
   width: 900px;
 }
 
@@ -64,6 +63,7 @@
     width: 20px;
     height: 20px;
     margin: 9px 0 0 10px;
+    object-fit: cover;
   }
 }
 
@@ -71,6 +71,7 @@
   a {
     padding: 10px;
     cursor: pointer;
+    font-size: 16px;
   }
   img {
     width: 24px;
@@ -86,6 +87,11 @@
     margin-left: 20px;
     cursor: pointer;
   }
+
+  button:last-of-type {
+    margin: 0 20px;
+  }
+
   vertical-align: middle;
   font-size: 16px;
   color: #555555;

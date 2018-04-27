@@ -10,7 +10,7 @@ const receiveUsers = (users) => ({
   users
 });
 
-const receiveUser = ({ user, collections, items }) => {
+export const receiveUser = ({ user, collections, items }) => {
   return {
     type: RECEIVE_USER,
     user,
@@ -36,10 +36,7 @@ export const fetchUser = id => dispatch => {
 
 export const updateUser = user => dispatch => {
   return UserAPIUtil.updateUser(user).then(payload => {
-    debugger
     return dispatch(receiveUser(payload));
-  }, err => {
-    debugger
   });
 };
 

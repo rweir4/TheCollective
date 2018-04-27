@@ -23,11 +23,11 @@ class Api::UsersController < ApplicationController
   def update
     @user = User.find(current_user.id)
 
-    if @user.save
+    if @user.update(user_params)
       login(@user)
       render :show
     else
-      render json: {errors: @user.errors.full_messages}
+      render json: @user.errors.full_messages, status: 422
     end
   end
 

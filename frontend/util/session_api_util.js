@@ -14,6 +14,13 @@ export const login = (user) => (
   })
 );
 
+export const demoLogin = () => {
+  return $.ajax({
+    url: 'api/demoLogin',
+    method: 'GET'
+  });
+};
+
 export const logout = (id) => (
   $.ajax({
     url: 'api/session',

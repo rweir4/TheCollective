@@ -31,7 +31,9 @@ class NavBar extends React.Component {
       return (
         <div className="nav-bar-container">
           <div className="nav-bar-left">
-            <button className="home-btn" onClick={this.goHome}><img src={window.logo} className="logo"/></button>
+            <button className="home-btn" onClick={this.goHome}>
+              <img src={window.logo} className="logo"/>
+            </button>
             <SearchContainer />
           </div>
           <div className="nav-bar-right">
@@ -40,6 +42,9 @@ class NavBar extends React.Component {
               {this.props.currentUser.email}
             </Link>
             <button onClick={this.handleLogout}>Logout</button>
+            <Link to={`/settings`}>
+              <i className="fas fa-cog"></i>
+            </Link>
           </div>
         </div>
       );
