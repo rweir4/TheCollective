@@ -9,14 +9,16 @@ import Loading from '../loading';
 class ItemIndex extends React.Component {
 
   componentDidMount() {
-    this.props.fetchItems();
-    this.props.fetchUser(this.props.currentUserId);
+    this.props.fetchUser(this.props.currentUserId).then(() => {
+      this.props.fetchItems();
+    });
   }
+
   render() {
 
-    if (this.props.items[0]) {
-
+    if (this.props.items[0] !== undefined) {
       let isCurrentUser;
+      debugger
 
       const items = this.props.items.map(item => {
         isCurrentUser = item.author_id === this.props.currentUserId;

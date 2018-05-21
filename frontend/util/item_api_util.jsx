@@ -7,6 +7,14 @@ export const fetchItems = () => (
   })
 );
 
+export const fetchProfileItems = (id) => {
+  return $.ajax({
+    url: 'api/profile',
+    method: 'GET',
+    data: { id }
+  });
+};
+
 export const fetchItem = (id) => {
   return $.ajax({
     url: `api/items/${id}`,

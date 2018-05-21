@@ -22,15 +22,15 @@ const itemsReducer = (state = {}, action) => {
     case REMOVE_FOLLOW:
       nextState = merge({}, state);
       const itemsToDelete = [];
-      Object.values(nextState).forEach(item => {
-        if (item.author_id === action.followee_id) {
-          itemsToDelete.push(item.id);
-        }
-      });
+      // Object.values(nextState).forEach(item => {
+      //   if (item.author_id === action.followee_id) {
+      //     itemsToDelete.push(item.id);
+      //   }
+      // });
 
-      itemsToDelete.forEach(itemId => {
-        delete nextState[itemId];
-      });
+      // itemsToDelete.forEach(itemId => {
+      //   delete nextState[itemId];
+      // });
       return nextState;
     default:
       return state;

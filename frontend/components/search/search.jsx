@@ -4,14 +4,16 @@ import { withRouter } from 'react-router-dom';
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { search: ''};
+    this.state = { search: '' };
 
     this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSearch(e) {
-    this.setState({search: e.target.value});
+    this.setState({search: e.target.value}).then(() => {
+
+    });
   }
 
   handleSubmit(e) {

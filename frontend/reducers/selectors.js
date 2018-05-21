@@ -20,7 +20,6 @@ export const selectUserItems = (state, user) => {
 
 export const selectCollectionItems = (state, collection) => {
   if (collection.item_ids) {
-    
     return collection.item_ids.map(item_id => {
       return state.entities.items[item_id];
     });
@@ -29,12 +28,14 @@ export const selectCollectionItems = (state, collection) => {
   }
 };
 
-export const selectUserFollowsItems = (state, user) => {
-  if (user.follows) {
-    return user.follows.forEach(user => {
-      return user.item_ids.map(item => {
-        return state.entities.items[item_id];
-      });
+export const selectUserFollowsItems = (state, currentUserId) => {
+  if (state.entities.users[currentUserId] !== undefined) {
+    // debugger
+    const follows = state.entities.users[currentUserId].follows;
+    return Object.values(state.entities.items).map(item => {
+      if (follows.includes(item.author_id) || item.author_id === currentUserId) {
+        return state.entities.items[item.id];
+      }
     });
   } else {
     return [];

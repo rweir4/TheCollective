@@ -23,10 +23,13 @@ class Profile extends React.Component {
   componentDidMount() {
     const userId = this.props.match.params.userId;
     const that = this;
+    this.props.fetchItems();
     this.props.fetchUser(this.props.currentUserId).then((user) => {
       if (user.user.follows.includes(parseInt(userId))) {
-        that.setState({follows: true});
-        that.setState({items: this.props.items});
+        that.setState({
+          follows: true,
+          items: this.props.items
+        });
       }
     });
 
@@ -68,15 +71,19 @@ class Profile extends React.Component {
       this.setState({clickable: false});
 
       this.props.deleteFollow(this.props.currentPageUser.id, this.props.currentUserId).then(() => {
-        this.setState({follows: false});
-        this.setState({clickable: true});
+        this.setState({
+          follows: false,
+          clickable: true
+        });
       });
     } else if (!this.state.follow && this.state.clickable) {
       this.setState({clickable: false});
 
       this.props.createFollow(this.props.currentPageUser.id).then(() => {
-        this.setState({follows: true});
-        this.setState({clickable: true});
+        this.setState({
+          follows: true,
+          clickable: true
+        });
       });
     }
   }

@@ -30,6 +30,12 @@ class Api::ItemsController < ApplicationController
     @follows = current_user.followees
   end
 
+  def profile
+    @items = Item.all
+    @items.select{ |item| item.author_id == params[:id] }
+    end
+  end
+
   def show
     @item = Item.find(params[:id])
   end
@@ -40,7 +46,7 @@ class Api::ItemsController < ApplicationController
     @item.destroy
     # @items = Item.all
     # @follows = current_user.followees
-    
+
     render :show
   end
 

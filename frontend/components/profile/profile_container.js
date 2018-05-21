@@ -9,12 +9,14 @@ import { selectUserCollections, selectUserItems } from '../../reducers/selectors
 
 const mapStateToProps = (state, ownProps) => {
   const currentPageUser = state.entities.users[ownProps.match.params.userId] || {};
+  const items = selectUserItems(state, currentPageUser);
+
   return {
     currentUserId: state.session.currentUser,
     currentLoggedInUser: state.entities.users[state.session.currentUser],
     currentPageUser,
     collections: selectUserCollections(state, currentPageUser),
-    items: selectUserItems(state, currentPageUser),
+    items,
   };
 };
 
@@ -22,6 +24,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createFollow: id => dispatch(createFollow(id)),
     deleteFollow: (id, user_id) => dispatch(deleteFollow(id, user_id)),
+    
     fetchItems: () => dispatch(fetchItems()),
     openModal: modal => dispatch(openModal(modal)),
     fetchUser: id => dispatch(fetchUser(id))
