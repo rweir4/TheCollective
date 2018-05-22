@@ -23,7 +23,7 @@ class Profile extends React.Component {
   componentDidMount() {
     const userId = this.props.match.params.userId;
     const that = this;
-    this.props.fetchItems();
+    this.props.fetchProfileItems(this.props.match.params.userId);
     this.props.fetchUser(this.props.currentUserId).then((user) => {
       if (user.user.follows.includes(parseInt(userId))) {
         that.setState({

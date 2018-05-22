@@ -46,6 +46,11 @@ export const fetchItem = id => dispatch => {
   return ItemAPIUtil.fetchItem(id).then(payload => dispatch(receiveItem(payload)));
 };
 
+export const fetchProfileItems = (id) => dispatch => {
+  return ItemAPIUtil.fetchProfileItems(id).then(items => dispatch(receiveItems(items)),
+  err => dispatch(receiveItemErrors(err.responseJSON)));
+};
+
 export const createItem = item => dispatch => {
   return ItemAPIUtil.createItem(item).then(item => dispatch(receiveItem(item)),
   err => dispatch(receiveItemErrors(err.responseJSON)));

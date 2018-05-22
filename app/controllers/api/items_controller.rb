@@ -31,9 +31,9 @@ class Api::ItemsController < ApplicationController
   end
 
   def profile
-    @items = Item.all
-    @items.select{ |item| item.author_id == params[:id] }
-    end
+    items = Item.all
+    @items = items.select{ |item| item.author.id == params[:id] }
+    render :profile
   end
 
   def show

@@ -1,4 +1,4 @@
-import { RECEIVE_ITEMS, RECEIVE_ITEM, REMOVE_ITEM } from '../actions/item_actions';
+import { RECEIVE_ITEMS, RECEIVE_ITEM, REMOVE_ITEM, RECEIVE_ITEM_ERRORS } from '../actions/item_actions';
 import { RECEIVE_COLLECTION } from '../actions/collection_actions';
 import { RECEIVE_USER } from '../actions/user_actions';
 import { REMOVE_FOLLOW } from '../actions/follows_actions';
@@ -22,15 +22,6 @@ const itemsReducer = (state = {}, action) => {
     case REMOVE_FOLLOW:
       nextState = merge({}, state);
       const itemsToDelete = [];
-      // Object.values(nextState).forEach(item => {
-      //   if (item.author_id === action.followee_id) {
-      //     itemsToDelete.push(item.id);
-      //   }
-      // });
-
-      // itemsToDelete.forEach(itemId => {
-      //   delete nextState[itemId];
-      // });
       return nextState;
     default:
       return state;

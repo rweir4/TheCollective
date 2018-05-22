@@ -9,7 +9,7 @@ export const fetchItems = () => (
 
 export const fetchProfileItems = (id) => {
   return $.ajax({
-    url: 'api/profile',
+    url: `api/profile/${id}`,
     method: 'GET',
     data: { id }
   });

@@ -18,16 +18,17 @@ class ItemIndex extends React.Component {
 
     if (this.props.items[0] !== undefined) {
       let isCurrentUser;
-      debugger
 
       const items = this.props.items.map(item => {
-        isCurrentUser = item.author_id === this.props.currentUserId;
-        return ( <ItemDetails
-          isCurrentUser={isCurrentUser}
-          openModal={this.props.openModal}
-          key={item.id}
-          item={ item }/>
-        );
+        if (item !== undefined) {
+          isCurrentUser = item.author_id === this.props.currentUserId;
+          return ( <ItemDetails
+            isCurrentUser={isCurrentUser}
+            openModal={this.props.openModal}
+            key={item.id}
+            item={ item }/>
+          );
+        }
       });
 
       return (

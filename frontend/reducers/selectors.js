@@ -30,7 +30,6 @@ export const selectCollectionItems = (state, collection) => {
 
 export const selectUserFollowsItems = (state, currentUserId) => {
   if (state.entities.users[currentUserId] !== undefined) {
-    // debugger
     const follows = state.entities.users[currentUserId].follows;
     return Object.values(state.entities.items).map(item => {
       if (follows.includes(item.author_id) || item.author_id === currentUserId) {
