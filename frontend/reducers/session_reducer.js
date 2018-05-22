@@ -16,7 +16,7 @@ const sessionReducer = (state = _nullUser, action) => {
       return _nullUser;
     case REMOVE_USER:
       const nextState = merge({}, state);
-      debugger
+      
       return nextState;
     default:
       return state;

@@ -36,7 +36,7 @@ const usersReducer = (state = {}, action) => {
       nextState[action.followee_id].followers = followed_followers;
       return nextState;
     case REMOVE_USER:
-      debugger
+      
       delete nextState[action.user];
       return nextState;
     default:
