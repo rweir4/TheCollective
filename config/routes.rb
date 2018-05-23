@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get 'api/demoLogin', to: 'api/sessions#demoLogin'
   get 'api/profile/:id', to: 'api/items#profile'
-  get 'api/search/:query', to: 'api/search#query'
+  get 'api/searches', to: 'api/searches#query'
 
   root to: 'static_pages#root'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

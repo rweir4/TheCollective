@@ -1,7 +1,7 @@
 class Api::SearchesController < ApplicationController
   def query
-    @results = Search.filter(query)
-    render :search   
+    @results = Search.filter(params["query"])
+    render 'api/searches/search'
   end
 
   private

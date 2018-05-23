@@ -15,10 +15,9 @@ class Search extends React.Component {
   }
 
   handleSearch(e) {
-    this.setState({search: e.target.value}).then(() => {
-      this.props.fetchQuery(this.state.search).then(results => {
-        this.setState({ results });
-      });
+    this.setState({search: e.target.value});
+    this.props.fetchQuery(e.target.value).then(query => {
+      this.setState({ results: query.results });
     });
   }
 

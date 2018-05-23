@@ -8,7 +8,7 @@ const mapStateToProps = state => {
   const users = state.entities.users;
 
   return {
-    queried: selectQueried(users)
+    results: state.entities.search.results
   };
 };
 

@@ -1,6 +1,7 @@
 export const fetchQuery = (query) => {
   return $.ajax({
-    url: 'api/search/:query',
-    method: 'GET'
+    url: 'api/searches',
+    method: 'GET',
+    data: { query }
   });
 };

@@ -1,28 +1,30 @@
 import React from 'react';
 
-const Results = (props) => (
-  <section>
+const Results = ({ results }) => {
+  return (
+    <section>
     <ul>
-      <li>
-        <p>
-          Items
-        </p>
-        {this.props.results.items}
-      </li>
-      <li>
-        <p>
-          Collections
-        </p>
-        {this.props.results.collections}
-      </li>
-      <li>
-        <p>
-          Users
-        </p>
-        {this.props.results.users}
-      </li>
+      <p>
+        Items
+      </p>
+      <ul>
+          {results.items}
+      </ul>
+      <p>
+        Collections
+      </p>
+      <ul>
+          {results.collections}
+      </ul>
+      <p>
+        Users
+      </p>
+      <ul>
+          {results.users}
+      </ul>
     </ul>
   </section>
-);
+  );
+};
 
 export default Results;

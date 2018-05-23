@@ -5,7 +5,7 @@ const queryReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_QUERY:
-      return merge({}, state, action.query);
+      return merge({}, state, {results: action.results});
     default:
       return state;
   }
