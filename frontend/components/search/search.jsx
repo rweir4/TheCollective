@@ -12,7 +12,7 @@ class Search extends React.Component {
           collections: [],
           users: []
        },
-       renderResults: false
+       renderResults: "false"
      };
 
     this.handleSearch = this.handleSearch.bind(this);
@@ -29,11 +29,11 @@ class Search extends React.Component {
   }
 
   showResults() {
-    this.setState({renderResults: true});
+    this.setState({renderResults: "true"});
   }
 
   closeResults() {
-    this.setState({renderResults: false});
+    this.setState({renderResults: "false"});
   }
 
   handleSubmit(e) {
@@ -47,10 +47,12 @@ class Search extends React.Component {
 
   render() {
     let results;
-    if (this.state.renderResults === true) {
+    if (this.state.renderResults === "true") {
       results = (
-        <div className="outer-results">
-          <Results results={this.state.results} />
+        <div className="outer-results" onClick={this.closeResults}>
+          <div className="inner-results" onClick={e => e.stopPropagation()}>
+            <Results results={this.state.results} />
+          </div>
         </div>
       );
     } else {
@@ -58,8 +60,8 @@ class Search extends React.Component {
     }
 
     return (
-      <div className="search" onClick={this.showResults}>
-        <form id="search-form" onSubmit={this.handleSubmit}>
+      <div className="search">
+        <form id="search-form" onClick={this.showResults} onSubmit={this.handleSubmit}>
           <img src={window.search} />
           <input
             placeholder="Search"

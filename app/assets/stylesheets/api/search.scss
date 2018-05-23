@@ -13,6 +13,11 @@
   cursor: zoom-out;
 }
 
+.inner-results {
+  width: 815px;
+  margin-left: 65px;
+}
+
 .search {
   align-self: center;
   background: #EFEFEF;
@@ -41,11 +46,12 @@
 #search-results {
   position: relative;
   padding: 10px;
-  left: 65px;
+  // left: 65px;
+  // margin-left: 65px;
   background: #FFFFFF;
   border-radius: 5px;
   max-height: 385px;
-  width: 815px;
+  max-width: 815px;
 }
 
 .search-headers {
