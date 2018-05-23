@@ -7,10 +7,17 @@ class Search extends React.Component {
     super(props);
     this.state = {
       search: '',
-      results: ''
+      results: {
+          items: [],
+          collections: [],
+          users: []
+       },
+       renderResults: false
      };
 
     this.handleSearch = this.handleSearch.bind(this);
+    this.showResults = this.showResults.bind(this);
+    this.closeResults = this.closeResults.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -21,8 +28,12 @@ class Search extends React.Component {
     });
   }
 
-  handleSearchClose() {
+  showResults() {
+    this.setState({renderResults: true});
+  }
 
+  closeResults() {
+    this.setState({renderResults: false});
   }
 
   handleSubmit(e) {
@@ -36,23 +47,28 @@ class Search extends React.Component {
 
   render() {
     let results;
-    if (this.state.results !== '') {
-      results = <Results results={this.state.results}/> ;
+    if (this.state.renderResults === true) {
+      results = (
+        <div className="outer-results">
+          <Results results={this.state.results} />
+        </div>
+      );
     } else {
       results = null;
     }
 
     return (
-      <div className="search">
+      <div className="search" onClick={this.showResults}>
         <form id="search-form" onSubmit={this.handleSubmit}>
-            <img src={window.search} />
-            <input
-              placeholder="Search"
-              value={this.state.search}
-              onChange={this.handleSearch}
-            />
+          <img src={window.search} />
+          <input
+            placeholder="Search"
+            value={this.state.search}
+            onChange={this.handleSearch}
+            onClick={this.showResults}
+          />
         </form>
-        { results }
+        {results}
       </div>
     );
   }

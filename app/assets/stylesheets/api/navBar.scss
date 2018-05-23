@@ -1,5 +1,6 @@
 .nav-bar-container {
   position: relative;
+  z-index: 50;
   height: 60px;
   display: flex;
   justify-content: space-between;
@@ -36,35 +37,6 @@
 .home-btn:active {
   background: #e8e8e8;
   border-radius: 30px;
-}
-
-#search-form {
-  display: flex;
-}
-
-.search {
-  align-self: center;
-  background: #EFEFEF;
-  border-radius: 5px;
-  vertical-align: middle;
-  width: 95%;
-  height: 40px;
-  input {
-    padding: 10px;
-    width: 100%;
-    border-radius: 5px;
-    align-self: center;
-    font-size: 16px;
-    color: #757575;
-    cursor: pointer;
-  }
-
-  img {
-    width: 20px;
-    height: 20px;
-    margin: 9px 0 0 10px;
-    object-fit: cover;
-  }
 }
 
 .nav-bar-right {
