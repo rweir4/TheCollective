@@ -14,7 +14,7 @@
 }
 
 .inner-results {
-  width: 815px;
+  width: 835px;
   margin-left: 65px;
 }
 
@@ -46,32 +46,35 @@
 #search-results {
   position: relative;
   padding: 10px;
-  // left: 65px;
-  // margin-left: 65px;
   background: #FFFFFF;
   border-radius: 5px;
-  max-height: 385px;
-  max-width: 815px;
+  max-height: 570px;
+  max-width: 825px;
+  overflow: scroll;
 }
 
 .search-headers {
-  font-weight: bold;
   height: 20px;
 }
 
 .result-info {
   margin: 10px;
-  width: 815px;
+  width: 825px;
   list-style: none;
 
   li {
-    max-height: 20px;
+    font-weight: bold;
+    margin-right: 15px;
+    padding: 5px;
+    max-height: 30px;
     overflow: hidden;
+    line-height: 30px;
     text-overflow: ellipsis;
   }
 
   li:hover {
     background: #EFEFEF;
     cursor: pointer;
+    border-radius: 5px;
   }
 }

@@ -32,8 +32,22 @@ class Api::CollectionsController < ApplicationController
   end
 
   def show
-    @collection = Collection.find(params[:id])
+    string = false;
+    params[:id].chars.each do |letter|
+      if ("a".."z").include?(letter)
+        string = true;
+      end
+    end
+
+    if string
+      @collection = Collection.find_by(title: params[:id])
+    else
+      @collection = Collection.find(params[:id])
+    end
+
+    render :show
   end
+
 
   def destroy
     @collection = current_user.collections.find(params[:id])

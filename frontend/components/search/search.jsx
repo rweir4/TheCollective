@@ -36,27 +36,65 @@ class Search extends React.Component {
     this.setState({renderResults: "false"});
   }
 
-  handleSubmit(e) {
+  handleSubmit(e, type) {
     e.preventDefault();
 
-    this.props.fetchUser(this.state.search).then(payload => {
-      this.props.history.push(`/profile/${payload.user.id}`);
-    });
+    if (type === 'user') {
+      this.props.fetchUser(e.target.innerText).then(payload => {
+        this.props.history.push(`/profile/${payload.user.id}`);
+      });
+    } else if (type === 'collection') {
+      this.props.fetchCollection(e.target.innerText).then(payload => {
+        this.props.history.push(`/collections/${payload.collection.id}`);
+      });
+    } else if (type === 'item') {
+      this.props.fetchItem(e.target.innerText).then(payload => {
+        this.props.history.push(`/items/${payload.item.id}`);
+      });
+    }
+    this.closeResults();
   }
 
 
   render() {
-    let results;
+    let resultsContainer;
+    const { results } = this.state;
+
     if (this.state.renderResults === "true") {
-      results = (
+      resultsContainer = (
         <div className="outer-results" onClick={this.closeResults}>
           <div className="inner-results" onClick={e => e.stopPropagation()}>
-            <Results results={this.state.results} />
+            <ul id="search-results">
+              <p className="search-headers">
+                Items
+              </p>
+              <ul className="result-info">
+                {results.items.slice(0,5).map((result, id) => {
+                  return <li key={id} onClick={e => this.handleSubmit(e,'item')}>{result}</li>
+                })}
+              </ul>
+              <p className="search-headers">
+                Collections
+              </p>
+              <ul className="result-info">
+                {results.collections.slice(0,5).map((result, id) => {
+                  return <li key={id} onClick={e => this.handleSubmit(e,'collection')}>{result}</li>
+                })}
+              </ul>
+              <p className="search-headers">
+                Users
+              </p>
+              <ul className="result-info">
+                {results.users.slice(0,5).map((result, id) => {
+                  return <li key={id} onClick={e => this.handleSubmit(e,'user')}>{result}</li>
+                })}
+              </ul>
+            </ul>
           </div>
         </div>
       );
     } else {
-      results = null;
+      resultsContainer = null;
     }
 
     return (
@@ -70,7 +108,7 @@ class Search extends React.Component {
             onClick={this.showResults}
           />
         </form>
-        {results}
+        {resultsContainer}
       </div>
     );
   }
