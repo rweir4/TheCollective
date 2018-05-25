@@ -40,7 +40,7 @@ class Api::ItemsController < ApplicationController
     string = false;
     params[:id].chars.each do |letter|
       if ("a".."z").include?(letter)
-        string = true;
+        string = true
       end
     end
 

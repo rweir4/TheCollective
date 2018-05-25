@@ -36,21 +36,14 @@ class Search extends React.Component {
     this.setState({renderResults: "false"});
   }
 
-  handleSubmit(e, type) {
+  handleSubmit(e, type, id) {
     e.preventDefault();
-
     if (type === 'user') {
-      this.props.fetchUser(e.target.innerText).then(payload => {
-        this.props.history.push(`/profile/${payload.user.id}`);
-      });
+      this.props.history.push(`/profile/${id}`);
     } else if (type === 'collection') {
-      this.props.fetchCollection(e.target.innerText).then(payload => {
-        this.props.history.push(`/collections/${payload.collection.id}`);
-      });
+      this.props.history.push(`/collections/${id}`);
     } else if (type === 'item') {
-      this.props.fetchItem(e.target.innerText).then(payload => {
-        this.props.history.push(`/items/${payload.item.id}`);
-      });
+      this.props.history.push(`/items/${id}`);
     }
     this.closeResults();
   }
@@ -69,24 +62,24 @@ class Search extends React.Component {
                 Items
               </p>
               <ul className="result-info">
-                {results.items.slice(0,5).map((result, id) => {
-                  return <li key={id} onClick={e => this.handleSubmit(e,'item')}>{result}</li>
+                {results.items.slice(0,4).map(result => {
+                  return <li key={result.id} onClick={e => this.handleSubmit(e,'item', result.id)}>{result.result}</li>
                 })}
               </ul>
               <p className="search-headers">
                 Collections
               </p>
               <ul className="result-info">
-                {results.collections.slice(0,5).map((result, id) => {
-                  return <li key={id} onClick={e => this.handleSubmit(e,'collection')}>{result}</li>
+                {results.collections.slice(0,4).map(result => {
+                  return <li key={result.id} onClick={e => this.handleSubmit(e,'collection', result.id)}>{result.result}</li>
                 })}
               </ul>
               <p className="search-headers">
                 Users
               </p>
               <ul className="result-info">
-                {results.users.slice(0,5).map((result, id) => {
-                  return <li key={id} onClick={e => this.handleSubmit(e,'user')}>{result}</li>
+                {results.users.slice(0,4).map(result => {
+                  return <li key={result.id} onClick={e => this.handleSubmit(e,'user', result.id)}>{result.result}</li>
                 })}
               </ul>
             </ul>
