@@ -37,18 +37,7 @@ class Api::ItemsController < ApplicationController
   end
 
   def show
-    string = false;
-    params[:id].chars.each do |letter|
-      if ("a".."z").include?(letter)
-        string = true
-      end
-    end
-
-    if string
-      @item = Item.find_by(description: params[:id])
-    else
-      @item = Item.find(params[:id])
-    end
+    @item = Item.find(params[:id])
 
     render :show
   end

@@ -2,6 +2,7 @@ import { RECEIVE_USER, RECEIVE_USERS, REMOVE_USER } from '../actions/user_action
 import { RECEIVE_COLLECTION } from '../actions/collection_actions';
 import { RECEIVE_ITEM } from '../actions/item_actions';
 import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from '../actions/follows_actions';
+import { REMOVE_COLLECTION } from '../actions/collection_actions';
 import { merge } from 'lodash';
 
 const usersReducer = (state = {}, action) => {
@@ -34,6 +35,18 @@ const usersReducer = (state = {}, action) => {
       });
       nextState[action.follower_id].follows = followers_follows;
       nextState[action.followee_id].followers = followed_followers;
+      return nextState;
+    case REMOVE_COLLECTION:
+      const collections = [];
+
+      state[action.collectionId.user.id].collection_ids.forEach(id => {
+        if (id !== action.collectionId.collection.id)
+        {
+          collections.push(id);
+        }
+      });
+
+      nextState[action.collectionId.user.id].collection_ids = collections;
       return nextState;
     case REMOVE_USER:
 

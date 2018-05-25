@@ -19,19 +19,17 @@ class CollectionShow extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-
     if (!newProps.items[0]) {
       return null;
     } else {
-      
+
       this.setState({items: newProps.items});
     }
   }
 
   removeCollection () {
-    this.props.deleteCollection(this.props.collection.id).then(() => {
-      this.props.history.push(`/profile/${this.props.author.id}`);
-    });
+    this.props.deleteCollection(this.props.collection.id);
+    this.props.history.push(`/profile/${this.props.author.id}`);
   }
 
 
@@ -41,7 +39,7 @@ class CollectionShow extends React.Component {
       const { isCurrentUser, items, author, collection } = this.props;
 
       const itemsList = Object.values(this.state.items).map(item => {
-        // 
+        //
         if (item !== undefined) {
           return ( <ItemDetails
             openModal={this.props.openModal}

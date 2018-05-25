@@ -32,18 +32,7 @@ class Api::CollectionsController < ApplicationController
   end
 
   def show
-    string = false;
-    params[:id].chars.each do |letter|
-      if ("a".."z").include?(letter)
-        string = true;
-      end
-    end
-
-    if string
-      @collection = Collection.find_by(title: params[:id])
-    else
-      @collection = Collection.find(params[:id])
-    end
+    @collection = Collection.find(params[:id])
 
     render :show
   end
@@ -52,8 +41,8 @@ class Api::CollectionsController < ApplicationController
   def destroy
     @collection = current_user.collections.find(params[:id])
     @collection.destroy
-    @collections = Collection.all
-    render :index
+
+    render :show
   end
 
   private

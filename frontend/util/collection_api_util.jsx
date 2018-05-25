@@ -28,9 +28,9 @@ export const updateCollection = (collection) => (
   })
 );
 
-export const deleteCollection = (id) => (
-  $.ajax({
+export const deleteCollection = (id) => {
+  return $.ajax({
     url: `api/collections/${id}`,
     method: 'DELETE'
-  })
-);
+  });
+};

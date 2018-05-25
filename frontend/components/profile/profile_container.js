@@ -10,12 +10,13 @@ import { selectUserCollections, selectUserItems } from '../../reducers/selectors
 const mapStateToProps = (state, ownProps) => {
   const currentPageUser = state.entities.users[ownProps.match.params.userId] || {};
   const items = selectUserItems(state, currentPageUser);
+  const collections = selectUserCollections(state, currentPageUser);
 
   return {
     currentUserId: state.session.currentUser,
     currentLoggedInUser: state.entities.users[state.session.currentUser],
     currentPageUser,
-    collections: selectUserCollections(state, currentPageUser),
+    collections,
     items,
   };
 };
